@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة المستقبل الرقمية | E-Book Library & Reader</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        emerald: { 400: '#34d399', 500: '#10b981' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .ad-slot-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            border: 1px dashed rgba(245, 158, 11, 0.4);
+        }
+        .light .ad-slot-box {
+            background: linear-gradient(135deg, rgba(254, 243, 199, 0.7), rgba(253, 230, 138, 0.5));
+            border: 1px dashed rgba(217, 119, 6, 0.5);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 light:bg-slate-50 light:text-slate-900 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-amber-500 selection:text-slate-950 transition-colors duration-300">
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="fixed top-20 left-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 dark:bg-slate-900/90 light:bg-white/90 backdrop-blur-md border-b border-slate-800 dark:border-slate-800 light:border-slate-200">
+        <div class="container mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" onclick="switchView('visitor')" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-emerald-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+                    📚
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-black bg-gradient-to-r from-amber-400 via-amber-200 to-emerald-400 bg-clip-text text-transparent dark:from-amber-400 dark:to-emerald-400 light:from-slate-900 light:to-amber-600">
+                        مكتبة <span class="text-amber-500">المستقبل</span>
+                    </span>
+                    <span class="block text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 font-semibold tracking-wider">كتب مجانية ومعاينة مباشرة</span>
+                </div>
+            </a>
+
+            <!-- Mode Switcher & Admin Access -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-amber-400 dark:text-amber-400 light:text-slate-700 hover:scale-105 transition-all text-xs">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <button onclick="switchView('visitor')" id="btnVisitorNav" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">المكتبة</span>
+                </button>
+                
+                <button onclick="openAdminAuthModal()" id="btnAdminNav" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-700 border border-slate-700 dark:border-slate-700 light:border-slate-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-user-shield text-amber-500"></i> <span class="hidden sm:inline">لوحة الإدارة</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- AdSlot #1: Top Header Banner -->
+    <div id="adSlotTopContainer" class="container mx-auto px-4 mt-4">
+        <div class="ad-slot-box rounded-2xl p-3 text-center relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+            <span class="text-[10px] bg-amber-500/20 text-amber-500 px-2.5 py-0.5 rounded font-mono font-bold">إعلان رعاية / AdSense</span>
+            <div id="adSlotTopContent" class="text-xs text-slate-200 dark:text-slate-200 light:text-slate-800 font-bold">
+                ✨ احصل على استشارة وسيرة ذاتية احترافية لتطوير مشروعاتك اليوم!
+            </div>
+            <a href="https://wa.me/213780564922" target="_blank" id="adSlotTopBtn" class="bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-4 py-1.5 rounded-lg font-black text-xs hover:opacity-90 transition-opacity whitespace-nowrap shadow">
+                تواصل واتساب 💬
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== VISITOR VIEW ==================== -->
+    <main id="visitorView" class="flex-1 transition-all duration-300">
+        
+        <!-- Hero Section -->
+        <section class="py-8 sm:py-12 relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 text-center space-y-5 relative z-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 dark:bg-slate-900 light:bg-amber-100 border border-amber-500/30 text-amber-400 dark:text-amber-400 light:text-amber-800 text-xs font-bold shadow">
+                    <span>📖 تصفح واقرأ أفضل 10 كتب مفيدة مجاناً عبر Google Drive</span>
+                </div>
+                
+                <h1 class="text-2xl sm:text-4xl font-black text-white dark:text-white light:text-slate-900 max-w-3xl mx-auto leading-tight">
+                    مكتبتك الرقمية الحرة لقراءة 
+                    <span class="bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                        الكتب المعمقة وتحميلها PDF
+                    </span>
+                </h1>
+
+                <!-- Search Bar -->
+                <div class="max-w-xl mx-auto relative pt-2">
+                    <input type="text" id="visitorSearchInput" onkeyup="filterBooks()" placeholder="ابحث باسم الكتاب، الكاتب، أو الموضوع..." 
+                        class="w-full bg-slate-900/90 dark:bg-slate-900/90 light:bg-white border border-slate-700/80 dark:border-slate-700 light:border-slate-300 rounded-2xl py-3 px-5 pr-11 text-sm text-slate-100 dark:text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all shadow-xl">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 translate-y-1 text-slate-400"></i>
+                </div>
+
+                <!-- Categories Filter -->
+                <div class="flex flex-wrap justify-center gap-2 pt-2" id="visitorCategoryFilters">
+                    <button onclick="selectCategory('all')" class="cat-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-500 text-slate-950">الكل (10)</button>
+                    <button onclick="selectCategory('الفلسفة والفكر')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">الفلسفة والفكر</button>
+                    <button onclick="selectCategory('الأدب والرواية')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">الأدب والرواية</button>
+                    <button onclick="selectCategory('التكنولوجيا والذكاء الاصطناعي')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">التكنولوجيا والذكاء الاصطناعي</button>
+                    <button onclick="selectCategory('ريادة الأعمال')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">ريادة الأعمال</button>
+                    <button onclick="selectCategory('علم النفس وتطوير الذات')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">علم النفس</button>
+                    <button onclick="selectCategory('اللغة والتاريخ')" class="cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">اللغة والتاريخ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Books Catalog -->
+        <section class="py-6">
+            <div class="container mx-auto px-4 sm:px-6">
+                
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg sm:text-xl font-black text-white dark:text-white light:text-slate-900 flex items-center gap-2">
+                        <span>📚 الكتب المتاحة للقراءة الفورية</span>
+                    </h2>
+                    <span id="booksCounterBadge" class="text-xs bg-slate-900 dark:bg-slate-900 light:bg-amber-100 border border-slate-800 dark:border-slate-800 light:border-amber-300 text-amber-400 dark:text-amber-400 light:text-amber-800 font-bold px-3 py-1 rounded-lg">
+                        10 كتب
+                    </span>
+                </div>
+
+                <!-- Books Grid -->
+                <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Dynamic rendering -->
+                </div>
+
+                <!-- AdSlot #2: In-Feed Banner -->
+                <div id="adSlotFeedContainer" class="mt-10 my-6">
+                    <div class="ad-slot-box rounded-2xl p-6 text-center space-y-3 relative shadow-xl">
+                        <span class="text-[10px] bg-slate-800 dark:bg-slate-800 light:bg-amber-200 text-slate-400 dark:text-slate-400 light:text-amber-900 px-2.5 py-1 rounded-full font-mono border border-slate-700">مساحة إعلانية مستهدفة - AdSense In-Feed</span>
+                        <h3 id="adSlotFeedTitle" class="text-base sm:text-lg font-black text-white dark:text-white light:text-slate-900">هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي؟</h3>
+                        <p id="adSlotFeedDesc" class="text-xs text-slate-300 dark:text-slate-300 light:text-slate-700 max-w-lg mx-auto">تواصل مع صاحب الموقع مباشرة لتنفيذ مشروعاتك بأحدث التقنيات وأفضل الأسعار!</p>
+                        <a href="tel:0780564922" id="adSlotFeedBtn" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-2 rounded-xl text-xs transition-all shadow-lg shadow-emerald-500/20">
+                            اتصل الآن: 0780564922 📞
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== ADMIN DASHBOARD VIEW ==================== -->
+    <main id="adminView" class="flex-1 transition-all duration-300 hidden bg-slate-950 dark:bg-slate-950 light:bg-slate-100 py-8">
+        <div class="container mx-auto px-4 sm:px-6 space-y-8">
+            
+            <!-- Dashboard Header -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900 dark:bg-slate-900 light:bg-white p-6 rounded-3xl border border-slate-800 dark:border-slate-800 light:border-slate-200 shadow-xl">
+                <div>
+                    <div class="flex items-center gap-2 text-amber-400 font-bold text-xs mb-1">
+                        <i class="fa-solid fa-crown"></i> <span>لوحة تحكم صاحب الموقع</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white dark:text-white light:text-slate-900">إدارة كتب Google Drive والإعلانات ⚙️</h2>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="exportDataJSON()" class="bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-download text-emerald-400"></i> تصدير JSON
+                    </button>
+                    <label class="bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold cursor-pointer flex items-center gap-1.5">
+                        <i class="fa-solid fa-upload text-cyan-400"></i> استيراد
+                        <input type="file" id="importJsonInput" onchange="importDataJSON(event)" accept=".json" class="hidden">
+                    </label>
+                    <button onclick="switchView('visitor')" class="bg-amber-500 text-slate-950 px-4 py-2 rounded-xl text-xs font-black hover:bg-amber-400 transition-colors">
+                        معاينة الموقع 👁️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
+                    <span class="text-xs text-slate-400 font-bold">إجمالي الكتب النشطة</span>
+                    <h3 id="statTotalBooks" class="text-2xl sm:text-3xl font-black text-white dark:text-white light:text-slate-900">10</h3>
+                    <span class="text-[10px] text-emerald-400">مرتبطة مع Google Drive</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
+                    <span class="text-xs text-slate-400 font-bold">إجمالي القراءات والتنزيلات</span>
+                    <h3 id="statTotalDownloads" class="text-2xl sm:text-3xl font-black text-amber-400">842</h3>
+                    <span class="text-[10px] text-amber-400">تفاعلات الزوار الكلية</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
+                    <span class="text-xs text-slate-400 font-bold">المساحات الإعلانية</span>
+                    <h3 id="statActiveAds" class="text-2xl sm:text-3xl font-black text-cyan-400">3 / 3</h3>
+                    <span class="text-[10px] text-cyan-400">مهيأة لـ Google AdSense</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
+                    <span class="text-xs text-slate-400 font-bold">رمز الدخول السرّي</span>
+                    <h3 id="statPinCode" class="text-xl sm:text-2xl font-black text-purple-400 font-mono">1234</h3>
+                    <button onclick="changeAdminPin()" class="text-[10px] text-slate-400 underline hover:text-white">تغيير رمز PIN</button>
+                </div>
+            </div>
+
+            <!-- Admin Tabs Navigation -->
+            <div class="flex border-b border-slate-800 dark:border-slate-800 light:border-slate-300 gap-4 text-xs sm:text-sm font-bold overflow-x-auto">
+                <button onclick="switchAdminTab('manage')" id="tabBtnManage" class="admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-list-check"></i> إدارة الكتب الحالية
+                </button>
+                <button onclick="switchAdminTab('add')" id="tabBtnAdd" class="admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-plus-circle"></i> إضافة كتاب جديد (رابط Drive تلقائي)
+                </button>
+                <button onclick="switchAdminTab('ads')" id="tabBtnAds" class="admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-rectangle-ad"></i> التحكم في الإعلانات (Ad Manager)
+                </button>
+            </div>
+
+            <!-- TAB 1: Manage Books Table -->
+            <div id="adminTabManage" class="space-y-4">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                    <input type="text" id="adminSearchInput" onkeyup="renderAdminTable()" placeholder="ابحث في جدول الكتب..." 
+                        class="bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-800 dark:border-slate-800 light:border-slate-300 rounded-xl py-2 px-4 text-xs text-slate-200 dark:text-slate-200 light:text-slate-900 w-full sm:w-72 focus:outline-none focus:border-amber-500">
+                    
+                    <button onclick="resetToDefault10Books()" class="text-xs text-amber-400 hover:underline font-bold flex items-center gap-1.5 self-end sm:self-auto">
+                        <i class="fa-solid fa-rotate-left"></i> <span>إعادة تحميل الكتب الـ 10 الأصلية</span>
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto glass-card rounded-2xl border-slate-800">
+                    <table class="w-full text-right text-xs">
+                        <thead class="bg-slate-900/90 dark:bg-slate-900/90 light:bg-slate-200 text-slate-400 dark:text-slate-400 light:text-slate-700 border-b border-slate-800">
+                            <tr>
+                                <th class="p-3.5">الكتاب والمؤلف</th>
+                                <th class="p-3.5">الفئة</th>
+                                <th class="p-3.5">معرف Google Drive</th>
+                                <th class="p-3.5 text-center">القراءات والتنزيلات</th>
+                                <th class="p-3.5 text-center">العمليات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminBooksTableBody" class="divide-y divide-slate-800/60 dark:divide-slate-800/60 light:divide-slate-200">
+                            <!-- Dynamic Table Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: Add New Book Form (With Smart Auto Drive Parser) -->
+            <div id="adminTabAdd" class="hidden glass-card p-6 rounded-3xl border-slate-800 max-w-3xl mx-auto space-y-5">
+                <div class="space-y-1">
+                    <h3 class="text-lg font-black text-white dark:text-white light:text-slate-900 flex items-center gap-2">
+                        <span>➕ إضافة كتاب جديد (معالج روابط Google Drive الذكي)</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">ضع رابط Google Drive العادي (مثال: view?usp=drive_link)، وسيقوم الكود تلقائياً باستخراج معرف الملف وإنشاء روابط المعاينة والتحميل المباشر!</p>
+                </div>
+                
+                <form id="addBookForm" onsubmit="handleAddNewBook(event)" class="space-y-4 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">عنوان الكتاب *</label>
+                            <input type="text" id="newBookTitle" required placeholder="مثال: مقدمة في الفلسفة الحديثة" 
+                                class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">اسم المؤلف / الكاتب *</label>
+                            <input type="text" id="newBookAuthor" required placeholder="مثال: د. أحمد محمود" 
+                                class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">التصنيف / الفئة *</label>
+                            <select id="newBookCategory" required class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500">
+                                <option value="الفلسفة والفكر">الفلسفة والفكر</option>
+                                <option value="الأدب والرواية">الأدب والرواية</option>
+                                <option value="التكنولوجيا والذكاء الاصطناعي">التكنولوجيا والذكاء الاصطناعي</option>
+                                <option value="ريادة الأعمال">ريادة الأعمال</option>
+                                <option value="علم النفس وتطوير الذات">علم النفس وتطوير الذات</option>
+                                <option value="اللغة والتاريخ">اللغة والتاريخ</option>
+                                <option value="الفكر والدراسات">الفكر والدراسات</option>
+                                <option value="العلوم واللغة">العلوم واللغة</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">لون الغلاف التلقائي (في حال عدم وجود صورة)</label>
+                            <select id="newBookGradient" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500">
+                                <option value="from-amber-600 to-amber-950">ذهبي / بني فاخر</option>
+                                <option value="from-emerald-600 to-emerald-950">زمرّدي / ملكي</option>
+                                <option value="from-cyan-600 to-cyan-950">سماوي / تقني</option>
+                                <option value="from-purple-600 to-purple-950">أرجواني / فكري</option>
+                                <option value="from-rose-600 to-rose-950">وردي / أدبي</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-amber-400 mb-1">رابط Google Drive (مثال: https://drive.google.com/file/d/.../view) *</label>
+                        <input type="url" id="newBookDriveUrl" required placeholder="https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=drive_link" 
+                            class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-amber-500/50 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500 font-mono text-[11px]" dir="ltr">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">صورة الغلاف (اختياري - ضع رابط الصورة أو اتركه غلافاً مصصماً تلقائياً)</label>
+                        <input type="url" id="newBookImage" placeholder="https://..." 
+                            class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500" dir="ltr">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">وصف مختصر للكتاب *</label>
+                        <textarea id="newBookDesc" rows="3" required placeholder="اكتب ملخصاً مشوقاً ومفيداً يشرح محور الكتاب..." 
+                            class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 dark:border-slate-700 light:border-slate-300 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 focus:outline-none focus:border-amber-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 font-black rounded-xl text-sm hover:opacity-90 transition-all shadow-lg">
+                        🚀 تحليل الرابط ونشر الكتاب فوراً في المكتبة
+                    </button>
+                </form>
+            </div>
+
+            <!-- TAB 3: Ads Manager (Google AdSense Ready) -->
+            <div id="adminTabAds" class="hidden space-y-6 max-w-4xl mx-auto">
+                <div class="glass-card p-6 rounded-3xl border-slate-800 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-bold text-white dark:text-white light:text-slate-900 flex items-center gap-2">
+                            <span>📢 إعلان الشريط العلوي (Top Header Ad)</span>
+                        </h3>
+                        <label class="flex items-center gap-2 cursor-pointer text-xs text-amber-400 font-bold">
+                            <input type="checkbox" id="adTopStatus" onchange="saveAdSettings()" class="w-4 h-4 rounded accent-amber-500"> تفعيل الإعلان
+                        </label>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block text-slate-400 mb-1">نص الإعلان</label>
+                            <input type="text" id="adTopText" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-white dark:text-white light:text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">رابط الزر (واتساب أو موقع خارجي)</label>
+                            <input type="text" id="adTopLink" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-white dark:text-white light:text-slate-900" dir="ltr">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl border-slate-800 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-bold text-white dark:text-white light:text-slate-900 flex items-center gap-2">
+                            <span>📢 إعلان وسط شبكة الكتب (In-Feed Banner)</span>
+                        </h3>
+                        <label class="flex items-center gap-2 cursor-pointer text-xs text-amber-400 font-bold">
+                            <input type="checkbox" id="adFeedStatus" onchange="saveAdSettings()" class="w-4 h-4 rounded accent-amber-500"> تفعيل الإعلان
+                        </label>
+                    </div>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="block text-slate-400 mb-1">عنوان الإعلان الرئيسي</label>
+                            <input type="text" id="adFeedTitleInput" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-white dark:text-white light:text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">الوصف الترويجي</label>
+                            <input type="text" id="adFeedDescInput" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-white dark:text-white light:text-slate-900">
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="saveAdSettings()" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs transition-colors shadow-lg">
+                    حفظ إعدادات الإعلانات
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 dark:bg-slate-950 light:bg-slate-200 border-t border-slate-900 dark:border-slate-900 light:border-slate-300 py-8 text-xs text-slate-400 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">📚 مكتبة المستقبل الرقمية</span>
+                <span>© 2026</span>
+            </div>
+            
+            <div class="flex items-center gap-4 text-slate-300 dark:text-slate-300 light:text-slate-700 font-semibold">
+                <button onclick="openStaticModal('about')" class="hover:text-amber-400 transition-colors">من نحن</button>
+                <button onclick="openStaticModal('privacy')" class="hover:text-amber-400 transition-colors">سياسة الخصوصية (AdSense)</button>
+                <button onclick="openStaticModal('contact')" class="hover:text-amber-400 transition-colors">اتصل بنا</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal: Embedded Interactive Book Reader (Drive Iframe Preview) -->
+    <div id="bookReaderModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4">
+        <div class="glass-card max-w-5xl w-full h-[94vh] rounded-3xl p-4 sm:p-6 relative border border-slate-700 flex flex-col justify-between space-y-3">
+            
+            <!-- Reader Modal Header -->
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <span id="modalCategoryBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                        الفئة
+                    </span>
+                    <div>
+                        <h3 id="modalBookTitle" class="text-sm sm:text-lg font-black text-white dark:text-white light:text-slate-900 line-clamp-1">عنوان الكتاب</h3>
+                        <p id="modalBookAuthor" class="text-[11px] text-slate-400">الكاتب: ...</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <a id="modalExternalBtn" href="#" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1">
+                        <i class="fa-solid fa-up-right-from-square"></i> <span class="hidden sm:inline">فتح في Drive</span>
+                    </a>
+                    <a id="modalDownloadBtn" href="#" target="_blank" class="bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-black hover:opacity-90 transition-all flex items-center gap-1 shadow">
+                        <i class="fa-solid fa-download"></i> <span>تحميل PDF</span>
+                    </a>
+                    <button onclick="closeBookReaderModal()" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition-colors flex items-center justify-center text-base">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Iframe Container -->
+            <div class="flex-1 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800">
+                <div id="iframeLoader" class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-950 text-amber-400 font-bold text-xs z-10">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl"></i>
+                    <span>جاري تحميل قراءة الكتاب من Google Drive...</span>
+                </div>
+                <iframe id="bookReaderIframe" class="w-full h-full border-0" onload="document.getElementById('iframeLoader').classList.add('hidden')"></iframe>
+            </div>
+
+            <!-- Modal Reader Ad Slot -->
+            <div class="ad-slot-box p-2.5 rounded-xl text-center flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                <span class="text-[9px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded font-mono font-bold">إعلان قراءة</span>
+                <p class="text-slate-300 font-semibold text-[11px]">💡 تصفح واستفد من خدمات التطوير والتسويق الرقمي معنا مباشرة</p>
+                <a href="https://wa.me/213780564922" target="_blank" class="text-amber-400 underline font-bold hover:text-amber-300 whitespace-nowrap text-[11px]">تواصل عبر الواتساب: 0780564922</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal: Admin Auth (PIN Security) -->
+    <div id="adminAuthModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 relative border border-amber-500/30 text-center space-y-4">
+            <button onclick="closeAdminAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <h3 class="text-lg font-black text-white">تسجيل الدخول للوحة الإدارة</h3>
+            <p class="text-xs text-slate-400">أدخل رمز الـ PIN الخاص بك للوصول للوحة التحكم</p>
+            <p class="text-[11px] bg-slate-900 border border-slate-800 text-amber-400 p-2 rounded-xl font-mono">الرمز الافتراضي للتجربة هو: <strong class="text-white font-mono">1234</strong></p>
+
+            <form onsubmit="handleAdminLogin(event)" class="space-y-3 pt-2">
+                <input type="password" id="adminPinInput" required placeholder="أدخل رمز PIN..." 
+                    class="w-full text-center bg-slate-900 border border-slate-700 rounded-xl py-3 text-lg text-white tracking-widest focus:outline-none focus:border-amber-500">
+                <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm transition-all shadow-lg">
+                    تأكيد والدخول 🔑
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Static Pages (AdSense Friendly) -->
+    <div id="staticModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-xl w-full rounded-3xl p-6 relative border border-slate-700 space-y-4">
+            <button onclick="closeStaticModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="staticModalContent" class="space-y-3 text-xs leading-relaxed text-slate-300"></div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // Real 10 Google Drive Books Seed Data
+        const real10DriveBooks = [
+            {
+                id: 1,
+                driveId: "1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv",
+                title: "برجسون: فيلسوف الحياة",
+                author: "د. حسن حنفي",
+                category: "الفلسفة والفكر",
+                desc: "دراسة معمقة في فلسفة هنري برجسون حول الطاقة الروحية والحدس والديمومة والتطور الخلاق في الزمان.",
+                image: "",
+                gradient: "from-amber-600 to-amber-950",
+                views: 245,
+                viewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/view",
+                previewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv"
+            },
+            {
+                id: 2,
+                driveId: "1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g",
+                title: "أصوات بابل",
+                author: "د. عبد المنعم المحجوب",
+                category: "اللغة والتاريخ",
+                desc: "مقاربات جينالوجية في اللغة والحراك السوسيوثقافي الأفروآسيوي وتاريخ الحضارات القديمة.",
+                image: "",
+                gradient: "from-purple-600 to-purple-950",
+                views: 180,
+                viewUrl: "https://drive.google.com/file/d/1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g/view",
+                previewUrl: "https://drive.google.com/file/d/1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g"
+            },
+            {
+                id: 3,
+                driveId: "1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs",
+                title: "ثورة في ثقافة الأعمال",
+                author: "ويل ماكينيس",
+                category: "ريادة الأعمال",
+                desc: "دليل الشركات والمؤسسات في القرن الحادي والعشرين لبناء ثقافة عمل حديثة ومنفتحة وقيادة واعية.",
+                image: "",
+                gradient: "from-emerald-600 to-emerald-950",
+                views: 310,
+                viewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/view",
+                previewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs"
+            },
+            {
+                id: 4,
+                driveId: "12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r",
+                title: "نظرة جديدة للقرآن",
+                author: "د. نصر حامد أبو زيد",
+                category: "الفكر والدراسات",
+                desc: "قراءة فكرية وتأويلية معاصرة تبحث في علاقة النص بالواقع والتواصل الإنساني والثقافي.",
+                image: "",
+                gradient: "from-cyan-600 to-cyan-950",
+                views: 195,
+                viewUrl: "https://drive.google.com/file/d/12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r/view",
+                previewUrl: "https://drive.google.com/file/d/12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r"
+            },
+            {
+                id: 5,
+                driveId: "1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP",
+                title: "أخلاقيات الذكاء الاصطناعي",
+                author: "مارك كوكيلبيرغ",
+                category: "التكنولوجيا والذكاء الاصطناعي",
+                desc: "استكشاف شامل للتحديات الأخلاقية والاجتماعية والخصوصية ومستقبل البشر في عصر الذكاء الاصطناعي.",
+                image: "",
+                gradient: "from-blue-600 to-slate-900",
+                views: 420,
+                viewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/view",
+                previewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP"
+            },
+            {
+                id: 6,
+                driveId: "1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu",
+                title: "الإنسان … اللغة … الرمز",
+                author: "تيرينس دبليو. ديكون",
+                category: "العلوم واللغة",
+                desc: "رحلة علمية في التطور المشترك للغة والدماغ البشري وكيفية تشكل الرموز والوعي الإنساني.",
+                image: "",
+                gradient: "from-indigo-600 to-indigo-950",
+                views: 160,
+                viewUrl: "https://drive.google.com/file/d/1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu/view",
+                previewUrl: "https://drive.google.com/file/d/1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu"
+            },
+            {
+                id: 7,
+                driveId: "1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8",
+                title: "أحمد أنيس … ظلي الضائع",
+                author: "محمد جبريل",
+                category: "الأدب والرواية",
+                desc: "رواية أدبية مشوقة تغوص في أعماق النفس الإنسانية وتحولات السلطة والبحث عن الذات.",
+                image: "",
+                gradient: "from-rose-600 to-rose-950",
+                views: 215,
+                viewUrl: "https://drive.google.com/file/d/1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8/view",
+                previewUrl: "https://drive.google.com/file/d/1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8"
+            },
+            {
+                id: 8,
+                driveId: "1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn",
+                title: "أبناء البشر",
+                author: "بي دي جيمس",
+                category: "الأدب والرواية",
+                desc: "رواية خيال علمي وتشويق عالمية تدور في مستقبل يواجه فيه الجنس البشري خطر الانقراض والتحديات الكبرى.",
+                image: "",
+                gradient: "from-slate-700 to-slate-950",
+                views: 290,
+                viewUrl: "https://drive.google.com/file/d/1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn/view",
+                previewUrl: "https://drive.google.com/file/d/1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn"
+            },
+            {
+                id: 9,
+                driveId: "1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g",
+                title: "المياه السوداء",
+                author: "كون إيجولدن",
+                category: "الأدب والرواية",
+                desc: "قصة درامية مشوقة مليئة بالغموض والتوتر النفسي على شواطئ برايتون وتحديات المصير.",
+                image: "",
+                gradient: "from-teal-600 to-teal-950",
+                views: 225,
+                viewUrl: "https://drive.google.com/file/d/1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g/view",
+                previewUrl: "https://drive.google.com/file/d/1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g"
+            },
+            {
+                id: 10,
+                driveId: "1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy",
+                title: "شفاء النفس",
+                author: "د. يوسف مراد",
+                category: "علم النفس وتطوير الذات",
+                desc: "كتاب رائد في علم النفس التكاملي يبحث في مشكلة السعادة وتحقيق التوازن النفسي والعصبي.",
+                image: "",
+                gradient: "from-amber-500 to-rose-950",
+                views: 380,
+                viewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/view",
+                previewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy"
+            }
+        ];
+
+        // State Storage
+        let books = JSON.parse(localStorage.getItem('future_library_books_v2')) || real10DriveBooks;
+        let adminPin = localStorage.getItem('future_library_pin') || '1234';
+        let currentCategory = 'all';
+
+        let adSettings = JSON.parse(localStorage.getItem('future_library_ads')) || {
+            topActive: true,
+            topText: "✨ احصل على استشارة وسيرة ذاتية احترافية لتطوير مشروعاتك اليوم!",
+            topLink: "https://wa.me/213780564922",
+            feedActive: true,
+            feedTitle: "هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي؟",
+            feedDesc: "تواصل مع صاحب الموقع مباشرة لتنفيذ مشروعاتك بأحدث التقنيات وأفضل الأسعار!"
+        };
+
+        // On Load
+        window.onload = function() {
+            renderBooks();
+            applyAdSettings();
+            updateStatsUI();
+        };
+
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.className = 'fa-solid fa-sun text-amber-500';
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-amber-400';
+            }
+        }
+
+        // Auto Drive URL Parser Helper
+        function parseGoogleDriveUrl(url) {
+            const idMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+            if (idMatch && idMatch[1]) {
+                const id = idMatch[1];
+                return {
+                    driveId: id,
+                    viewUrl: `https://drive.google.com/file/d/${id}/view`,
+                    previewUrl: `https://drive.google.com/file/d/${id}/preview`,
+                    downloadUrl: `https://drive.google.com/uc?export=download&id=${id}`
+                };
+            }
+            return null;
+        }
+
+        // Render Visitor Books Grid
+        function renderBooks(filteredList = null) {
+            const list = filteredList || books.filter(b => currentCategory === 'all' || b.category === currentCategory);
+            const container = document.getElementById('booksGrid');
+            document.getElementById('booksCounterBadge').innerText = `${list.length} كتاب`;
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400 space-y-2">
+                        <span class="text-3xl">🔍</span>
+                        <p class="font-bold text-sm">لم نجد أي كتاب يطابق بحثك!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = list.map(b => `
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-amber-500/40 transition-all duration-300 shadow-xl">
+                    
+                    <!-- Cover Area -->
+                    <div class="relative h-56 bg-slate-900 overflow-hidden flex items-center justify-center p-4">
+                        ${b.image ? `
+                            <img src="${b.image}" alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        ` : `
+                            <div class="w-full h-full rounded-xl bg-gradient-to-br ${b.gradient || 'from-amber-600 to-amber-950'} p-4 flex flex-col justify-between relative shadow-inner border border-white/10 group-hover:scale-105 transition-transform duration-500">
+                                <div class="flex justify-between items-start text-amber-300">
+                                    <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                                    <span class="text-[9px] font-mono bg-black/40 px-2 py-0.5 rounded text-slate-200">PDF</span>
+                                </div>
+                                <div class="space-y-1 text-right">
+                                    <h4 class="font-black text-white text-base leading-snug drop-shadow">${b.title}</h4>
+                                    <p class="text-[11px] text-slate-200/90 font-semibold">${b.author}</p>
+                                </div>
+                                <div class="text-[9px] text-slate-300 font-mono tracking-wider border-t border-white/10 pt-1 text-left">
+                                    DRIVE / E-BOOK
+                                </div>
+                            </div>
+                        `}
+                        
+                        <span class="absolute top-3 right-3 text-[10px] font-black px-2.5 py-1 rounded-full bg-slate-950/80 text-amber-400 border border-amber-500/30">
+                            ${b.category}
+                        </span>
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-black text-white dark:text-white light:text-slate-900 text-sm line-clamp-1 group-hover:text-amber-400 transition-colors">${b.title}</h3>
+                            <span class="block text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 font-semibold mt-0.5">✍️ الكاتب: ${b.author}</span>
+                            <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 line-clamp-2 mt-2 leading-relaxed">${b.desc}</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800 dark:border-slate-800 light:border-slate-200 flex items-center justify-between gap-2">
+                            <span class="text-[11px] text-slate-400"><i class="fa-solid fa-eye text-emerald-400"></i> ${b.views} قراءة</span>
+                            <button onclick="openBookReaderModal(${b.id})" class="bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow">
+                                <i class="fa-solid fa-book-open"></i> قراءة ومعاينة
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            `).join('');
+        }
+
+        // Category Filter
+        function selectCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                btn.className = 'cat-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300';
+            });
+            event.currentTarget.className = 'cat-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-500 text-slate-950';
+            filterBooks();
+        }
+
+        function filterBooks() {
+            const query = (document.getElementById('visitorSearchInput').value || '').toLowerCase();
+            const filtered = books.filter(b => {
+                const matchCat = currentCategory === 'all' || b.category === currentCategory;
+                const matchQ = b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query) || b.desc.toLowerCase().includes(query);
+                return matchCat && matchQ;
+            });
+            renderBooks(filtered);
+        }
+
+        // Open Interactive Reader Modal (Drive Iframe)
+        function openBookReaderModal(id) {
+            const b = books.find(item => item.id === id);
+            if (!b) return;
+
+            b.views += 1;
+            saveBooksState();
+
+            document.getElementById('modalBookTitle').innerText = b.title;
+            document.getElementById('modalBookAuthor').innerText = `الكاتب: ${b.author}`;
+            document.getElementById('modalCategoryBadge').innerText = b.category;
+            
+            document.getElementById('modalExternalBtn').href = b.viewUrl || `https://drive.google.com/file/d/${b.driveId}/view`;
+            document.getElementById('modalDownloadBtn').href = b.downloadUrl || `https://drive.google.com/uc?export=download&id=${b.driveId}`;
+
+            const iframe = document.getElementById('bookReaderIframe');
+            const loader = document.getElementById('iframeLoader');
+            loader.classList.remove('hidden');
+            
+            const previewLink = b.previewUrl || `https://drive.google.com/file/d/${b.driveId}/preview`;
+            iframe.src = previewLink;
+
+            document.getElementById('bookReaderModal').classList.remove('hidden');
+        }
+
+        function closeBookReaderModal() {
+            document.getElementById('bookReaderModal').classList.add('hidden');
+            document.getElementById('bookReaderIframe').src = '';
+        }
+
+        // View Switching System
+        function switchView(view) {
+            if (view === 'visitor') {
+                document.getElementById('visitorView').classList.remove('hidden');
+                document.getElementById('adminView').classList.add('hidden');
+                document.getElementById('btnVisitorNav').className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1.5';
+                document.getElementById('btnAdminNav').className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-300 border border-slate-700 flex items-center gap-1.5';
+            } else if (view === 'admin') {
+                document.getElementById('visitorView').classList.add('hidden');
+                document.getElementById('adminView').classList.remove('hidden');
+                document.getElementById('btnVisitorNav').className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-300 border border-slate-700 flex items-center gap-1.5';
+                document.getElementById('btnAdminNav').className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition-all bg-amber-500 text-slate-950 flex items-center gap-1.5';
+                renderAdminTable();
+                updateStatsUI();
+            }
+        }
+
+        // Admin Auth Modal
+        function openAdminAuthModal() {
+            document.getElementById('adminAuthModal').classList.remove('hidden');
+        }
+        function closeAdminAuthModal() {
+            document.getElementById('adminAuthModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const inputPin = document.getElementById('adminPinInput').value;
+            if (inputPin === adminPin) {
+                closeAdminAuthModal();
+                switchView('admin');
+                showToast("تم تسجيل الدخول بنجاح إلى لوحة التحكم 🔑");
+            } else {
+                showToast("⚠️ الرمز غير صحيح! الرمز الافتراضي هو 1234");
+            }
+        }
+
+        function changeAdminPin() {
+            const newPin = prompt("أدخل رمز PIN جديد للوحة التحكم:", adminPin);
+            if (newPin && newPin.trim().length >= 4) {
+                adminPin = newPin.trim();
+                localStorage.setItem('future_library_pin', adminPin);
+                updateStatsUI();
+                showToast("تم تحديث رمز الدخول بنجاح! 🔒");
+            }
+        }
+
+        // Admin Tabs Switcher
+        function switchAdminTab(tab) {
+            document.getElementById('adminTabManage').classList.add('hidden');
+            document.getElementById('adminTabAdd').classList.add('hidden');
+            document.getElementById('adminTabAds').classList.add('hidden');
+
+            document.querySelectorAll('.admin-tab').forEach(b => {
+                b.className = 'admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap';
+            });
+
+            if (tab === 'manage') {
+                document.getElementById('adminTabManage').classList.remove('hidden');
+                document.getElementById('tabBtnManage').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
+            } else if (tab === 'add') {
+                document.getElementById('adminTabAdd').classList.remove('hidden');
+                document.getElementById('tabBtnAdd').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
+            } else if (tab === 'ads') {
+                document.getElementById('adminTabAds').classList.remove('hidden');
+                document.getElementById('tabBtnAds').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
+                loadAdFormValues();
+            }
+        }
+
+        // Admin Table Rendering
+        function renderAdminTable() {
+            const tbody = document.getElementById('adminBooksTableBody');
+            const q = (document.getElementById('adminSearchInput').value || '').toLowerCase();
+            const filtered = books.filter(b => b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q));
+
+            tbody.innerHTML = filtered.map(b => `
+                <tr class="hover:bg-slate-900/50 transition-colors">
+                    <td class="p-3.5">
+                        <span class="font-bold text-white dark:text-white light:text-slate-900 block">${b.title}</span>
+                        <span class="text-[10px] text-slate-400">✍️ الكاتب: ${b.author}</span>
+                    </td>
+                    <td class="p-3.5">
+                        <span class="bg-slate-900 dark:bg-slate-900 light:bg-amber-100 px-2.5 py-1 rounded-full text-[10px] text-amber-400 dark:text-amber-400 light:text-amber-800 border border-slate-800">${b.category}</span>
+                    </td>
+                    <td class="p-3.5 font-mono text-[11px] text-slate-400" dir="ltr">${b.driveId || 'Drive ID'}</td>
+                    <td class="p-3.5 text-center text-emerald-400 font-bold font-mono">${b.views}</td>
+                    <td class="p-3.5 text-center">
+                        <button onclick="deleteBook(${b.id})" class="text-red-400 hover:text-red-300 bg-red-500/10 p-2 rounded-lg transition-colors">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Add New Book with Auto Drive URL Parser
+        function handleAddNewBook(e) {
+            e.preventDefault();
+            const rawUrl = document.getElementById('newBookDriveUrl').value;
+            const parsed = parseGoogleDriveUrl(rawUrl);
+
+            if (!parsed) {
+                showToast("⚠️ رابط Google Drive غير صالح! تأكد من أنه رابط مشاركة ملف.");
+                return;
+            }
+
+            const newBook = {
+                id: Date.now(),
+                driveId: parsed.driveId,
+                title: document.getElementById('newBookTitle').value,
+                author: document.getElementById('newBookAuthor').value,
+                category: document.getElementById('newBookCategory').value,
+                desc: document.getElementById('newBookDesc').value,
+                image: document.getElementById('newBookImage').value || "",
+                gradient: document.getElementById('newBookGradient').value,
+                views: 0,
+                viewUrl: parsed.viewUrl,
+                previewUrl: parsed.previewUrl,
+                downloadUrl: parsed.downloadUrl
+            };
+
+            books.unshift(newBook);
+            saveBooksState();
+            document.getElementById('addBookForm').reset();
+            switchAdminTab('manage');
+            showToast("تم تحليل رابط Drive ونشر الكتاب بنجاح! 🚀");
+        }
+
+        // Delete Book
+        function deleteBook(id) {
+            if (confirm("هل أنت تأكد من رغبتك في حذف هذا الكتاب؟")) {
+                books = books.filter(b => b.id !== id);
+                saveBooksState();
+                renderAdminTable();
+                showToast("تم حذف الكتاب من المكتبة");
+            }
+        }
+
+        // Reset to default 10 books
+        function resetToDefault10Books() {
+            if (confirm("هل تريد إعادة استرجاع الكتب الـ 10 الأصلية؟")) {
+                books = [...real10DriveBooks];
+                saveBooksState();
+                renderAdminTable();
+                showToast("تم استرجاع كتب Google Drive الـ 10 بنجاح! 📚");
+            }
+        }
+
+        // Ads Settings Manager
+        function loadAdFormValues() {
+            document.getElementById('adTopStatus').checked = adSettings.topActive;
+            document.getElementById('adTopText').value = adSettings.topText;
+            document.getElementById('adTopLink').value = adSettings.topLink;
+            document.getElementById('adFeedStatus').checked = adSettings.feedActive;
+            document.getElementById('adFeedTitleInput').value = adSettings.feedTitle;
+            document.getElementById('adFeedDescInput').value = adSettings.feedDesc;
+        }
+
+        function saveAdSettings() {
+            adSettings.topActive = document.getElementById('adTopStatus').checked;
+            adSettings.topText = document.getElementById('adTopText').value;
+            adSettings.topLink = document.getElementById('adTopLink').value;
+            adSettings.feedActive = document.getElementById('adFeedStatus').checked;
+            adSettings.feedTitle = document.getElementById('adFeedTitleInput').value;
+            adSettings.feedDesc = document.getElementById('adFeedDescInput').value;
+
+            localStorage.setItem('future_library_ads', JSON.stringify(adSettings));
+            applyAdSettings();
+            showToast("تم حفظ إعدادات الإعلانات بنجاح 📢");
+        }
+
+        function applyAdSettings() {
+            const topCon = document.getElementById('adSlotTopContainer');
+            if (adSettings.topActive) {
+                topCon.classList.remove('hidden');
+                document.getElementById('adSlotTopContent').innerText = adSettings.topText;
+                document.getElementById('adSlotTopBtn').href = adSettings.topLink;
+            } else {
+                topCon.classList.add('hidden');
+            }
+
+            const feedCon = document.getElementById('adSlotFeedContainer');
+            if (adSettings.feedActive) {
+                feedCon.classList.remove('hidden');
+                document.getElementById('adSlotFeedTitle').innerText = adSettings.feedTitle;
+                document.getElementById('adSlotFeedDesc').innerText = adSettings.feedDesc;
+            } else {
+                feedCon.classList.add('hidden');
+            }
+        }
+
+        // Backup System
+        function exportDataJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(books, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", `drive_library_backup_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+            showToast("تم تصدير ملف النسخة الاحتياطية 💾");
+        }
+
+        function importDataJSON(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const imported = JSON.parse(evt.target.result);
+                    if (Array.isArray(imported)) {
+                        books = imported;
+                        saveBooksState();
+                        renderAdminTable();
+                        showToast("تم استيراد بيانات الكتب بنجاح! 🚀");
+                    }
+                } catch(err) {
+                    showToast("⚠️ الملف غير صالح! اختر ملف JSON صحيح.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // State Save Helpers
+        function saveBooksState() {
+            localStorage.setItem('future_library_books_v2', JSON.stringify(books));
+            renderBooks();
+            updateStatsUI();
+        }
+
+        function updateStatsUI() {
+            document.getElementById('statTotalBooks').innerText = books.length;
+            const totalViews = books.reduce((acc, curr) => acc + (curr.views || 0), 0);
+            document.getElementById('statTotalDownloads').innerText = totalViews;
+            document.getElementById('statPinCode').innerText = adminPin;
+        }
+
+        // Static Pages (AdSense Compliance)
+        function openStaticModal(type) {
+            const modal = document.getElementById('staticModal');
+            const content = document.getElementById('staticModalContent');
+
+            if (type === 'about') {
+                content.innerHTML = `
+                    <h3 class="text-base font-black text-white dark:text-white light:text-slate-900">عن مكتبة المستقبل الرقمية</h3>
+                    <p>مكتبة إلكترونية عربية حرة تهدف إلى نشر ثقافة المطالعة وتسهيل الوصول إلى الكتب والمؤلفات الفكرية والفلسفية والتقنية والأدبية عبر روابط Google Drive المباشرة والمفتوحة للعموم.</p>
+                `;
+            } else if (type === 'privacy') {
+                content.innerHTML = `
+                    <h3 class="text-base font-black text-white dark:text-white light:text-slate-900">سياسة الخصوصية والإعلانات (AdSense Compliance)</h3>
+                    <p>نحن نستخدم ملفات تعريف الارتباط (Cookies) والشبكات الإعلانية المعتمدة مثل Google AdSense لتقديم إعلانات مخصصة وتحسين تجربة المستخدم أثناء التصفح. الموقع لا يجمع أي معلومات شخصية سرية دون إذنك.</p>
+                `;
+            } else if (type === 'contact') {
+                content.innerHTML = `
+                    <h3 class="text-base font-black text-white dark:text-white light:text-slate-900">معلومات اتصل بنا والتواصل المباشر</h3>
+                    <p>لأي اقتراحات أو طلبات إضافة كتب جديدة أو استفسارات حول الإعلانات والمشرعات الرقمية:</p>
+                    <p class="font-bold text-amber-400">📞 الهاتف والواتساب: 0780564922</p>
+                    <p class="font-bold text-cyan-400">✉️ البريد الإلكتروني: abdoboostomorrow@gmail.com</p>
+                `;
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeStaticModal() {
+            document.getElementById('staticModal').classList.add('hidden');
+        }
+
+        // Toast Messages
+        function showToast(msg) {
+            const container = document.getElementById('toastContainer');
+            const t = document.createElement('div');
+            t.className = 'glass-card text-white text-xs font-bold px-4 py-3 rounded-xl border border-amber-500/40 shadow-xl flex items-center gap-2 transform transition-all duration-300 translate-x-[-100%]';
+            t.innerHTML = `<span>⚡</span> <span>${msg}</span>`;
+            container.appendChild(t);
+            setTimeout(() => t.classList.remove('translate-x-[-100%]'), 10);
+            setTimeout(() => {
+                t.classList.add('opacity-0');
+                setTimeout(() => t.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
