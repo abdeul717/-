@@ -1,3 +1,4 @@
+```html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -696,17 +697,6 @@
             }
         ];
 
-        // Global State: Using v25 so the unified folder for Bac "تسيير واقتصاد" appears immediately
-        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v25')) || JSON.parse(JSON.stringify(initialSeedData));
-        let adminPin = localStorage.getItem('future_library_pin') || '0796563770';
-        let adConfig = JSON.parse(localStorage.getItem('future_library_ads')) || {
-            topActive: true,
-            topText: '✨ احصل على ملخصات وسلاسل تمارين ومساعدة دراسية وتطوير مشروعاتك اليوم!',
-            topLink: 'https://wa.me/213780564922',
-            feedActive: true,
-            feedTitle: 'هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي تعليمي؟',
-            feedDesc: 'تواصل مع صاحب المنصة مباشرة لتنفيذ مشروعاتك الرقمية بأحدث التقنيات وأفضل الأسعار!'
-        };
         // Global State: Clean single version without duplicate declarations
         let items = JSON.parse(localStorage.getItem('future_success_portal_items_v27')) || JSON.parse(JSON.stringify(initialSeedData));
         let adminPin = localStorage.getItem('future_library_pin') || '0796563770';
