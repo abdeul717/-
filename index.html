@@ -1,3 +1,111 @@
+
+عندك كامل الحرية
+
+استغرق التفكير 4s
+
+
+تم! 🚀 طوّرت موقع بوابة النجاح المستقبلية مع الحفاظ على فكرته وبياناته ووظائفه الأصلية.
+
+النسخة المطوّرة جاهزة
+أبرز التحسينات
+تصميم عصري واحترافي بألوان متناسقة.
+
+واجهة ترحيبية جديدة مع إحصائيات مباشرة للكتب ومجلدات البكالوريا.
+
+تحسين شكل البطاقات والأزرار والنوافذ.
+
+تحسين تجربة الاستخدام على الهواتف والحواسيب.
+
+اختصارات للوحة المفاتيح: / أو Ctrl + K للبحث، وEsc لإغلاق النوافذ.
+
+تحسين وضوح العناصر عند التنقل بلوحة المفاتيح.
+
+تحميل الموقع المطوّر – HTML
+
+طريقة تشغيله
+حمّل الملف.
+
+افتحه بمتصفح Chrome أو Edge.
+
+اضغط على «إدارة الروابط» لإضافة كتبك وروابط ملفات البكالوريا.
+
+ملاحظة: الموقع يحتاج إلى الإنترنت لتحميل الخطوط ومكتبة Tailwind ومعاينة ملفات Google Drive. كما أن البيانات المحفوظة محليًا في المتصفح القديم لا تنتقل تلقائيًا إلى متصفح أو جهاز آخر.
+
+الخطوة القادمة التي أنصح بها هي نشر الموقع على الإنترنت حتى يتمكن التلاميذ من استعماله عبر رابط واحد.
+
+
+future_success_portal_enhanced.html
+HTML
+مهمش يمشو بصح الكتب علاه
+إذا تقصد بلي الكتب ما تفتحش في الموقع، فالسبب المحتمل أن بعض الكتب موجودة في القائمة فقط، لكن ما عندهاش رابط PDF أو Google Drive مربوط بها. يعني ظهور الكتاب في الموقع ما يعنيش بالضرورة أن ملفه متوفر.
+
+راجعت الكود الأصلي، ولقيت أن 11 كتابًا عندهم معرّفات Google Drive مضافة فعلًا. إذن المشكل ماشي بالضرورة من غياب الروابط.
+
+الأسباب المحتملة:
+
+الملفات في Google Drive ماهمش مشاركين بصلاحية «أي شخص لديه الرابط».
+
+بعض معرّفات الملفات غير صحيحة أو الملفات محذوفة.
+
+المتصفح يمنع المعاينة داخل النافذة.
+
+سؤال واحد باش نصلحها بدقة: كي تضغط على كتاب، واش يصرا؟
+
+تفتح نافذة بيضاء.
+
+تظهر رسالة تطلب تسجيل الدخول إلى Google.
+
+تظهر رسالة «لا يمكن الوصول إلى الملف».
+
+تضغط وما يصرا والو.
+
+جاوبني برقم الحالة، ونخدم على إصلاحها.
+
+بيضاء
+
+استغرق التفكير 21s
+بما أن النافذة تفتح لكن تبقى بيضاء، فالمشكل غالبًا في معاينة Google Drive داخل الموقع، وليس في الضغط على الكتاب نفسه. ممكن Google Drive يمنع عرض الملف داخل النافذة، حتى لو كان الرابط موجودًا.
+
+راح نضيف حلًا بديلًا واضحًا: إذا لم تظهر المعاينة، تقدر تفتح الكتاب مباشرة في Google Drive بدل ما تبقى النافذة بيضاء.تم التعديل
+
+أضفت في النسخة الجديدة زرًا بديلًا «فتح الكتاب مباشرة» يظهر أسفل المعاينة. إذا بقيت بيضاء، اضغط عليه لفتح الملف في Google Drive.
+
+تحميل النسخة المصححة من الموقع
+
+ملاحظة: إذا ظهرت رسالة تطلب صلاحية الوصول حتى في Google Drive، فالمشكل من إعدادات مشاركة الملف، ويجب جعل الوصول «أي شخص لديه الرابط».
+
+جرّب النسخة الجديدة، وإذا بقيت المشكلة أخبرني بما يظهر بعد الضغط على «فتح الكتاب مباشرة».
+
+
+future_success_portal_enhanced.html
+HTML
+وراه الكد باه ننسخوو
+ها هو الكود كامل باش تنسخو 👇
+
+اضغط هنا لفتح الكود كامل بصيغة TXT
+
+كي يفتح الملف:
+
+اضغط مطولًا على النص.
+
+اختار تحديد الكل.
+
+اضغط نسخ.
+
+وإذا حبيت تستعمل الموقع مباشرة، هذا ملف HTML الجاهز:
+
+تحميل الموقع المطوّر
+
+
+future_success_portal_enhanced.html
+HTML
+
+future_success_portal_code.txt
+مستند
+
+
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -31,6 +139,90 @@
             box-shadow: 0 14px 28px -8px rgba(15, 23, 42, 0.14);
         }
     </style>
+
+    <style id="portal-upgrade">
+        :root { color-scheme: light; --portal-ink:#10213b; --portal-green:#059669; }
+        html { scroll-behavior:smooth; }
+        body {
+            background:
+              radial-gradient(ellipse at 8% 0%, rgba(16,185,129,.10), transparent 32rem),
+              radial-gradient(ellipse at 95% 12%, rgba(59,130,246,.08), transparent 28rem),
+              #f4f7fb !important;
+        }
+        ::selection { background:#a7f3d0; color:#064e3b; }
+        :focus-visible { outline:3px solid #34d399 !important; outline-offset:3px; }
+        header { background:linear-gradient(115deg,#0b172b 0%,#122d45 58%,#064e3b 100%) !important; }
+        header > div { min-height:78px; }
+        header nav { border:1px solid rgba(255,255,255,.09); }
+        header button, main button, section button { transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+        header button:hover, main button:hover, section button:hover { transform:translateY(-1px); }
+        #tabBooks, #tabBac { min-height:42px; }
+        main { min-height:42vh; }
+        #cardsGrid { align-items:stretch; }
+        #cardsGrid article {
+            position:relative; overflow:hidden;
+            border-radius:1.35rem !important;
+            border-color:#e3eaf2 !important;
+            box-shadow:0 8px 24px rgba(15,23,42,.045) !important;
+        }
+        #cardsGrid article::before {
+            content:""; position:absolute; inset:0 0 auto; height:3px;
+            background:linear-gradient(90deg,#10b981,#38bdf8); opacity:.85;
+        }
+        .card-hover:hover { transform:translateY(-5px); box-shadow:0 18px 36px rgba(15,23,42,.11) !important; }
+        #searchInput, #categoryFilter, #quickYearUrlInput, #readerQuickLinkInput,
+        #adminModal input, #adminModal select, #adminModal textarea {
+            min-height:44px; border-color:#d8e1eb; transition:border-color .2s,box-shadow .2s;
+        }
+        #searchInput:focus, #categoryFilter:focus, #quickYearUrlInput:focus,
+        #readerQuickLinkInput:focus, #adminModal input:focus, #adminModal select:focus,
+        #adminModal textarea:focus {
+            border-color:#10b981; box-shadow:0 0 0 4px rgba(16,185,129,.12); outline:none;
+        }
+        #cardsGrid button { min-height:46px; }
+        #folderModal > div, #readerModal > div, #adminModal > div {
+            border:1px solid rgba(255,255,255,.25);
+            box-shadow:0 28px 90px rgba(2,6,23,.30);
+        }
+        #yearsGrid button { min-height:76px; }
+        footer { background:linear-gradient(110deg,#0b172b,#12334a) !important; }
+        .portal-hero {
+            position:relative; isolation:isolate; overflow:hidden;
+            background:linear-gradient(115deg,#0c253c 0%,#115e59 100%);
+            border-radius:1.65rem; color:white;
+            box-shadow:0 18px 42px rgba(15,23,42,.13);
+        }
+        .portal-hero::after {
+            content:""; position:absolute; z-index:-1; width:19rem; height:19rem;
+            border:1px solid rgba(255,255,255,.13); border-radius:50%;
+            inset:-8rem auto auto -4rem; box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 58px rgba(255,255,255,.025);
+        }
+        .portal-stat { background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.13); backdrop-filter:blur(8px); }
+        .portal-live { display:inline-flex; align-items:center; gap:.45rem; color:#bbf7d0; font-size:.72rem; font-weight:800; }
+        .portal-live::before { content:""; width:7px; height:7px; border-radius:50%; background:#4ade80; box-shadow:0 0 0 4px rgba(74,222,128,.15); }
+        #portalToast {
+            position:fixed; z-index:80; inset:auto 1rem 1rem auto; max-width:min(26rem,calc(100vw - 2rem));
+            padding:.85rem 1.1rem; border-radius:1rem; color:white; background:#102a43;
+            box-shadow:0 12px 35px rgba(2,6,23,.25); font-size:.82rem; font-weight:700;
+            opacity:0; transform:translateY(12px); pointer-events:none; transition:.22s ease;
+        }
+        #portalToast.show { opacity:1; transform:translateY(0); }
+        .portal-shortcut { display:inline-flex; align-items:center; border:1px solid rgba(255,255,255,.2); border-radius:.4rem; padding:.05rem .35rem; font-size:.68rem; color:#d1fae5; }
+        @media (max-width:640px) {
+            header > div { justify-content:center; }
+            header nav { width:100%; }
+            header nav button { flex:1; padding-inline:.55rem !important; font-size:.75rem !important; }
+            #cardsGrid { gap:1rem; }
+            #folderModal, #adminModal { padding:.6rem; }
+            #readerModal { padding:.35rem; }
+            #readerModal > div { height:94vh; }
+            .portal-hero { border-radius:1.2rem; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+        }
+    </style>
+
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -68,7 +260,7 @@
     <section class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-sm border border-slate-200/80 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
             <div class="md:col-span-6">
-                <label for="searchInput" class="block text-xs font-bold text-slate-500 mb-1.5">بحث سريع بالاسم أو التخصص أو السنة</label>
+                <label for="searchInput" class="block text-xs font-bold text-slate-500 mb-1.5">بحث سريع بالاسم أو التخصص أو السنة <span class="text-slate-400 font-semibold">(/ أو Ctrl + K)</span></label>
                 <input id="searchInput" type="text" oninput="renderGrid()" placeholder="ابحث عن كتاب، شعبة، أو سنة مثل 2024..." class="w-full px-4 py-2.5 rounded-2xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none text-sm font-semibold">
             </div>
 
@@ -83,6 +275,35 @@
                 <button type="button" onclick="resetFilters()" class="w-full md:w-auto px-4 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold transition">
                     إعادة ضبط
                 </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- لوحة ترحيبية وإحصاءات مباشرة -->
+    <section class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <div class="portal-hero px-5 py-6 sm:px-8 sm:py-8">
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                <div class="max-w-2xl">
+                    <span class="portal-live mb-3">فضاؤك الدراسي في مكان واحد</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight mb-2">خطوتك القادمة نحو النجاح تبدأ من هنا</h2>
+                    <p class="text-sm text-emerald-50/85 leading-7">اكتشف المراجع، تصفّح حوليات البكالوريا حسب الشعبة والسنة، وواصل المراجعة من مكتبتك الرقمية.</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-2 text-xs font-bold text-white/80">
+                        <span class="portal-stat rounded-lg px-3 py-1.5">بحث سريع</span>
+                        <span class="portal-stat rounded-lg px-3 py-1.5">تنظيم حسب الشعب</span>
+                        <span class="portal-stat rounded-lg px-3 py-1.5">معاينة الملفات</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 min-w-0 lg:min-w-[250px]">
+                    <div class="portal-stat rounded-2xl p-4">
+                        <div class="text-xs text-emerald-100 font-bold mb-1">الكتب والمراجع</div>
+                        <div id="heroBooksCount" class="text-3xl font-extrabold tabular-nums">—</div>
+                    </div>
+                    <div class="portal-stat rounded-2xl p-4">
+                        <div class="text-xs text-emerald-100 font-bold mb-1">مجلدات البكالوريا</div>
+                        <div id="heroBacCount" class="text-3xl font-extrabold tabular-nums">—</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -159,7 +380,11 @@
             </div>
 
             <div class="flex-1 bg-slate-100 relative">
-                <iframe id="readerIframe" src="" class="w-full h-full border-0" allow="autoplay"></iframe>
+                <iframe id="readerIframe" src="" title="معاينة الكتاب" class="w-full h-full border-0" allow="autoplay; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div id="readerFallbackHint" class="absolute bottom-0 inset-x-0 z-10 bg-slate-900/95 text-white px-4 py-3 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
+                    <span class="text-xs">إذا بقيت المعاينة بيضاء، افتح الملف مباشرة في Google Drive.</span>
+                    <a id="readerFallbackLink" href="#" target="_blank" rel="noopener noreferrer" class="shrink-0 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 text-xs font-extrabold">فتح الكتاب مباشرة</a>
+                </div>
                 <div id="readerEmptyState" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-white">
                     <p class="text-base font-extrabold text-slate-800 mb-2">لا يوجد ملف مربوط بهذا العنصر بعد</p>
                     <p class="text-xs text-slate-500 max-w-md mb-4">يمكنك لصق رابط ملف PDF أو Google Drive الخاص بهذا الكتاب أو السنة هنا مباشرة لفتحه فوراً.</p>
@@ -732,10 +957,13 @@
             if (fileId) {
                 iframe.src = getPreviewUrl(fileId);
                 extBtn.href = getViewUrl(fileId);
+                document.getElementById('readerFallbackLink').href = getViewUrl(fileId);
+                document.getElementById('readerFallbackHint').classList.remove('hidden');
                 extBtn.classList.remove('hidden');
                 emptyState.classList.add('hidden');
             } else {
                 iframe.src = '';
+                document.getElementById('readerFallbackHint').classList.add('hidden');
                 extBtn.classList.add('hidden');
                 emptyState.classList.remove('hidden');
             }
@@ -899,5 +1127,56 @@
             startSite();
         }
     </script>
+
+    <div id="portalToast" role="status" aria-live="polite"></div>
+    <script id="portal-upgrade-script">
+      (function () {
+        const toast = document.getElementById('portalToast');
+        let toastTimer;
+        window.portalNotify = function (message) {
+          if (!toast) return;
+          toast.textContent = message;
+          toast.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+        };
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            const close = (id, fn) => {
+              const el = document.getElementById(id);
+              if (el && !el.classList.contains('hidden')) fn();
+            };
+            close('readerModal', closeReaderModal);
+            close('adminModal', closeAdminModal);
+            close('folderModal', closeFolderModal);
+          }
+          if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+            event.preventDefault();
+            document.getElementById('searchInput')?.focus();
+          }
+          if (event.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {
+            event.preventDefault();
+            document.getElementById('searchInput')?.focus();
+          }
+        });
+        const syncHeroStats = function () {
+          const books = document.getElementById('booksCountBadge');
+          const bac = document.getElementById('bacCountBadge');
+          const heroBooks = document.getElementById('heroBooksCount');
+          const heroBac = document.getElementById('heroBacCount');
+          if (books && heroBooks) heroBooks.textContent = books.textContent;
+          if (bac && heroBac) heroBac.textContent = bac.textContent;
+        };
+        const observer = new MutationObserver(syncHeroStats);
+        ['booksCountBadge','bacCountBadge'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) observer.observe(el, { childList:true, characterData:true, subtree:true });
+        });
+        document.addEventListener('DOMContentLoaded', syncHeroStats);
+        window.addEventListener('load', syncHeroStats);
+        setTimeout(syncHeroStats, 0);
+      })();
+    </script>
+
 </body>
 </html>
