@@ -1,56 +1,28 @@
-```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة المستقبل والنجاح | الكتب الإلكترونية ومواضيع البكالوريا</title>
+    <title>مكتبة المستقبل — بوابة النجاح الرقمية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        cairo: ['Cairo', 'Tajawal', 'sans-serif'],
-                        sans: ['Tajawal', 'Cairo', 'sans-serif']
-                    },
-                    colors: {
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
-            font-family: 'Tajawal', 'Cairo', sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: #020617;
             color: #f8fafc;
-        }
-        html.light body {
-            background-color: #f8fafc;
-            color: #0f172a;
         }
         .glass-card {
             background: rgba(15, 23, 42, 0.78);
             backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(148, 163, 184, 0.14);
+            border: 1px solid rgba(51, 65, 85, 0.65);
         }
-        html.light .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(15, 23, 42, 0.1);
-            box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.08);
-        }
-        .ad-slot-glow {
-            box-shadow: 0 0 28px -8px rgba(245, 158, 11, 0.25);
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.55);
+            transform: translateY(-4px);
         }
         ::-webkit-scrollbar {
             width: 8px;
@@ -68,803 +40,590 @@
         }
     </style>
 </head>
-<body class="dark min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+<body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
 
-    <!-- Top Ad Banner Slot (#1) -->
-    <div id="adSlotTopContainer" class="bg-gradient-to-r from-amber-500/15 via-emerald-500/15 to-cyan-500/15 border-b border-amber-500/25 py-2 px-4 text-center text-xs">
-        <div class="container mx-auto flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            <span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">إعلان مميز</span>
-            <span id="adSlotTopContent" class="text-slate-200 dark:text-slate-200 light:text-slate-800 font-bold">
-                ✨ احصل على ملخصات وسلاسل تمارين ومساعدة دراسية وتطوير مشروعاتك اليوم!
-            </span>
-            <a id="adSlotTopBtn" href="https://wa.me/213780564922" target="_blank" class="underline text-amber-400 dark:text-amber-400 light:text-amber-700 font-black hover:text-amber-300">
-                تواصل معنا الآن ←
-            </a>
-        </div>
-    </div>
-
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80">
-        <div class="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-            <a href="#" onclick="switchView('visitor'); switchMainSection('all'); return false;" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-emerald-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-book-bookmark text-lg"></i>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-book-open-reader text-xl"></i>
                 </div>
                 <div>
-                    <span class="font-cairo font-black text-base sm:text-lg bg-gradient-to-r from-amber-300 via-amber-400 to-emerald-400 bg-clip-text text-transparent block leading-tight">
-                        مكتبة المستقبل والنجاح
-                    </span>
-                    <span class="block text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-600 font-semibold tracking-wider">كتب إلكترونية • مواضيع بكالوريا • جميع المواد</span>
+                    <h1 class="text-lg sm:text-xl font-black tracking-tight bg-gradient-to-l from-amber-300 via-amber-400 to-orange-400 bg-clip-text text-transparent">
+                        مكتبة المستقبل
+                    </h1>
+                    <p class="text-[11px] text-slate-400 font-semibold">بوابة النجاح الرقمية • كتب ومواضيع البكالوريا</p>
                 </div>
-            </a>
+            </div>
 
-            <div class="flex items-center gap-2">
-                <button onclick="switchView('visitor')" id="btnVisitorNav" class="px-3.5 py-2 rounded-xl text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 transition-all">
-                    <i class="fa-solid fa-store ml-1"></i> المكتبة
+            <!-- Main Section Switcher -->
+            <nav class="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+                <button id="tabBooks" onclick="switchMainSection('book')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-amber-500 text-slate-950 shadow">
+                    <i class="fa-solid fa-book ml-1.5"></i>الكتب الإلكترونية
                 </button>
-                <button onclick="openAdminAuthModal()" id="btnAdminNav" class="px-3.5 py-2 rounded-xl text-xs font-black bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all">
-                    <i class="fa-solid fa-shield-halved ml-1 text-amber-400"></i> الإدارة
+                <button id="tabExams" onclick="switchMainSection('exam')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all text-slate-300 hover:text-white">
+                    <i class="fa-solid fa-graduation-cap ml-1.5"></i>مواضيع بكالوريا
                 </button>
-                <button onclick="toggleTheme()" title="تبديل الوضع الليلي / النهاري" class="w-9 h-9 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-400 border border-slate-700 flex items-center justify-center transition-all">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-2">
+                <button onclick="openAdminModal()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                    <span>الإدارة</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- VISITOR VIEW -->
-    <main id="visitorView" class="flex-1">
-        <!-- Hero Section -->
-        <section class="relative overflow-hidden pt-10 pb-6 border-b border-slate-800/60">
-            <div class="absolute -top-24 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 left-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="container mx-auto px-4 sm:px-6 text-center space-y-5 relative z-10">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-bold">
-                    <i class="fa-solid fa-sparkles text-amber-400"></i>
-                    <span>منصة تعليمية وثقافية متكاملة • قراءة فورية وتحميل مباشر</span>
-                </div>
-
-                <h1 class="text-2xl sm:text-4xl font-black text-white dark:text-white light:text-slate-900 max-w-3xl mx-auto leading-tight">
-                    اقرأ، تصفّح وحمّل
-                    <span class="bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                        الكتب ومواضيع البكالوريا في جميع المواد
+    <!-- Hero Banner -->
+    <section class="relative overflow-hidden border-b border-slate-800/60">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.12),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.08),transparent_45%)] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 relative">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div class="max-w-2xl">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold mb-3">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>منصة مجانية 100% لطلبة البكالوريا والقراء</span>
                     </span>
-                </h1>
-
-                <!-- Primary Section Tabs (Books vs Bac Subjects vs All) -->
-                <div class="flex flex-wrap justify-center gap-2 pt-2">
-                    <button onclick="switchMainSection('all')" id="secTabAll" class="sec-tab active px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-lg">
-                        <i class="fa-solid fa-layer-group ml-1"></i> جميع المحتويات
-                    </button>
-                    <button onclick="switchMainSection('books')" id="secTabBooks" class="sec-tab px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">
-                        <i class="fa-solid fa-book-open ml-1 text-amber-400"></i> الكتب الإلكترونية (10)
-                    </button>
-                    <button onclick="switchMainSection('exams')" id="secTabExams" class="sec-tab px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300">
-                        <i class="fa-solid fa-graduation-cap ml-1 text-cyan-400"></i> مواضيع بكالوريا 🎓
-                    </button>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="max-w-xl mx-auto relative pt-2">
-                    <input type="text" id="visitorSearchInput" onkeyup="filterItems()" placeholder="ابحث باسم الكتاب، الشعبة، أو سنة البكالوريا..."
-                        class="w-full bg-slate-900/90 dark:bg-slate-900/90 light:bg-white border border-slate-700/80 dark:border-slate-700 light:border-slate-300 rounded-2xl py-3 px-5 pr-11 text-sm text-slate-100 dark:text-slate-100 light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all shadow-xl">
-                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 translate-y-1 text-slate-400"></i>
-                </div>
-
-                <!-- Interactive Filters Box (Bac Subjects Filter) -->
-                <div id="examsFilterBox" class="max-w-4xl mx-auto glass-card p-4 rounded-2xl border-slate-800 text-xs space-y-3 hidden">
-                    <div class="flex items-center justify-between text-slate-400 font-bold text-[11px] border-b border-slate-800 pb-2">
-                        <span><i class="fa-solid fa-filter text-amber-400"></i> تصفية مجلدات مواضيع البكالوريا حسب الشعبة</span>
-                        <button onclick="resetExamFilters()" class="text-amber-400 hover:underline">إعادة ضبط</button>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-slate-400 font-bold mb-1 text-right">الشعبة / التخصص</label>
-                            <select id="filterStream" onchange="filterItems()" class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2 text-slate-200 dark:text-slate-200 light:text-slate-800 focus:border-amber-500">
-                                <option value="all">جميع الشعب</option>
-                                <option value="تسيير واقتصاد">تسيير واقتصاد</option>
-                                <option value="علوم تجريبية">علوم تجريبية</option>
-                                <option value="رياضيات وتقني رياضي">رياضيات وتقني رياضي</option>
-                                <option value="آداب وفلسفة">آداب وفلسفة</option>
-                                <option value="لغات أجنبية">لغات أجنبية</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center bg-slate-900/70 border border-slate-800 rounded-xl p-2.5 text-emerald-300 font-bold">
-                            <i class="fa-solid fa-circle-check ml-2 text-emerald-400"></i>
-                            <span>ملاحظة: كل ملف داخل المجلد يحتوي على جميع المواد المقررة للشعبة.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Items Catalog Section -->
-        <section class="py-6">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 id="catalogTitle" class="text-lg sm:text-xl font-black text-white dark:text-white light:text-slate-900 flex items-center gap-2">
-                        <span>📚 جميع الكتب ومواضيع البكالوريا المتاحة</span>
+                    <h2 id="heroTitle" class="text-2xl sm:text-4xl font-black text-white leading-tight">
+                        اكتشف أفضل الكتب ومواضيع البكالوريا الشاملة في مكان واحد
                     </h2>
-                    <span id="itemsCounterBadge" class="text-xs bg-slate-900 dark:bg-slate-900 light:bg-amber-100 border border-slate-800 dark:border-slate-800 light:border-amber-300 text-amber-400 dark:text-amber-400 light:text-amber-800 font-bold px-3 py-1 rounded-lg">
-                        11 عناصر
-                    </span>
+                    <p id="heroSubtitle" class="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
+                        تصفح مكتبة متكاملة من الكتب المختارة بعناية، بالإضافة إلى مجلدات مواضيع البكالوريا المصنفة حسب الشعب بحيث يحتوي كل ملف على جميع المواد.
+                    </p>
                 </div>
 
-                <!-- Items Grid -->
-                <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <!-- Dynamic Rendering -->
-                </div>
-
-                <!-- AdSlot #2: In-Feed Banner -->
-                <div id="adSlotFeedContainer" class="mt-10 glass-card ad-slot-glow rounded-3xl p-5 sm:p-6 border border-amber-500/25 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="space-y-1 text-center sm:text-right">
-                        <span class="inline-block text-[10px] font-black px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">مساحة إعلانية وتعليمية</span>
-                        <h3 id="adSlotFeedTitle" class="text-base sm:text-lg font-black text-white dark:text-white light:text-slate-900">هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي تعليمي؟</h3>
-                        <p id="adSlotFeedDesc" class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">تواصل مع صاحب المنصة مباشرة لتنفيذ مشروعاتك الرقمية بأحدث التقنيات وأفضل الأسعار!</p>
+                <!-- Live Stats -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 shrink-0">
+                    <div class="glass-card rounded-2xl p-4 text-center">
+                        <div id="statBooksCount" class="text-xl sm:text-2xl font-black text-amber-400">10</div>
+                        <div class="text-[11px] text-slate-400 font-bold mt-1">كتاب متاح</div>
                     </div>
-                    <a href="https://wa.me/213780564922" target="_blank" class="bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 font-black px-5 py-3 rounded-2xl text-xs whitespace-nowrap hover:opacity-95 transition-all shadow-lg">
-                        تواصل عبر واتساب 💬
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ADMIN VIEW -->
-    <section id="adminView" class="hidden flex-1 py-8">
-        <div class="container mx-auto px-4 sm:px-6 space-y-6">
-            <div class="glass-card p-5 rounded-3xl border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-xl font-black text-white dark:text-white light:text-slate-900">لوحة تحكم الإدارة ⚙️</h2>
-                    <p class="text-xs text-slate-400">إدارة الكتب الإلكترونية ومجلدات مواضيع البكالوريا والإعلانات</p>
-                </div>
-                <div class="flex flex-wrap items-center gap-2.5">
-                    <button onclick="exportDataJSON()" class="bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-download text-emerald-400"></i> تصدير JSON
-                    </button>
-                    <label class="bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold cursor-pointer flex items-center gap-1.5">
-                        <i class="fa-solid fa-upload text-cyan-400"></i> استيراد
-                        <input type="file" id="importJsonInput" onchange="importDataJSON(event)" accept=".json" class="hidden">
-                    </label>
-                    <button onclick="changeAdminPin()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold">
-                        <i class="fa-solid fa-key ml-1"></i> تغيير PIN
-                    </button>
-                    <button onclick="switchView('visitor')" class="bg-amber-500 text-slate-950 px-4 py-2 rounded-xl text-xs font-black hover:bg-amber-400 transition-colors">
-                        معاينة المنصة 👁️
-                    </button>
+                    <div class="glass-card rounded-2xl p-4 text-center">
+                        <div id="statFoldersCount" class="text-xl sm:text-2xl font-black text-emerald-400">5</div>
+                        <div class="text-[11px] text-slate-400 font-bold mt-1">مجلدات بكالوريا</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center">
+                        <div id="statViewsCount" class="text-xl sm:text-2xl font-black text-cyan-400">0</div>
+                        <div class="text-[11px] text-slate-400 font-bold mt-1">قراءة وتصفح</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Dashboard Stats Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
-                    <span class="text-xs text-slate-400 font-bold">إجمالي المحتويات النشطة</span>
-                    <h3 id="statTotalItems" class="text-2xl sm:text-3xl font-black text-white dark:text-white light:text-slate-900">11</h3>
-                    <span class="text-[10px] text-emerald-400">كتب + مجلدات مواضيع بكالوريا</span>
+            <!-- Search & Filters -->
+            <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input id="searchInput" oninput="filterItems()" type="text" placeholder="ابحث عن كتاب، مؤلف، سنة بكالوريا، أو شعبة..." class="w-full bg-slate-900/90 border border-slate-700/80 focus:border-amber-500 rounded-2xl py-3 pr-11 pl-4 text-sm text-white placeholder-slate-400 outline-none transition-colors">
                 </div>
-                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
-                    <span class="text-xs text-slate-400 font-bold">إجمالي القراءات والتنزيلات</span>
-                    <h3 id="statTotalViews" class="text-2xl sm:text-3xl font-black text-amber-400">0</h3>
-                    <span class="text-[10px] text-slate-400">معدل تفاعل الزوار</span>
-                </div>
-                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
-                    <span class="text-xs text-slate-400 font-bold">المساحات الإعلانية المفعلة</span>
-                    <h3 id="statActiveAds" class="text-2xl sm:text-3xl font-black text-cyan-400">3 / 3</h3>
-                    <span class="text-[10px] text-slate-400">بانر علوي + داخلي + نافذة</span>
-                </div>
-            </div>
-
-            <!-- Admin Tabs -->
-            <div class="flex gap-6 border-b border-slate-800 text-xs sm:text-sm font-black overflow-x-auto">
-                <button onclick="switchAdminTab('manage')" id="tabBtnManage" class="admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-table-list"></i> إدارة المحتويات الحالية
-                </button>
-                <button onclick="switchAdminTab('add')" id="tabBtnAdd" class="admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-plus-circle"></i> إضافة كتاب أو موضوع بكالوريا جديد (معالج Drive الذكي)
-                </button>
-                <button onclick="switchAdminTab('ads')" id="tabBtnAds" class="admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-rectangle-ad"></i> إدارة الإعلانات
-                </button>
-            </div>
-
-            <!-- TAB 1: Manage Items -->
-            <div id="adminTabManage" class="glass-card p-5 rounded-3xl border-slate-800 space-y-4">
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                    <input type="text" id="adminSearchInput" onkeyup="renderAdminTable()" placeholder="ابحث في جدول المحتويات..." class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-100 w-full sm:w-72 focus:outline-none focus:border-amber-500">
-                    <button onclick="resetToSeedData()" class="bg-slate-800 hover:bg-amber-500/20 text-amber-300 border border-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold">
-                        <i class="fa-solid fa-rotate-left ml-1"></i> استعادة الافتراضي
-                    </button>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-right text-xs">
-                        <thead class="bg-slate-900/90 text-slate-400 border-b border-slate-800">
-                            <tr>
-                                <th class="p-3.5">القسم</th>
-                                <th class="p-3.5">العنوان</th>
-                                <th class="p-3.5">الشعبة / الفئة</th>
-                                <th class="p-3.5">معرف Drive</th>
-                                <th class="p-3.5 text-center">المشاهدات</th>
-                                <th class="p-3.5 text-center">إجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminItemsTableBody" class="divide-y divide-slate-800/70">
-                            <!-- Dynamic Table Rows -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- TAB 2: Add New Item Form -->
-            <div id="adminTabAdd" class="hidden glass-card p-6 rounded-3xl border-slate-800 max-w-3xl mx-auto space-y-5">
-                <div class="space-y-1">
-                    <h3 class="text-lg font-black text-white dark:text-white light:text-slate-900 flex items-center gap-2">
-                        <span>➕ إضافة محتوى جديد (كتاب أو موضوع بكالوريا)</span>
-                    </h3>
-                    <p class="text-xs text-slate-400">ضع رابط Google Drive وسيقوم النظام باستخراج روابط المعاينة والتنزيل تلقائياً!</p>
-                </div>
-
-                <form id="addItemForm" onsubmit="handleAddNewItem(event)" class="space-y-4 text-xs">
-                    <div>
-                        <label class="block font-bold text-amber-400 mb-1">حدد القسم الرئيسي للمحتوى *</label>
-                        <select id="newItemSection" onchange="toggleFormFieldsBySection()" required class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-amber-500/50 rounded-xl p-2.5 text-slate-100 dark:text-slate-100 light:text-slate-900 font-bold focus:outline-none focus:border-amber-500">
-                            <option value="exam">قسم: مواضيع بكالوريا 🎓</option>
-                            <option value="book">قسم: كتب إلكترونية 📚</option>
-                        </select>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">العنوان الرئيسي *</label>
-                            <input type="text" id="newItemTitle" required placeholder="مثال: بكالوريا 2024 — جميع المواد"
-                                class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label id="lblAuthorSubject" class="block font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-1">المحتوى / الشعبة *</label>
-                            <input type="text" id="newItemAuthor" required placeholder="مثال: شعبة تسيير واقتصاد — جميع المواد"
-                                class="w-full bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:outline-none focus:border-amber-500">
-                        </div>
-                    </div>
-
-                    <div id="examSpecificFields" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block font-bold text-slate-300 mb-1">الشعبة / التخصص *</label>
-                            <select id="newItemStream" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:border-amber-500">
-                                <option value="تسيير واقتصاد">تسيير واقتصاد</option>
-                                <option value="علوم تجريبية">علوم تجريبية</option>
-                                <option value="رياضيات وتقني رياضي">رياضيات وتقني رياضي</option>
-                                <option value="آداب وفلسفة">آداب وفلسفة</option>
-                                <option value="لغات أجنبية">لغات أجنبية</option>
-                                <option value="عام">عام / جميع الشعب</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block font-bold text-slate-300 mb-1">السنة / الدورة *</label>
-                            <input type="text" id="newItemYear" placeholder="مثال: دورة 2024 — جميع المواد" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:border-amber-500">
-                        </div>
-                    </div>
-
-                    <div id="bookSpecificCategory" class="hidden">
-                        <label class="block font-bold text-slate-300 mb-1">تصنيف الكتاب *</label>
-                        <select id="newItemBookCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:border-amber-500">
-                            <option value="الفلسفة والفكر">الفلسفة والفكر</option>
-                            <option value="اللغة والتاريخ">اللغة والتاريخ</option>
-                            <option value="ريادة الأعمال">ريادة الأعمال</option>
-                            <option value="التكنولوجيا والذكاء الاصطناعي">التكنولوجيا والذكاء الاصطناعي</option>
-                            <option value="الأدب والرواية">الأدب والرواية</option>
-                            <option value="علم النفس وتطوير الذات">علم النفس وتطوير الذات</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block font-bold text-slate-300 mb-1">رابط Google Drive *</label>
-                        <input type="url" id="newItemDriveUrl" required placeholder="https://drive.google.com/file/d/.../view"
-                            class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:outline-none focus:border-amber-500" dir="ltr">
-                    </div>
-
-                    <div>
-                        <label class="block font-bold text-slate-300 mb-1">وصف مختصر *</label>
-                        <textarea id="newItemDesc" rows="3" required placeholder="اكتب وصفاً واضحاً للمحتوى والملفات المرفقة..."
-                            class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100 focus:outline-none focus:border-amber-500"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 font-black py-3 rounded-2xl text-sm hover:opacity-95 transition-all shadow-lg">
-                        حفظ ونشر في المكتبة الآن 🚀
-                    </button>
-                </form>
-            </div>
-
-            <!-- TAB 3: Ads Settings -->
-            <div id="adminTabAds" class="hidden glass-card p-6 rounded-3xl border-slate-800 max-w-2xl mx-auto space-y-4 text-xs">
-                <h3 class="text-base font-black text-white">إعدادات المساحات الإعلانية</h3>
-
-                <label class="flex items-center justify-between bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800">
-                    <span class="font-bold text-slate-200">تفعيل الشريط الإعلاني العلوي</span>
-                    <input type="checkbox" id="adTopStatus" class="w-4 h-4 accent-amber-500">
-                </label>
-
-                <div>
-                    <label class="block text-slate-400 font-bold mb-1">نص الشريط العلوي</label>
-                    <input type="text" id="adTopText" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100">
-                </div>
-
-                <div>
-                    <label class="block text-slate-400 font-bold mb-1">رابط الإعلان العلوي</label>
-                    <input type="url" id="adTopLink" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100" dir="ltr">
-                </div>
-
-                <label class="flex items-center justify-between bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800">
-                    <span class="font-bold text-slate-200">تفعيل بانر الإعلان الداخلي</span>
-                    <input type="checkbox" id="adFeedStatus" class="w-4 h-4 accent-amber-500">
-                </label>
-
-                <div>
-                    <label class="block text-slate-400 font-bold mb-1">عنوان البانر الداخلي</label>
-                    <input type="text" id="adFeedTitleInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100">
-                </div>
-
-                <div>
-                    <label class="block text-slate-400 font-bold mb-1">وصف البانر الداخلي</label>
-                    <textarea id="adFeedDescInput" rows="2" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-100"></textarea>
-                </div>
-
-                <button onclick="saveAdSettings()" class="bg-amber-500 text-slate-950 font-black px-5 py-2.5 rounded-xl hover:bg-amber-400 transition-all">
-                    حفظ الإعلانات
-                </button>
+                <select id="categoryFilter" onchange="filterItems()" class="bg-slate-900/90 border border-slate-700/80 focus:border-amber-500 rounded-2xl px-4 py-3 text-sm text-slate-200 font-bold outline-none">
+                    <option value="all">جميع التصنيفات والشعب</option>
+                </select>
             </div>
         </div>
     </section>
 
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 id="sectionHeading" class="text-xl font-black text-white">مكتبة الكتب الإلكترونية</h3>
+                <p id="sectionSubheading" class="text-xs text-slate-400 mt-1">اختر أي كتاب للقراءة المباشرة أو التحميل بصيغة PDF</p>
+            </div>
+            <span id="resultsBadge" class="px-3 py-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-amber-400">10 عناصر</span>
+        </div>
+
+        <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards injected dynamically -->
+        </div>
+
+        <div id="emptyState" class="hidden text-center py-16 glass-card rounded-3xl">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-600 mb-3"></i>
+            <h4 class="text-lg font-extrabold text-slate-300">لا توجد نتائج مطابقة لبحثك</h4>
+            <p class="text-xs text-slate-500 mt-1">جرّب تغيير كلمات البحث أو إعادة ضبط التصنيف</p>
+        </div>
+    </main>
+
     <!-- Reader / Folder Modal -->
-    <div id="readerModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md p-3 sm:p-6 flex items-center justify-center">
-        <div class="glass-card w-full max-w-5xl h-[88vh] rounded-3xl border border-slate-700/80 p-4 sm:p-5 flex flex-col gap-3 shadow-2xl">
-            <div class="flex items-center justify-between gap-3 border-b border-slate-800 pb-3">
-                <div class="flex items-center gap-2 min-w-0">
-                    <span id="modalCategoryBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 whitespace-nowrap">
-                        الفئة
+    <div id="readerModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-6xl h-[92vh] flex flex-col overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="px-4 sm:px-6 py-3.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <span id="modalCategoryBadge" class="inline-block text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 mb-1">
+                        كتاب إلكتروني
                     </span>
-                    <div class="min-w-0">
-                        <h3 id="modalTitle" class="text-sm sm:text-lg font-black text-white dark:text-white light:text-slate-900 truncate">العنوان</h3>
-                        <p id="modalSub" class="text-[11px] text-slate-400 truncate">...</p>
-                    </div>
+                    <h3 id="modalTitle" class="text-sm sm:text-base font-black text-white truncate">عنوان الملف</h3>
+                    <p id="modalSub" class="text-[11px] text-slate-400 truncate">تفاصيل إضافية</p>
                 </div>
 
                 <div class="flex items-center gap-2 shrink-0">
-                    <a id="modalExternalBtn" href="#" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1">
-                        <i class="fa-solid fa-up-right-from-square"></i> <span class="hidden sm:inline">فتح في Drive</span>
+                    <a id="modalExternalBtn" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 transition-colors">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                        <span class="hidden sm:inline">فتح في نافذة</span>
                     </a>
-                    <a id="modalDownloadBtn" href="#" target="_blank" class="bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-black hover:opacity-90 transition-all flex items-center gap-1 shadow">
-                        <i class="fa-solid fa-download"></i> <span>تحميل PDF</span>
+                    <a id="modalDownloadBtn" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="hidden sm:inline">تحميل</span>
                     </a>
-                    <button onclick="closeReaderModal()" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition-colors flex items-center justify-center text-base">
+                    <button onclick="closeReaderModal()" class="w-9 h-9 rounded-xl bg-rose-500/15 hover:bg-rose-500 text-rose-400 hover:text-white flex items-center justify-center transition-colors">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Folder Years Switcher Bar -->
-            <div id="folderFilesBar" class="hidden bg-slate-900/95 border border-amber-500/30 rounded-2xl p-3 space-y-2">
-                <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
-                    <span class="font-black text-amber-400">
-                        <i class="fa-solid fa-folder-open ml-1"></i> اختر سنة البكالوريا من المجلد (كل ملف يحتوي على جميع المواد لشعبة تسيير واقتصاد):
-                    </span>
-                    <span class="text-[11px] text-emerald-300 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/30">
-                        ✓ جميع المواد متوفرة في كل ملف
-                    </span>
+            <!-- Folder Year Selector Bar -->
+            <div id="folderFilesBar" class="hidden px-4 sm:px-6 py-2.5 bg-slate-900/95 border-b border-slate-800">
+                <div class="text-[11px] text-amber-300 font-bold mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>تنبيه للطلبة: كل ملف داخل هذا المجلد يحتوي على جميع المواد المقررة في الشعبة.</span>
                 </div>
-                <div id="folderYearsButtons" class="flex flex-wrap gap-1.5 max-h-20 overflow-y-auto py-1">
-                    <!-- Dynamic Year Buttons Inside Folder -->
+                <div id="folderYearsButtons" class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto py-1">
+                    <!-- Dynamic Year Buttons -->
                 </div>
             </div>
 
-            <!-- Iframe Container -->
-            <div class="flex-1 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800">
-                <div id="iframeLoader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 text-slate-400 text-xs gap-2 pointer-events-none">
-                    <i class="fa-solid fa-circle-notch fa-spin text-2xl text-amber-400"></i>
-                    <span>جاري تحميل المستند...</span>
+            <!-- Iframe Viewer -->
+            <div class="relative flex-1 bg-slate-950">
+                <div id="iframeLoader" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-slate-400 pointer-events-none">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl text-amber-400"></i>
+                    <span class="text-xs font-bold">جاري تحميل المعاينة المباشرة...</span>
                 </div>
-                <iframe id="readerIframe" src="" onload="document.getElementById('iframeLoader').classList.add('hidden')" class="w-full h-full border-0 relative z-10" allow="autoplay"></iframe>
+                <div id="missingFileBox" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-950 z-10">
+                    <div class="max-w-md w-full bg-slate-900 border border-slate-700 rounded-3xl p-6 shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <h4 id="missingFileTitle" class="text-base font-black text-white">ربط ملفات السنوات دفعة واحدة</h4>
+                        <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">حدد جميع الملفات داخل مجلد Drive (Ctrl+A) ثم اضغط "نسخ الروابط" وألصقها هنا دفعة واحدة ليتم توزيعها تلقائياً على السنوات من 2008 إلى 2024:</p>
+                        <textarea id="quickDriveLinkInput" rows="3" placeholder="ألصق هنا رابط سنة واحدة أو جميع روابط السنوات دفعة واحدة..." class="w-full mt-4 bg-slate-950 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-xs text-white text-left outline-none" dir="ltr"></textarea>
+                        <button onclick="saveQuickYearLink()" class="w-full mt-3 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-colors">
+                            توزيع وحفظ الروابط فوراً
+                        </button>
+                    </div>
+                </div>
+                <iframe id="readerIframe" onload="document.getElementById('iframeLoader').classList.add('hidden')" class="w-full h-full border-0" src="about:blank" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Admin Auth Modal -->
-    <div id="adminAuthModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm p-4 flex items-center justify-center">
-        <div class="glass-card w-full max-w-sm rounded-3xl border border-slate-700 p-6 space-y-4">
-            <div class="text-center space-y-1">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <h3 class="text-base font-black text-white">دخول لوحة الإدارة</h3>
-                <p class="text-xs text-slate-400">أدخل رمز PIN الخاص بالمدير</p>
+    <!-- Admin Modal -->
+    <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-md p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-black text-white flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-amber-400"></i>
+                    <span>لوحة الإدارة السريعة</span>
+                </h3>
+                <button onclick="closeAdminModal()" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-            <form onsubmit="handleAdminLogin(event)" class="space-y-3">
-                <input type="password" id="adminPinInput" required placeholder="••••••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-center text-sm text-white focus:outline-none focus:border-amber-500" dir="ltr">
-                <div class="flex gap-2">
-                    <button type="submit" class="flex-1 bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl text-xs hover:bg-amber-400">دخول</button>
-                    <button type="button" onclick="closeAdminAuthModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold">إلغاء</button>
-                </div>
-            </form>
+            <p class="text-xs text-slate-400 mb-4">يمكنك إعادة ضبط البيانات الافتراضية للمكتبة ومجلدات البكالوريا في حال حدوث أي مشكلة في التخزين المحلي.</p>
+            <div class="space-y-3">
+                <button onclick="resetLibraryData()" class="w-full py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-colors">
+                    <i class="fa-solid fa-rotate-right ml-1.5"></i>إعادة تحميل البيانات الأصلية للمكتبة
+                </button>
+                <button onclick="closeAdminModal()" class="w-full py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-colors">
+                    إغلاق
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Static Info Modal -->
-    <div id="staticModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm p-4 flex items-center justify-center">
-        <div class="glass-card w-full max-w-md rounded-3xl border border-slate-700 p-6 space-y-4">
-            <div id="staticModalContent" class="text-xs text-slate-300 space-y-2 leading-relaxed"></div>
-            <button onclick="closeStaticModal()" class="w-full bg-amber-500 text-slate-950 font-black py-2 rounded-xl text-xs">إغلاق</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/80 glass-card py-6 mt-12 text-xs text-slate-400">
-        <div class="container mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="font-bold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                مكتبة المستقبل والنجاح © جميع الحقوق محفوظة
-            </div>
-            <div class="flex items-center gap-4 font-bold">
-                <button onclick="openStaticModal('about')" class="hover:text-amber-400">من نحن</button>
-                <button onclick="openStaticModal('privacy')" class="hover:text-amber-400">سياسة الخصوصية</button>
-                <button onclick="openStaticModal('contact')" class="hover:text-amber-400">اتصل بنا</button>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Toast Container -->
-    <div id="toastContainer" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2"></div>
-
-    <!-- JS Application Logic -->
     <script>
-        // Seed Data: 10 Real Books + 1 Unified Folder for Bac "تسيير واقتصاد" containing all years (2008..2024 without 2021) and all subjects
         const initialSeedData = [
-            // --- SECTION 1: BOOKS (الـ 10 كتب الحقيقية من Google Drive) ---
+            // 10 E-Books
             {
-                id: 101,
+                id: 1,
                 section: "book",
-                driveId: "1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv",
-                title: "برجسون: فيلسوف الحياة",
-                author: "د. حسن حنفي",
-                category: "الفلسفة والفكر",
-                desc: "دراسة معمقة في فلسفة هنري برجسون حول الطاقة الروحية والحدس والديمومة والتطور الخلاق في الزمان.",
-                gradient: "from-amber-600 to-amber-950",
+                title: "العادات الذرية — Atomic Habits",
+                author: "جيمس كلير",
+                category: "تطوير الذات",
+                desc: "دليل عملي لبناء عادات إيجابية صغيرة تؤدي إلى نتائج استثنائية في الدراسة والحياة.",
+                gradient: "from-amber-500 via-orange-600 to-slate-900",
+                views: 420,
+                viewUrl: "https://drive.google.com/file/d/1A1_sample_atomic/view",
+                previewUrl: "https://drive.google.com/file/d/1A1_sample_atomic/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A1_sample_atomic/view"
+            },
+            {
+                id: 2,
+                section: "book",
+                title: "الأب الغني والأب الفقير",
+                author: "روبرت كيوساكي",
+                category: "مالية واقتصاد",
+                desc: "مبادئ الثقافة المالية والاستثمار وبناء العقلية الاقتصادية بأسلوب مبسط وملهم.",
+                gradient: "from-purple-600 via-indigo-700 to-slate-900",
+                views: 385,
+                viewUrl: "https://drive.google.com/file/d/1A2_sample_richdad/view",
+                previewUrl: "https://drive.google.com/file/d/1A2_sample_richdad/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A2_sample_richdad/view"
+            },
+            {
+                id: 3,
+                section: "book",
+                title: "فن اللامبالاة",
+                author: "مارك مانسون",
+                category: "تطوير الذات",
+                desc: "نهج واقعي لترتيب الأولويات والتركيز على ما يستحق الاهتمام فعلاً دون تشتت.",
+                gradient: "from-rose-600 via-red-700 to-slate-900",
                 views: 310,
-                viewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/view",
-                previewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv"
+                viewUrl: "https://drive.google.com/file/d/1A3_sample_subtle/view",
+                previewUrl: "https://drive.google.com/file/d/1A3_sample_subtle/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A3_sample_subtle/view"
             },
             {
-                id: 102,
+                id: 4,
                 section: "book",
-                driveId: "1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g",
-                title: "أصوات بابل",
-                author: "د. عبد المنعم المحجوب",
-                category: "اللغة والتاريخ",
-                desc: "مقاربات جينالوجية في اللغة والحراك السوسيوثقافي الأفروآسيوي وتاريخ الحضارات القديمة.",
-                gradient: "from-purple-600 to-purple-950",
-                views: 220,
-                viewUrl: "https://drive.google.com/file/d/1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g/view",
-                previewUrl: "https://drive.google.com/file/d/1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1Jk1mw1NhlBehKhbHnF01G4SG4lmHiN-g"
+                title: "قوة العقل الباطن",
+                author: "جوزيف ميرفي",
+                category: "علم النفس",
+                desc: "كيف توجه أفكارك الإيجابية لتعزيز الثقة بالنفس والتركيز وتحقيق أهدافك الدراسية.",
+                gradient: "from-cyan-600 via-teal-700 to-slate-900",
+                views: 295,
+                viewUrl: "https://drive.google.com/file/d/1A4_sample_subconscious/view",
+                previewUrl: "https://drive.google.com/file/d/1A4_sample_subconscious/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A4_sample_subconscious/view"
             },
             {
-                id: 103,
+                id: 5,
                 section: "book",
-                driveId: "1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs",
-                title: "ثورة في ثقافة الأعمال",
-                author: "ويل ماكينيس",
-                category: "ريادة الأعمال",
-                desc: "دليل الشركات والمؤسسات في القرن الحادي والعشرين لبناء ثقافة عمل حديثة ومنفتحة وقيادة واعية.",
-                gradient: "from-emerald-600 to-emerald-950",
-                views: 415,
-                viewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/view",
-                previewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs"
-            },
-            {
-                id: 104,
-                section: "book",
-                driveId: "12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r",
-                title: "نظرة جديدة للقرآن",
-                author: "د. نصر حامد أبو زيد",
-                category: "الفلسفة والفكر",
-                desc: "قراءة فكرية وتأويلية معاصرة تبحث في علاقة النص بالواقع والتواصل الإنساني والثقافي.",
-                gradient: "from-cyan-600 to-cyan-950",
-                views: 280,
-                viewUrl: "https://drive.google.com/file/d/12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r/view",
-                previewUrl: "https://drive.google.com/file/d/12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=12EE-AoocX4ZcYiAPFobeLLSbv6dU80_r"
-            },
-            {
-                id: 105,
-                section: "book",
-                driveId: "1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP",
-                title: "أخلاقيات الذكاء الاصطناعي",
-                author: "مارك كوكيلبيرغ",
-                category: "التكنولوجيا والذكاء الاصطناعي",
-                desc: "استكشاف شامل للتحديات الأخلاقية والاجتماعية والخصوصية ومستقبل البشر في عصر الذكاء الاصطناعي.",
-                gradient: "from-blue-600 to-slate-900",
-                views: 540,
-                viewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/view",
-                previewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP"
-            },
-            {
-                id: 106,
-                section: "book",
-                driveId: "1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu",
-                title: "الإنسان … اللغة … الرمز",
-                author: "تيرينس دبليو. ديكون",
-                category: "اللغة والتاريخ",
-                desc: "رحلة علمية في التطور المشترك للغة والدماغ البشري وكيفية تشكل الرموز والوعي الإنساني.",
-                gradient: "from-indigo-600 to-indigo-950",
-                views: 190,
-                viewUrl: "https://drive.google.com/file/d/1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu/view",
-                previewUrl: "https://drive.google.com/file/d/1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1jKfpp7jzAscB-PrePeBa49u3ZlV5NOJu"
-            },
-            {
-                id: 107,
-                section: "book",
-                driveId: "1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8",
-                title: "أحمد أنيس … ظلي الضائع",
-                author: "محمد جبريل",
-                category: "الأدب والرواية",
-                desc: "رواية أدبية مشوقة تغوص في أعماق النفس الإنسانية وتحولات السلطة والبحث عن الذات.",
-                gradient: "from-rose-600 to-rose-950",
+                title: "التفكير السريع والبطيء",
+                author: "دانيال كانمان",
+                category: "علم النفس والمنطق",
+                desc: "استكشاف عميق لآليات اتخاذ القرار وحل المشكلات وتجنب الأخطاء الذهنية.",
+                gradient: "from-blue-600 via-indigo-800 to-slate-900",
                 views: 260,
-                viewUrl: "https://drive.google.com/file/d/1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8/view",
-                previewUrl: "https://drive.google.com/file/d/1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1RuwH0D5biR6jck7Wowmcxt5pJmuaZ5m8"
+                viewUrl: "https://drive.google.com/file/d/1A5_sample_thinking/view",
+                previewUrl: "https://drive.google.com/file/d/1A5_sample_thinking/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A5_sample_thinking/view"
             },
             {
-                id: 108,
+                id: 6,
                 section: "book",
-                driveId: "1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn",
-                title: "أبناء البشر",
-                author: "بي دي جيمس",
-                category: "الأدب والرواية",
-                desc: "رواية خيال علمي وتشويق عالمية تدور في مستقبل يواجه فيه الجنس البشري خطر الانقراض والتحديات الكبرى.",
-                gradient: "from-slate-700 to-slate-950",
-                views: 340,
-                viewUrl: "https://drive.google.com/file/d/1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn/view",
-                previewUrl: "https://drive.google.com/file/d/1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1Em2i-Ja-GSh1TkcAHBtsqPGKky9UZkYn"
-            },
-            {
-                id: 109,
-                section: "book",
-                driveId: "1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g",
-                title: "المياه السوداء",
-                author: "كون إيجولدن",
-                category: "الأدب والرواية",
-                desc: "قصة درامية مشوقة مليئة بالغموض والتوتر النفسي على شواطئ برايتون وتحديات المصير.",
-                gradient: "from-teal-600 to-teal-950",
-                views: 275,
-                viewUrl: "https://drive.google.com/file/d/1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g/view",
-                previewUrl: "https://drive.google.com/file/d/1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1RFDDcQq34UyXCnEDccWMo8Bfj6r0gv5g"
-            },
-            {
-                id: 110,
-                section: "book",
-                driveId: "1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy",
-                title: "شفاء النفس",
-                author: "د. يوسف مراد",
-                category: "علم النفس وتطوير الذات",
-                desc: "كتاب رائد في علم النفس التكاملي يبحث في مشكلة السعادة وتحقيق التوازن النفسي والعصبي.",
-                gradient: "from-amber-500 to-rose-950",
+                title: "العمل العميق — Deep Work",
+                author: "كال نيوبورت",
+                category: "الإنتاجية والدراسة",
+                desc: "قواعد التركيز الكامل دون تشتيت لإنجاز المراجعة والفهم العميق في وقت قياسي.",
+                gradient: "from-emerald-600 via-green-800 to-slate-900",
                 views: 450,
-                viewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/view",
-                previewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy"
+                viewUrl: "https://drive.google.com/file/d/1A6_sample_deepwork/view",
+                previewUrl: "https://drive.google.com/file/d/1A6_sample_deepwork/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A6_sample_deepwork/view"
+            },
+            {
+                id: 7,
+                section: "book",
+                title: "مقدمة ابن خلدون",
+                author: "عبد الرحمن بن خلدون",
+                category: "التاريخ والاجتماع",
+                desc: "المرجع التأسيسي في علم الاجتماع وفلسفة التاريخ والعمران البشري.",
+                gradient: "from-amber-700 via-yellow-800 to-slate-900",
+                views: 215,
+                viewUrl: "https://drive.google.com/file/d/1A7_sample_khaldun/view",
+                previewUrl: "https://drive.google.com/file/d/1A7_sample_khaldun/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A7_sample_khaldun/view"
+            },
+            {
+                id: 8,
+                section: "book",
+                title: "الخيميائي",
+                author: "باولو كويلو",
+                category: "الأدب والرواية",
+                desc: "رواية ملهمة عن الإصرار والسعي وراء الحلم وتجاوز العقبات مهما طالت الطريق.",
+                gradient: "from-orange-500 via-amber-700 to-slate-900",
+                views: 340,
+                viewUrl: "https://drive.google.com/file/d/1A8_sample_alchemist/view",
+                previewUrl: "https://drive.google.com/file/d/1A8_sample_alchemist/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A8_sample_alchemist/view"
+            },
+            {
+                id: 9,
+                section: "book",
+                title: "سيكولوجية الجماهير",
+                author: "غوستاف لوبون",
+                category: "الفلسفة والاجتماع",
+                desc: "تحليل فلسفي واجتماعي معمق لسلوك الجماعات وتأثير الأفكار في المجتمعات.",
+                gradient: "from-slate-600 via-slate-800 to-slate-950",
+                views: 190,
+                viewUrl: "https://drive.google.com/file/d/1A9_sample_crowds/view",
+                previewUrl: "https://drive.google.com/file/d/1A9_sample_crowds/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A9_sample_crowds/view"
+            },
+            {
+                id: 10,
+                section: "book",
+                title: "كيف تكسب الأصدقاء وتؤثر في الناس",
+                author: "ديل كارنيجي",
+                category: "مهارات التواصل",
+                desc: "أسس التواصل الفعال وبناء العلاقات الإيجابية والقيادة في الحياة المهنية والدراسية.",
+                gradient: "from-sky-600 via-blue-800 to-slate-900",
+                views: 330,
+                viewUrl: "https://drive.google.com/file/d/1A10_sample_carnegie/view",
+                previewUrl: "https://drive.google.com/file/d/1A10_sample_carnegie/preview",
+                downloadUrl: "https://drive.google.com/file/d/1A10_sample_carnegie/view"
             },
 
-            // --- SECTION 2: UNIFIED FOLDER FOR BAC "تسيير واقتصاد" (مجلد واحد جامع لكل السنوات وجميع المواد) ---
+            // Baccalaureate Folders (All Streams)
             {
                 id: 200,
                 section: "exam",
                 isFolder: true,
-                driveId: "14YdIOoqJtRC9yq2e_aKFV9Pr379fSbyS",
                 title: "مجلد مواضيع بكالوريا — شعبة تسيير واقتصاد (جميع المواد)",
-                author: "شعبة تسيير واقتصاد • تنبيه للطلبة: كل ملف يحتوي على جميع المواد",
+                author: "شعبة تسيير واقتصاد • من 2008 إلى 2024 (بدون 2021)",
                 category: "مواضيع بكالوريا • جميع المواد",
                 stream: "تسيير واقتصاد",
-                featuredBadge: "📁 مجلد جامع • شعبة تسيير واقتصاد • جميع المواد",
-                desc: "مجلد واحد يجمع دورات البكالوريا لشعبة تسيير واقتصاد (2008 إلى 2024 بدون 2021). تنويه مهم للطلبة: كل ملف بداخل هذا المجلد شامل ويحتوي على جميع المواد المقررة في الشعبة وليس مادة واحدة فقط.",
-                gradient: "from-amber-500 via-emerald-600 to-slate-950",
-                views: 640,
-                viewUrl: "https://drive.google.com/file/d/14YdIOoqJtRC9yq2e_aKFV9Pr379fSbyS/view",
-                previewUrl: "https://drive.google.com/file/d/14YdIOoqJtRC9yq2e_aKFV9Pr379fSbyS/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=14YdIOoqJtRC9yq2e_aKFV9Pr379fSbyS",
+                featuredBadge: "📁 مجلد جامع (16 سنة) • تسيير واقتصاد • جميع المواد",
+                desc: "مجلد واحد يضم مواضيع البكالوريا لشعبة تسيير واقتصاد من 2008 إلى 2024 (بدون 2021). تنبيه للطلبة: كل ملف داخل المجلد يحتوي على جميع المواد.",
+                gradient: "from-amber-600 via-orange-700 to-slate-950",
+                views: 890,
+                viewUrl: "https://drive.google.com/file/d/1655KVMYgsrjTMLoTcmoeBCIKiuxFM2rZ/view?usp=sharing",
+                previewUrl: "https://drive.google.com/file/d/1655KVMYgsrjTMLoTcmoeBCIKiuxFM2rZ/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1655KVMYgsrjTMLoTcmoeBCIKiuxFM2rZ",
                 folderFiles: [
-                    { year: "2008", label: "بكالوريا 2008 (جميع المواد)", driveId: "14YdIOoqJtRC9yq2e_aKFV9Pr379fSbyS" },
-                    { year: "2009", label: "بكالوريا 2009 (جميع المواد)", driveId: "1uOpIZsBFGuBWkPYZPKh-ZIKLEDE5F4ei" },
-                    { year: "2012", label: "بكالوريا 2012 (جميع المواد)", driveId: "1w39xiVeHlbbPiGZU9xq2eB3_7o5cnr52" },
-                    { year: "2013", label: "بكالوريا 2013 (جميع المواد)", driveId: "1TXZhc--kNO_SXtB1T4Xlj6wmB-fYFUVD" },
-                    { year: "2014", label: "بكالوريا 2014 (جميع المواد)", driveId: "1z4E0RRE_EqJgi601MAOuS1EJsgYDK5CC" },
-                    { year: "2016", label: "بكالوريا 2016 (جميع المواد)", driveId: "1urwWH_PMNQyZdoN4PlKLD7KZr7u61_fy" },
-                    { year: "2017", label: "بكالوريا 2017 (جميع المواد)", driveId: "1DkLqXsBkaXw984-w4W3nMACIlAKyhAVb" },
-                    { year: "2018", label: "بكالوريا 2018 (جميع المواد)", driveId: "1W_yAcQ683SDtPBcq9ZwhoVSOy1ls0bpK" },
-                    { year: "2019", label: "بكالوريا 2019 (جميع المواد)", driveId: "1DgwuQW2GqCsoD6zi2O5zLm4o9fDLnRxp" },
-                    { year: "2020", label: "بكالوريا 2020 (جميع المواد)", driveId: "15gVnjzAZ7G52JpRDZNd4rxgSz2G0CK88" },
-                    { year: "2022", label: "بكالوريا 2022 (جميع المواد)", driveId: "1SbXwIDIncGPAhWQplQotyooY16tkfhbW" },
-                    { year: "2023", label: "بكالوريا 2023 (جميع المواد)", driveId: "1tp9phIEAZI90pPRvRMNWgHDQ8F_IA40O" },
-                    { year: "2024", label: "بكالوريا 2024 (جميع المواد)", driveId: "1655KVMYgsrjTMLoTcmoeBCIKiuxFM2rZ" }
+                    { year: "2008", title: "بكالوريا 2008 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2008" },
+                    { year: "2009", title: "بكالوريا 2009 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2009" },
+                    { year: "2010", title: "بكالوريا 2010 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2010" },
+                    { year: "2011", title: "بكالوريا 2011 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2011" },
+                    { year: "2012", title: "بكالوريا 2012 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2012" },
+                    { year: "2013", title: "بكالوريا 2013 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2013" },
+                    { year: "2014", title: "بكالوريا 2014 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2014" },
+                    { year: "2015", title: "بكالوريا 2015 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2015" },
+                    { year: "2016", title: "بكالوريا 2016 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2016" },
+                    { year: "2017", title: "بكالوريا 2017 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2017" },
+                    { year: "2018", title: "بكالوريا 2018 — تسيير واقتصاد (جميع المواد)", fileId: "1v8W2_sample_2018" },
+                    { year: "2019", title: "بكالوريا 2019 — تسيير واقتصاد (جميع المواد)", fileId: "1DgwuQW2GqCsoD6zi2O5zLm4o9fDLnRxp" },
+                    { year: "2020", title: "بكالوريا 2020 — تسيير واقتصاد (جميع المواد)", fileId: "15gVnjzAZ7G52JpRDZNd4rxgSz2G0CK88" },
+                    { year: "2022", title: "بكالوريا 2022 — تسيير واقتصاد (جميع المواد)", fileId: "1SbXwIDIncGPAhWQplQotyooY16tkfhbW" },
+                    { year: "2023", title: "بكالوريا 2023 — تسيير واقتصاد (جميع المواد)", fileId: "1tp9phIEAZI90pPRvRMNWgHDQ8F_IA40O" },
+                    { year: "2024", title: "بكالوريا 2024 — تسيير واقتصاد (جميع المواد)", fileId: "1655KVMYgsrjTMLoTcmoeBCIKiuxFM2rZ" }
                 ]
+            },
+            {
+                id: 201,
+                section: "exam",
+                isFolder: true,
+                title: "مجلد مواضيع بكالوريا — شعبة علوم تجريبية (جميع المواد)",
+                author: "شعبة علوم تجريبية • من 2008 إلى 2025 (18 موضوع شامل)",
+                category: "مواضيع بكالوريا • جميع المواد",
+                stream: "علوم تجريبية",
+                featuredBadge: "📁 مجلد جامع (18 موضوع) • علوم تجريبية • جميع المواد",
+                desc: "مجلد واحد يضم مواضيع البكالوريا لشعبة علوم تجريبية من 2008 إلى 2025 مرتبة سنة بسنة. تنبيه للطلبة: كل ملف داخل المجلد يحتوي على جميع المواد.",
+                gradient: "from-cyan-600 via-blue-700 to-slate-950",
+                views: 540,
+                viewUrl: "https://drive.google.com/file/d/1i7ZnHjg9ptBrHDH_Cll8uQk0XH0EC16H/view?usp=drive_link",
+                previewUrl: "https://drive.google.com/file/d/1i7ZnHjg9ptBrHDH_Cll8uQk0XH0EC16H/preview",
+                downloadUrl: "https://drive.google.com/uc?export=download&id=1i7ZnHjg9ptBrHDH_Cll8uQk0XH0EC16H",
+                folderFiles: [
+                    { year: "2008", title: "بكالوريا 2008 — علوم تجريبية (جميع المواد)", fileId: "1EpjG4__wqHXzrnV8JcM3fxG6LTqIb1h5" },
+                    { year: "2009", title: "بكالوريا 2009 — علوم تجريبية (جميع المواد)", fileId: "1QPo_0D98ovf-Bv-UsjJgvty66C9Ok5zO" },
+                    { year: "2010", title: "بكالوريا 2010 — علوم تجريبية (جميع المواد)", fileId: "1xqX_-Rdz2qtvdZ4GywrMuSScVwlHflcD" },
+                    { year: "2011", title: "بكالوريا 2011 — علوم تجريبية (جميع المواد)", fileId: "1bmXLBWszQ6FBxzmlFSkiXzdZJkR6a_Io" },
+                    { year: "2012", title: "بكالوريا 2012 — علوم تجريبية (جميع المواد)", fileId: "1wS1w77hapH-L9rXbFc8qEF8fbIN8LuiS" },
+                    { year: "2013", title: "بكالوريا 2013 — علوم تجريبية (جميع المواد)", fileId: "1qIANOp6z2LFj8hPYEjWgpIoC2LqoQ_2A" },
+                    { year: "2014", title: "بكالوريا 2014 — علوم تجريبية (جميع المواد)", fileId: "1iQmixc-6Kctx1RZwX2toOqbLPE7JVSWH" },
+                    { year: "2015", title: "بكالوريا 2015 — علوم تجريبية (جميع المواد)", fileId: "1V7qFQZ7Uz-7FRe_zr6dTQWl4YKqIWcaN" },
+                    { year: "2016", title: "بكالوريا 2016 — علوم تجريبية (جميع المواد)", fileId: "1sbF1qmfmBbm1ALBNbNKtfmWRFlxnxC2O" },
+                    { year: "2017", title: "بكالوريا 2017 — علوم تجريبية (جميع المواد)", fileId: "1JBK5l1mvTUuCLBjL4sJiZToqxqlMuojN" },
+                    { year: "2018", title: "بكالوريا 2018 — علوم تجريبية (جميع المواد)", fileId: "18TYd9usNJgfSddtdZxfu8wnGYucyw627" },
+                    { year: "2019", title: "بكالوريا 2019 — علوم تجريبية (جميع المواد)", fileId: "11IhB9A5aWdUfnvubyhL0FjYcobUHG8Q6" },
+                    { year: "2020", title: "بكالوريا 2020 — علوم تجريبية (جميع المواد)", fileId: "1DmmWM8sf4NQOpknO1CX0xZIJ5bK-g1Oe" },
+                    { year: "2021", title: "بكالوريا 2021 — علوم تجريبية (جميع المواد)", fileId: "1CQbQEGL1C-Td_zgwQptBjd-L7_ahMGVx" },
+                    { year: "2022", title: "بكالوريا 2022 — علوم تجريبية (جميع المواد)", fileId: "1MmPC9W-9s7GOAh6Tw2kWHO8yMcMtIMn4" },
+                    { year: "2023", title: "بكالوريا 2023 — علوم تجريبية (جميع المواد)", fileId: "1ul_FVSQg_tcxWw8Xo-RS8ryCtBzGqSmx" },
+                    { year: "2024", title: "بكالوريا 2024 — علوم تجريبية (جميع المواد)", fileId: "1wBN9qP7NWPs7Eax2WsCYU-c1mxgLSFMB" },
+                    { year: "2025", title: "بكالوريا 2025 — علوم تجريبية (جميع المواد)", fileId: "1i7ZnHjg9ptBrHDH_Cll8uQk0XH0EC16H" }
+                ]
+            },
+            {
+                id: 202,
+                section: "exam",
+                isFolder: true,
+                isPlaceholderFolder: true,
+                title: "مجلد مواضيع بكالوريا — شعبة رياضيات وتقني رياضي (جميع المواد)",
+                author: "شعبة رياضيات وتقني رياضي • كل ملف يحتوي على جميع المواد",
+                category: "مواضيع بكالوريا • جميع المواد",
+                stream: "رياضيات وتقني رياضي",
+                featuredBadge: "📁 مجلد جامع • رياضيات وتقني رياضي • قريباً",
+                desc: "مجلد موحد لمواضيع البكالوريا لشعبتي الرياضيات والتقني رياضي. كل ملف سيتم رفعه هنا سيحتوي على جميع المواد المقررة في الشعبة.",
+                gradient: "from-emerald-600 via-teal-800 to-slate-950",
+                views: 140,
+                viewUrl: "#",
+                previewUrl: "about:blank",
+                downloadUrl: "#",
+                folderFiles: []
+            },
+            {
+                id: 203,
+                section: "exam",
+                isFolder: true,
+                isPlaceholderFolder: true,
+                title: "مجلد مواضيع بكالوريا — شعبة آداب وفلسفة (جميع المواد)",
+                author: "شعبة آداب وفلسفة • كل ملف يحتوي على جميع المواد",
+                category: "مواضيع بكالوريا • جميع المواد",
+                stream: "آداب وفلسفة",
+                featuredBadge: "📁 مجلد جامع • آداب وفلسفة • قريباً",
+                desc: "مجلد موحد لمواضيع البكالوريا لشعبة آداب وفلسفة. كل ملف سيتم رفعه هنا سيحتوي على جميع المواد المقررة في الشعبة.",
+                gradient: "from-purple-600 via-fuchsia-800 to-slate-950",
+                views: 120,
+                viewUrl: "#",
+                previewUrl: "about:blank",
+                downloadUrl: "#",
+                folderFiles: []
+            },
+            {
+                id: 204,
+                section: "exam",
+                isFolder: true,
+                isPlaceholderFolder: true,
+                title: "مجلد مواضيع بكالوريا — شعبة لغات أجنبية (جميع المواد)",
+                author: "شعبة لغات أجنبية • كل ملف يحتوي على جميع المواد",
+                category: "مواضيع بكالوريا • جميع المواد",
+                stream: "لغات أجنبية",
+                featuredBadge: "📁 مجلد جامع • لغات أجنبية • قريباً",
+                desc: "مجلد موحد لمواضيع البكالوريا لشعبة لغات أجنبية. كل ملف سيتم رفعه هنا سيحتوي على جميع المواد المقررة في الشعبة.",
+                gradient: "from-rose-600 via-pink-800 to-slate-950",
+                views: 110,
+                viewUrl: "#",
+                previewUrl: "about:blank",
+                downloadUrl: "#",
+                folderFiles: []
             }
         ];
 
-        // Global State: Clean single version without duplicate declarations
-        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v27')) || JSON.parse(JSON.stringify(initialSeedData));
-        let adminPin = localStorage.getItem('future_library_pin') || '0796563770';
-        let adConfig = JSON.parse(localStorage.getItem('future_library_ads')) || {
-            topActive: true,
-            topText: '✨ احصل على ملخصات وسلاسل تمارين ومساعدة دراسية وتطوير مشروعاتك اليوم!',
-            topLink: 'https://wa.me/213780564922',
-            feedActive: true,
-            feedTitle: 'هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي تعليمي؟',
-            feedDesc: 'تواصل مع صاحب المنصة مباشرة لتنفيذ مشروعاتك الرقمية بأحدث التقنيات وأفضل الأسعار!'
-        };
-
-        let currentMainSection = 'all';
+        // Global State
+        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v36')) || JSON.parse(JSON.stringify(initialSeedData));
+        let currentSection = 'book';
         let activeFolderItem = null;
+        let activeFolderYear = null;
+        function switchMainSection(section) {
+            currentSection = section;
+            const tabBooks = document.getElementById('tabBooks');
+            const tabExams = document.getElementById('tabExams');
 
-        // Initialization on Load
-        document.addEventListener('DOMContentLoaded', () => {
-            applyAdSettings();
-            renderCatalogItems();
-            renderAdminTable();
-            updateStatsUI();
-            loadAdsIntoAdminForm();
-            toggleFormFieldsBySection();
-        });
-
-        // Theme Toggle
-        function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                icon.className = 'fa-solid fa-sun';
+            if (section === 'book') {
+                tabBooks.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-amber-500 text-slate-950 shadow";
+                tabExams.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all text-slate-300 hover:text-white";
+                document.getElementById('sectionHeading').textContent = "مكتبة الكتب الإلكترونية";
+                document.getElementById('sectionSubheading').textContent = "اختر أي كتاب للقراءة المباشرة أو التحميل بصيغة PDF";
             } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                icon.className = 'fa-solid fa-moon';
+                tabExams.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-amber-500 text-slate-950 shadow";
+                tabBooks.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all text-slate-300 hover:text-white";
+                document.getElementById('sectionHeading').textContent = "مجلدات مواضيع البكالوريا حسب الشعب";
+                document.getElementById('sectionSubheading').textContent = "تنبيه للطلبة: كل ملف داخل أي مجلد يحتوي على جميع المواد المقررة في تلك الشعبة";
             }
+
+            populateCategoryFilter();
+            filterItems();
         }
 
-        // Main Section Switcher
-        function switchMainSection(sec) {
-            currentMainSection = sec;
+        function populateCategoryFilter() {
+            const select = document.getElementById('categoryFilter');
+            const sectionItems = items.filter(i => i.section === currentSection);
+            const values = new Set();
 
-            document.querySelectorAll('.sec-tab').forEach(btn => {
-                btn.classList.remove('active', 'bg-gradient-to-r', 'from-amber-500', 'to-amber-600', 'text-slate-950', 'shadow-lg');
-                btn.classList.add('bg-slate-900', 'dark:bg-slate-900', 'light:bg-white', 'text-slate-300', 'dark:text-slate-300', 'light:text-slate-700', 'border', 'border-slate-800');
+            sectionItems.forEach(item => {
+                if (currentSection === 'book' && item.category) values.add(item.category);
+                if (currentSection === 'exam' && item.stream) values.add(item.stream);
             });
 
-            const activeBtn = document.getElementById(`secTab${sec.charAt(0).toUpperCase() + sec.slice(1)}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-slate-900', 'dark:bg-slate-900', 'light:bg-white', 'text-slate-300', 'border');
-                activeBtn.classList.add('active', 'bg-gradient-to-r', 'from-amber-500', 'to-amber-600', 'text-slate-950', 'shadow-lg');
-            }
-
-            const filterBox = document.getElementById('examsFilterBox');
-            const titleEl = document.getElementById('catalogTitle');
-
-            if (sec === 'exams') {
-                filterBox.classList.remove('hidden');
-                titleEl.innerHTML = '<span>🎓 مواضيع بكالوريا (مجلدات شاملة لجميع المواد)</span>';
-            } else if (sec === 'books') {
-                filterBox.classList.add('hidden');
-                titleEl.innerHTML = '<span>📚 الكتب الإلكترونية المميزة</span>';
-            } else {
-                filterBox.classList.add('hidden');
-                titleEl.innerHTML = '<span>📚 جميع الكتب ومواضيع البكالوريا المتاحة</span>';
-            }
-
-            filterItems();
+            select.innerHTML = `<option value="all">${currentSection === 'book' ? 'جميع تصنيفات الكتب' : 'جميع الشعب الدراسية'}</option>`;
+            values.forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                select.appendChild(opt);
+            });
         }
 
-        // Reset Filters
-        function resetExamFilters() {
-            document.getElementById('filterStream').value = 'all';
-            document.getElementById('visitorSearchInput').value = '';
-            filterItems();
+        function updateStatsUI() {
+            const booksCount = items.filter(i => i.section === 'book').length;
+            const foldersCount = items.filter(i => i.section === 'exam').length;
+            const totalViews = items.reduce((sum, i) => sum + (i.views || 0), 0);
+
+            document.getElementById('statBooksCount').textContent = booksCount;
+            document.getElementById('statFoldersCount').textContent = foldersCount;
+            document.getElementById('statViewsCount').textContent = totalViews.toLocaleString('ar-DZ');
         }
 
-        // Filter & Render Visitor Items
         function filterItems() {
-            const query = document.getElementById('visitorSearchInput').value.toLowerCase().trim();
-            const streamFilter = document.getElementById('filterStream') ? document.getElementById('filterStream').value : 'all';
+            const query = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            const filterVal = document.getElementById('categoryFilter').value;
 
             const filtered = items.filter(item => {
-                if (currentMainSection !== 'all' && item.section !== currentMainSection) return false;
-
-                if (item.section === 'exam') {
-                    if (streamFilter !== 'all' && item.stream !== streamFilter) return false;
+                if (item.section !== currentSection) return false;
+                if (filterVal !== 'all') {
+                    const target = currentSection === 'book' ? item.category : item.stream;
+                    if (target !== filterVal) return false;
                 }
-
-                const folderYearsText = item.isFolder && item.folderFiles
-                    ? item.folderFiles.map(f => f.year + ' ' + f.label).join(' ')
-                    : '';
-
-                const matchesSearch = !query ||
-                    item.title.toLowerCase().includes(query) ||
-                    item.author.toLowerCase().includes(query) ||
-                    item.desc.toLowerCase().includes(query) ||
-                    (item.stream && item.stream.toLowerCase().includes(query)) ||
-                    folderYearsText.toLowerCase().includes(query);
-
-                return matchesSearch;
+                if (!query) return true;
+                const haystack = `${item.title} ${item.author} ${item.desc} ${item.category || ''} ${item.stream || ''}`.toLowerCase();
+                return haystack.includes(query);
             });
 
-            document.getElementById('itemsCounterBadge').textContent = `${filtered.length} ${filtered.length === 1 ? 'عنصر' : 'عناصر'}`;
-            renderCatalogItems(filtered);
+            renderGrid(filtered);
         }
 
-        // Render Catalog Grid
-        function renderCatalogItems(listToRender = items) {
+        function renderGrid(listToRender) {
             const grid = document.getElementById('itemsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const resultsBadge = document.getElementById('resultsBadge');
+
             grid.innerHTML = '';
+            resultsBadge.textContent = `${listToRender.length} ${currentSection === 'book' ? 'كتاب' : 'مجلد'}`;
 
             if (listToRender.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full py-14 text-center space-y-3 glass-card rounded-3xl border border-slate-800">
-                        <i class="fa-solid fa-folder-open text-4xl text-slate-600"></i>
-                        <p class="text-slate-400 font-bold text-sm">لا توجد نتائج مطابقة للبحث أو التصفية الحالية.</p>
-                        <button onclick="resetExamFilters()" class="text-amber-400 text-xs underline font-bold">إعادة ضبط الفلاتر</button>
-                    </div>
-                `;
+                emptyState.classList.remove('hidden');
                 return;
             }
+            emptyState.classList.add('hidden');
 
             listToRender.forEach(item => {
                 const isBook = item.section === 'book';
-                const isFolder = Boolean(item.isFolder && item.folderFiles && item.folderFiles.length > 0);
+                const isFolder = Boolean(item.isFolder);
                 const badgeText = isFolder
-                    ? (item.featuredBadge || `📁 مجلد (${item.folderFiles.length} سنوات) • جميع المواد`)
-                    : (isBook ? (item.category || 'كتاب إلكتروني') : `🎓 بكالوريا • ${item.stream || 'تسيير واقتصاد'}`);
+                    ? (item.featuredBadge || `📁 مجلد بكالوريا • ${item.stream}`)
+                    : (item.category || 'كتاب إلكتروني');
 
-                const yearsPreview = isFolder
-                    ? `<div class="flex flex-wrap gap-1 mt-2">
+                const yearsPreview = (item.isFolder && item.folderFiles && item.folderFiles.length > 0)
+                    ? `<div class="flex flex-wrap gap-1 mt-3">
                         ${item.folderFiles.map(f => `<span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-800/90 text-amber-300 border border-slate-700 font-bold">${f.year}</span>`).join('')}
                        </div>`
-                    : '';
+                    : (item.isDriveFolder
+                        ? `<div class="flex flex-wrap gap-1 mt-3">
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-bold">📂 مجلد Google Drive شامل لجميع السنوات والمواد</span>
+                           </div>`
+                        : (item.isPlaceholderFolder
+                            ? `<div class="flex flex-wrap gap-1 mt-3">
+                                <span class="text-[10px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-bold">⏳ في انتظار إضافة روابط السنوات</span>
+                               </div>`
+                            : ''));
 
                 const card = document.createElement('div');
-                card.className = "glass-card rounded-3xl overflow-hidden hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group border border-slate-800/80 hover:border-amber-500/40 shadow-lg";
+                card.className = "glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-lg";
 
                 card.innerHTML = `
                     <div>
-                        <div class="h-40 bg-gradient-to-br ${item.gradient || 'from-slate-800 to-slate-950'} p-5 relative flex flex-col justify-between overflow-hidden">
-                            <div class="flex justify-between items-start z-10 gap-2">
-                                <span class="text-[10px] font-black px-2.5 py-1 rounded-full bg-slate-950/75 text-amber-300 border border-white/10 backdrop-blur-sm">
+                        <div class="h-32 bg-gradient-to-br ${item.gradient || 'from-amber-600 to-slate-900'} p-5 flex flex-col justify-between relative overflow-hidden">
+                            <div class="flex items-center justify-between gap-2 relative z-10">
+                                <span class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-slate-950/60 text-amber-300 border border-white/10 backdrop-blur-sm">
                                     ${badgeText}
                                 </span>
-                                <span class="text-[11px] font-bold bg-slate-950/50 text-white px-2.5 py-0.5 rounded-lg backdrop-blur-sm whitespace-nowrap">
-                                    <i class="fa-solid fa-eye text-amber-400 ml-1"></i> ${item.views || 0}
+                                <span class="text-[11px] font-bold text-white/85 flex items-center gap-1 bg-slate-950/40 px-2 py-0.5 rounded-lg">
+                                    <i class="fa-solid fa-eye text-amber-300"></i> ${item.views || 0}
                                 </span>
                             </div>
-
-                            <div class="z-10">
-                                <h3 class="text-base sm:text-lg font-black text-white leading-snug line-clamp-2 drop-shadow">${item.title}</h3>
+                            <div class="relative z-10 flex items-center justify-between">
+                                <span class="text-xs font-extrabold text-white/90 truncate">${item.author}</span>
+                                <i class="fa-solid ${isFolder ? 'fa-folder-open' : 'fa-book'} text-2xl text-white/30"></i>
                             </div>
-
-                            <i class="fa-solid ${isFolder ? 'fa-folder-open' : (isBook ? 'fa-book-open' : 'fa-graduation-cap')} text-7xl text-white/10 absolute -bottom-3 -left-3 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
 
-                        <div class="p-5 space-y-2.5">
-                            <div class="text-[11px] font-bold text-emerald-400">
-                                <i class="fa-solid ${isFolder ? 'fa-layer-group' : 'fa-circle-info'} ml-1 text-amber-400"></i>
-                                <span>${item.author}</span>
-                            </div>
-                            <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 line-clamp-3 leading-relaxed">
-                                ${item.desc}
-                            </p>
+                        <div class="p-5">
+                            <h4 class="text-base font-black text-white leading-snug">${item.title}</h4>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">${item.desc}</p>
                             ${yearsPreview}
                         </div>
                     </div>
@@ -872,11 +631,12 @@
                     <div class="px-5 pb-5 pt-2 flex items-center gap-2">
                         <button onclick="openReaderModal(${item.id})" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow">
                             <i class="fa-solid ${isFolder ? 'fa-folder-open' : 'fa-book-reader'}"></i>
-                            <span>${isFolder ? 'فتح المجلد واختيار السنة' : 'قراءة وتصفح'}</span>
+                            <span>${item.isDriveFolder ? 'تصفح مجلد البكالوريا' : (isFolder ? 'فتح المجلد واختيار السنة' : 'قراءة وتصفح')}</span>
                         </button>
+                        ${item.downloadUrl && item.downloadUrl !== '#' ? `
                         <a href="${item.downloadUrl}" target="_blank" title="تحميل مباشر" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/40 transition-colors text-xs font-bold flex items-center justify-center">
                             <i class="fa-solid fa-download"></i>
-                        </a>
+                        </a>` : ''}
                     </div>
                 `;
 
@@ -884,429 +644,159 @@
             });
         }
 
-        // Open Reader Modal
         function openReaderModal(id, selectedFolderFile = null) {
             const item = items.find(i => i.id === id);
             if (!item) return;
 
+            if (item.isPlaceholderFolder) {
+                openAdminModal();
+                return;
+            }
+
             item.views = (item.views || 0) + 1;
-            localStorage.setItem('future_success_portal_items_v27', JSON.stringify(items));
+            localStorage.setItem('future_success_portal_items_v36', JSON.stringify(items));
             updateStatsUI();
+            filterItems();
 
             const folderBar = document.getElementById('folderFilesBar');
             const yearsButtonsEl = document.getElementById('folderYearsButtons');
 
-            if (item.isFolder && item.folderFiles && item.folderFiles.length > 0) {
+            if (item.isDriveFolder && item.driveId) {
                 activeFolderItem = item;
-                const activeFile = selectedFolderFile || item.folderFiles[item.folderFiles.length - 1];
                 folderBar.classList.remove('hidden');
+                yearsButtonsEl.innerHTML = `<span class="text-[11px] text-cyan-300 font-bold">📂 يتم عرض محتويات مجلد Google Drive لشعبة ${item.stream} مباشرة أدناه — اختر أي سنة أو ملف لفتحه وتحميله (كل ملف يحتوي على جميع المواد).</span>`;
 
-                yearsButtonsEl.innerHTML = item.folderFiles.map(f => {
-                    const isSelected = f.driveId === activeFile.driveId && f.year === activeFile.year;
-                    return `
-                        <button type="button" onclick="selectFolderYear(${item.id}, '${f.year}', '${f.driveId}')"
-                            class="px-3 py-1 rounded-lg text-[11px] font-black transition-all border ${
-                                isSelected
-                                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow'
-                                    : 'bg-slate-800 text-slate-200 border-slate-700 hover:border-amber-500/50'
-                            }">
-                            ${f.year}
-                        </button>
-                    `;
-                }).join('');
-
-                document.getElementById('modalCategoryBadge').textContent = `مجلد بكالوريا • ${item.stream || 'تسيير واقتصاد'} • جميع المواد`;
-                document.getElementById('modalTitle').textContent = `${activeFile.label} — شعبة ${item.stream || 'تسيير واقتصاد'}`;
-                document.getElementById('modalSub').textContent = "يحتوي هذا الملف على جميع المواد المقررة في شعبة تسيير واقتصاد";
-                document.getElementById('modalExternalBtn').href = `https://drive.google.com/file/d/${activeFile.driveId}/view`;
-                document.getElementById('modalDownloadBtn').href = `https://drive.google.com/uc?export=download&id=${activeFile.driveId}`;
-
-                document.getElementById('iframeLoader').classList.remove('hidden');
-                document.getElementById('readerIframe').src = `https://drive.google.com/file/d/${activeFile.driveId}/preview`;
-            } else {
-                activeFolderItem = null;
-                folderBar.classList.add('hidden');
-
-                document.getElementById('modalCategoryBadge').textContent = item.section === 'book' ? (item.category || 'كتاب إلكتروني') : `مواضيع بكالوريا • ${item.stream || 'تسيير واقتصاد'}`;
+                document.getElementById('modalCategoryBadge').textContent = `مجلد بكالوريا • ${item.stream} • جميع المواد`;
                 document.getElementById('modalTitle').textContent = item.title;
-                document.getElementById('modalSub').textContent = item.author;
+                document.getElementById('modalSub').textContent = `يحتوي كل ملف داخل المجلد على جميع المواد المقررة في شعبة ${item.stream}`;
                 document.getElementById('modalExternalBtn').href = item.viewUrl;
                 document.getElementById('modalDownloadBtn').href = item.downloadUrl;
 
                 document.getElementById('iframeLoader').classList.remove('hidden');
-                document.getElementById('readerIframe').src = item.previewUrl;
+                document.getElementById('readerIframe').src = `https://drive.google.com/embeddedfolderview?id=${item.driveId}#list`;
+            } else if (item.isFolder && item.folderFiles && item.folderFiles.length > 0) {
+                activeFolderItem = item;
+                const activeFile = selectedFolderFile || item.folderFiles[item.folderFiles.length - 1];
+                activeFolderYear = activeFile.year;
+                folderBar.classList.remove('hidden');
+
+                yearsButtonsEl.innerHTML = item.folderFiles.map(f => {
+                    const isActive = f.year === activeFile.year;
+                    return `<button onclick='selectFolderYear(${item.id}, "${f.year}")' class="px-2.5 py-1 rounded-lg text-xs font-extrabold transition-all ${isActive ? 'bg-amber-500 text-slate-950 shadow' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}">
+                        بكالوريا ${f.year}
+                    </button>`;
+                }).join('');
+
+                const hasDirectFile = Boolean(activeFile.fileId && activeFile.fileId.trim() !== '');
+                const missingBox = document.getElementById('missingFileBox');
+                document.getElementById('modalCategoryBadge').textContent = `مجلد بكالوريا • ${item.stream} • جميع المواد`;
+                document.getElementById('modalTitle').textContent = activeFile.title;
+                document.getElementById('modalSub').textContent = hasDirectFile
+                    ? `شعبة ${item.stream} • ملف شامل لجميع المواد`
+                    : `شعبة ${item.stream} • في انتظار ربط ملف PDF الخاص بسنة ${activeFile.year}`;
+                document.getElementById('modalExternalBtn').href = hasDirectFile
+                    ? `https://drive.google.com/file/d/${activeFile.fileId}/view?usp=sharing`
+                    : '#';
+                document.getElementById('modalDownloadBtn').href = hasDirectFile
+                    ? `https://drive.google.com/uc?export=download&id=${activeFile.fileId}`
+                    : '#';
+
+                if (hasDirectFile) {
+                    missingBox.classList.add('hidden');
+                    document.getElementById('iframeLoader').classList.remove('hidden');
+                    document.getElementById('readerIframe').src = `https://drive.google.com/file/d/${activeFile.fileId}/preview`;
+                } else {
+                    document.getElementById('iframeLoader').classList.add('hidden');
+                    document.getElementById('readerIframe').src = 'about:blank';
+                    document.getElementById('missingFileTitle').textContent = `ربط ملف ${activeFile.title}`;
+                    document.getElementById('quickDriveLinkInput').value = '';
+                    missingBox.classList.remove('hidden');
+                }
+            } else {
+                activeFolderItem = null;
+                activeFolderYear = null;
+                document.getElementById('missingFileBox').classList.add('hidden');
+                folderBar.classList.add('hidden');
+                document.getElementById('modalCategoryBadge').textContent = item.category || 'كتاب إلكتروني';
+                document.getElementById('modalTitle').textContent = item.title;
+                document.getElementById('modalSub').textContent = item.author || '';
+                document.getElementById('modalExternalBtn').href = item.viewUrl || '#';
+                document.getElementById('modalDownloadBtn').href = item.downloadUrl || '#';
+                document.getElementById('iframeLoader').classList.remove('hidden');
+                document.getElementById('readerIframe').src = item.previewUrl || 'about:blank';
             }
 
             document.getElementById('readerModal').classList.remove('hidden');
         }
 
-        function selectFolderYear(itemId, year, driveId) {
+        function selectFolderYear(itemId, year) {
             const item = items.find(i => i.id === itemId);
             if (!item || !item.folderFiles) return;
-            const fileObj = item.folderFiles.find(f => f.year === year && f.driveId === driveId);
+            const fileObj = item.folderFiles.find(f => f.year === year);
             if (fileObj) {
                 openReaderModal(itemId, fileObj);
             }
         }
 
-        function closeReaderModal() {
-            document.getElementById('readerModal').classList.add('hidden');
-            document.getElementById('readerIframe').src = '';
-            activeFolderItem = null;
-        }
+        function saveQuickYearLink() {
+            if (!activeFolderItem || !activeFolderYear) return;
+            const raw = (document.getElementById('quickDriveLinkInput').value || '').trim();
+            if (!raw) return;
 
-        function openAdminAuthModal() {
-            document.getElementById('adminAuthModal').classList.remove('hidden');
-            document.getElementById('adminPinInput').value = '';
-            document.getElementById('adminPinInput').focus();
-        }
+            const targetItem = items.find(i => i.id === activeFolderItem.id);
+            if (!targetItem || !targetItem.folderFiles) return;
 
-        function closeAdminAuthModal() {
-            document.getElementById('adminAuthModal').classList.add('hidden');
-        }
+            // Extract all Google Drive IDs if multiple links are pasted at once
+            const allIds = [...raw.matchAll(/(?:\/d\/|id=)([a-zA-Z0-9_-]{15,})/g)].map(m => m[1]);
 
-        function handleAdminLogin(e) {
-            e.preventDefault();
-            const inputPin = document.getElementById('adminPinInput').value.trim();
-            if (inputPin === adminPin) {
-                closeAdminAuthModal();
-                switchView('admin');
-                showToast('تم تسجيل الدخول للوحة التحكم بنجاح 👑', 'success');
-            } else {
-                showToast('رمز الـ PIN غير صحيح! حاول مرة أخرى.', 'error');
-            }
-        }
-
-        function changeAdminPin() {
-            const newPin = prompt('أدخل رمز الـ PIN الجديد للوحة التحكم:');
-            if (newPin && newPin.trim().length >= 4) {
-                adminPin = newPin.trim();
-                localStorage.setItem('future_library_pin', adminPin);
-                updateStatsUI();
-                showToast('تم تحديث رمز الـ PIN بنجاح.', 'success');
-            }
-        }
-
-        function switchView(view) {
-            const visitorView = document.getElementById('visitorView');
-            const adminView = document.getElementById('adminView');
-            const btnVisitor = document.getElementById('btnVisitorNav');
-            const btnAdmin = document.getElementById('btnAdminNav');
-
-            if (view === 'admin') {
-                visitorView.classList.add('hidden');
-                adminView.classList.remove('hidden');
-                btnAdmin.classList.add('bg-amber-500/20', 'text-amber-400', 'border-amber-500/40');
-                btnVisitor.classList.remove('bg-amber-500/20', 'text-amber-400', 'border-amber-500/40');
-                renderAdminTable();
-                updateStatsUI();
-            } else {
-                adminView.classList.add('hidden');
-                visitorView.classList.remove('hidden');
-                btnVisitor.classList.add('bg-amber-500/20', 'text-amber-400', 'border-amber-500/40');
-                btnAdmin.classList.remove('bg-amber-500/20', 'text-amber-400', 'border-amber-500/40');
-                filterItems();
-            }
-        }
-
-        function switchAdminTab(tab) {
-            document.querySelectorAll('.admin-tab').forEach(b => {
-                b.classList.remove('active', 'text-amber-400', 'border-amber-400');
-                b.classList.add('text-slate-400', 'border-transparent');
-            });
-
-            document.getElementById('adminTabManage').classList.add('hidden');
-            document.getElementById('adminTabAdd').classList.add('hidden');
-            document.getElementById('adminTabAds').classList.add('hidden');
-
-            if (tab === 'manage') {
-                document.getElementById('tabBtnManage').classList.add('active', 'text-amber-400', 'border-amber-400');
-                document.getElementById('adminTabManage').classList.remove('hidden');
-                renderAdminTable();
-            } else if (tab === 'add') {
-                document.getElementById('tabBtnAdd').classList.add('active', 'text-amber-400', 'border-amber-400');
-                document.getElementById('adminTabAdd').classList.remove('hidden');
-            } else if (tab === 'ads') {
-                document.getElementById('tabBtnAds').classList.add('active', 'text-amber-400', 'border-amber-400');
-                document.getElementById('adminTabAds').classList.remove('hidden');
-            }
-        }
-
-        function toggleFormFieldsBySection() {
-            const sec = document.getElementById('newItemSection').value;
-            const examFields = document.getElementById('examSpecificFields');
-            const bookCategory = document.getElementById('bookSpecificCategory');
-            const lblAuthor = document.getElementById('lblAuthorSubject');
-
-            if (sec === 'exam') {
-                examFields.classList.remove('hidden');
-                bookCategory.classList.add('hidden');
-                lblAuthor.textContent = 'المحتوى / الشعبة *';
-            } else {
-                examFields.classList.add('hidden');
-                bookCategory.classList.remove('hidden');
-                lblAuthor.textContent = 'اسم الكاتب / المؤلف *';
-            }
-        }
-
-        function extractDriveId(url) {
-            const match1 = url.match(/\/d\/([a-zA-Z0-9_-]{10,})/);
-            if (match1 && match1[1]) return match1[1];
-            const match2 = url.match(/[?&]id=([a-zA-Z0-9_-]{10,})/);
-            if (match2 && match2[1]) return match2[1];
-            return null;
-        }
-
-        function handleAddNewItem(e) {
-            e.preventDefault();
-            const section = document.getElementById('newItemSection').value;
-            const title = document.getElementById('newItemTitle').value.trim();
-            const author = document.getElementById('newItemAuthor').value.trim();
-            const driveUrl = document.getElementById('newItemDriveUrl').value.trim();
-            const desc = document.getElementById('newItemDesc').value.trim();
-
-            const driveId = extractDriveId(driveUrl);
-            if (!driveId) {
-                showToast('تعذر استخراج معرف الملف من رابط Google Drive! تأكد من صحة الرابط.', 'error');
+            if (allIds.length > 1) {
+                targetItem.folderFiles.forEach((f, idx) => {
+                    if (allIds[idx]) f.fileId = allIds[idx];
+                });
+                localStorage.setItem('future_success_portal_items_v36', JSON.stringify(items));
+                const currentObj = targetItem.folderFiles.find(f => f.year === activeFolderYear) || targetItem.folderFiles[0];
+                openReaderModal(targetItem.id, currentObj);
                 return;
             }
 
-            const gradients = [
-                "from-amber-600 to-amber-950",
-                "from-emerald-600 to-emerald-950",
-                "from-cyan-600 to-cyan-950",
-                "from-indigo-600 to-indigo-950",
-                "from-rose-600 to-rose-950"
-            ];
-            const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+            const extractedId = allIds[0] || raw;
+            const fileObj = targetItem.folderFiles.find(f => f.year === activeFolderYear);
+            if (!fileObj) return;
 
-            const newItem = {
-                id: Date.now(),
-                section: section,
-                driveId: driveId,
-                title: title,
-                author: author,
-                desc: desc,
-                gradient: randomGradient,
-                views: 1,
-                viewUrl: `https://drive.google.com/file/d/${driveId}/view`,
-                previewUrl: `https://drive.google.com/file/d/${driveId}/preview`,
-                downloadUrl: `https://drive.google.com/uc?export=download&id=${driveId}`
-            };
-
-            if (section === 'exam') {
-                const stream = document.getElementById('newItemStream').value;
-                const yearLabel = document.getElementById('newItemYear').value.trim() || 'مواضيع بكالوريا';
-                newItem.stream = stream;
-                newItem.category = `مواضيع بكالوريا • ${stream}`;
-                newItem.featuredBadge = `🎓 بكالوريا • ${stream} • جميع المواد`;
-                newItem.author = `${author} • ${yearLabel} • جميع المواد`;
-            } else {
-                newItem.category = document.getElementById('newItemBookCategory').value;
-            }
-
-            items.unshift(newItem);
-            saveItemsState();
-            renderAdminTable();
-
-            document.getElementById('addItemForm').reset();
-            toggleFormFieldsBySection();
-            switchAdminTab('manage');
-            showToast(`تمت إضافة "${title}" بنجاح إلى المنصة!`, 'success');
+            fileObj.fileId = extractedId;
+            localStorage.setItem('future_success_portal_items_v36', JSON.stringify(items));
+            openReaderModal(targetItem.id, fileObj);
         }
 
-        function renderAdminTable() {
-            const tbody = document.getElementById('adminItemsTableBody');
-            const query = (document.getElementById('adminSearchInput')?.value || '').toLowerCase().trim();
-            tbody.innerHTML = '';
-
-            const rows = items.filter(item =>
-                !query ||
-                item.title.toLowerCase().includes(query) ||
-                item.author.toLowerCase().includes(query) ||
-                item.driveId.toLowerCase().includes(query)
-            );
-
-            rows.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-900/40 transition-colors";
-                const extraBadge = item.isFolder
-                    ? `<span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">${item.folderFiles.length} سنوات</span>`
-                    : '';
-
-                tr.innerHTML = `
-                    <td class="p-3.5 font-bold whitespace-nowrap">
-                        <span class="px-2.5 py-1 rounded-lg text-[10px] ${item.section === 'book' ? 'bg-amber-500/15 text-amber-400' : 'bg-cyan-500/15 text-cyan-400'}">
-                            ${item.section === 'book' ? '📚 كتاب' : '🎓 مواضيع بكالوريا'}
-                        </span>
-                    </td>
-                    <td class="p-3.5 font-bold text-white dark:text-white light:text-slate-900">
-                        ${item.title} ${extraBadge}
-                        <span class="block text-[10px] text-slate-400 font-normal">${item.author}</span>
-                    </td>
-                    <td class="p-3.5 text-slate-300 dark:text-slate-300 light:text-slate-700">${item.stream || item.category || '-'}</td>
-                    <td class="p-3.5 font-mono text-[11px] text-amber-400" dir="ltr">${item.driveId}</td>
-                    <td class="p-3.5 text-center font-bold text-emerald-400">${item.views || 0}</td>
-                    <td class="p-3.5 text-center whitespace-nowrap">
-                        <button onclick="openReaderModal(${item.id})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-amber-500/20 text-amber-400 mr-1" title="معاينة">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <button onclick="deleteItem(${item.id})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-red-500/20 text-red-400" title="حذف">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
+        function closeReaderModal() {
+            document.getElementById('readerModal').classList.add('hidden');
+            document.getElementById('missingFileBox').classList.add('hidden');
+            document.getElementById('readerIframe').src = 'about:blank';
         }
 
-        function deleteItem(id) {
-            items = items.filter(i => i.id !== id);
-            saveItemsState();
-            renderAdminTable();
-            showToast('تم حذف العنصر من المنصة.', 'info');
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
         }
 
-        function resetToSeedData() {
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function resetLibraryData() {
+            localStorage.removeItem('future_success_portal_items_v36');
             items = JSON.parse(JSON.stringify(initialSeedData));
-            saveItemsState();
-            renderAdminTable();
-            showToast('تمت استعادة البيانات الافتراضية والمجلد الجامع لبكالوريا تسيير واقتصاد.', 'success');
-        }
-
-        function exportDataJSON() {
-            const payload = {
-                exportedAt: new Date().toISOString(),
-                items: items,
-                ads: adConfig
-            };
-            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'maktaba-mostaqbal-bac-tassiyir.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('تم تصدير ملف النسخة الاحتياطية JSON.', 'success');
-        }
-
-        function importDataJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                try {
-                    const parsed = JSON.parse(e.target.result);
-                    if (Array.isArray(parsed.items)) {
-                        items = parsed.items;
-                        if (parsed.ads) {
-                            adConfig = parsed.ads;
-                            localStorage.setItem('future_library_ads', JSON.stringify(adConfig));
-                            applyAdSettings();
-                            loadAdsIntoAdminForm();
-                        }
-                        saveItemsState();
-                        renderAdminTable();
-                        showToast('تم استيراد البيانات بنجاح!', 'success');
-                    } else {
-                        showToast('صيغة ملف JSON غير صالحة.', 'error');
-                    }
-                } catch (err) {
-                    showToast('حدث خطأ أثناء قراءة ملف JSON.', 'error');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
-        }
-
-        function loadAdsIntoAdminForm() {
-            document.getElementById('adTopStatus').checked = Boolean(adConfig.topActive);
-            document.getElementById('adTopText').value = adConfig.topText || '';
-            document.getElementById('adTopLink').value = adConfig.topLink || '';
-            document.getElementById('adFeedStatus').checked = Boolean(adConfig.feedActive);
-            document.getElementById('adFeedTitleInput').value = adConfig.feedTitle || '';
-            document.getElementById('adFeedDescInput').value = adConfig.feedDesc || '';
-        }
-
-        function saveAdSettings() {
-            adConfig = {
-                topActive: document.getElementById('adTopStatus').checked,
-                topText: document.getElementById('adTopText').value.trim(),
-                topLink: document.getElementById('adTopLink').value.trim() || 'https://wa.me/213780564922',
-                feedActive: document.getElementById('adFeedStatus').checked,
-                feedTitle: document.getElementById('adFeedTitleInput').value.trim(),
-                feedDesc: document.getElementById('adFeedDescInput').value.trim()
-            };
-            localStorage.setItem('future_library_ads', JSON.stringify(adConfig));
-            applyAdSettings();
+            localStorage.setItem('future_success_portal_items_v36', JSON.stringify(items));
             updateStatsUI();
-            showToast('تم حفظ إعدادات الإعلانات بنجاح.', 'success');
-        }
-
-        function applyAdSettings() {
-            const topContainer = document.getElementById('adSlotTopContainer');
-            const feedContainer = document.getElementById('adSlotFeedContainer');
-
-            if (adConfig.topActive) {
-                topContainer.classList.remove('hidden');
-                document.getElementById('adSlotTopContent').textContent = adConfig.topText;
-                document.getElementById('adSlotTopBtn').href = adConfig.topLink;
-            } else {
-                topContainer.classList.add('hidden');
-            }
-
-            if (adConfig.feedActive) {
-                feedContainer.classList.remove('hidden');
-                document.getElementById('adSlotFeedTitle').textContent = adConfig.feedTitle;
-                document.getElementById('adSlotFeedDesc').textContent = adConfig.feedDesc;
-            } else {
-                feedContainer.classList.add('hidden');
-            }
-        }
-
-        function updateStatsUI() {
-            document.getElementById('statTotalItems').textContent = items.length;
-            const totalViews = items.reduce((acc, item) => acc + (item.views || 0), 0);
-            document.getElementById('statTotalViews').textContent = totalViews.toLocaleString();
-            const activeAdsCount = (adConfig.topActive ? 1 : 0) + (adConfig.feedActive ? 1 : 0) + 1;
-            document.getElementById('statActiveAds').textContent = `${activeAdsCount} / 3`;
-        }
-
-        function openStaticModal(type) {
-            const box = document.getElementById('staticModalContent');
-            if (type === 'about') {
-                box.innerHTML = `<h3 class="text-base font-black text-white">من نحن — مكتبة المستقبل والنجاح</h3><p>منصة تعليمية وثقافية توفر الكتب الإلكترونية ومواضيع البكالوريا لشعبة تسيير واقتصاد في مجلد منظم يشمل جميع المواد.</p>`;
-            } else if (type === 'privacy') {
-                box.innerHTML = `<h3 class="text-base font-black text-white">سياسة الخصوصية</h3><p>نحترم خصوصية زوارنا ولا نقوم بجمع بيانات شخصية حساسة، وتُستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وعرض الإعلانات.</p>`;
-            } else {
-                box.innerHTML = `<h3 class="text-base font-black text-white">اتصل بنا</h3><p>للاستفسارات والدعم الدراسي أو التقني: <span class="text-amber-400 font-bold">0780564922</span> عبر الهاتف أو الواتساب.</p>`;
-            }
-            document.getElementById('staticModal').classList.remove('hidden');
-        }
-
-        function closeStaticModal() {
-            document.getElementById('staticModal').classList.add('hidden');
-        }
-
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            const colors = {
-                success: 'bg-emerald-500 text-slate-950',
-                error: 'bg-red-500 text-white',
-                info: 'bg-slate-800 text-amber-300 border border-amber-500/30'
-            };
-            toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-2xl text-xs font-black shadow-xl transition-all`;
-            toast.textContent = message;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3200);
-        }
-
-        function saveItemsState() {
-            localStorage.setItem('future_success_portal_items_v27', JSON.stringify(items));
+            populateCategoryFilter();
             filterItems();
-            updateStatsUI();
+            closeAdminModal();
         }
+
+        window.onload = function () {
+            updateStatsUI();
+            populateCategoryFilter();
+            filterItems();
+        };
     </script>
 </body>
 </html>
