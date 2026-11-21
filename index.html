@@ -578,9 +578,9 @@
 
     <!-- JS Application Logic -->
     <script>
-        // Seed Data: 10 Real Books + Bac Exam Samples
+        // Seed Data: 10 Real Books Only + Bac Exam Samples
         const initialSeedData = [
-            // --- SECTION 1: BOOKS (الـ 10 كتب الحقيقية) ---
+            // --- SECTION 1: BOOKS (الـ 10 كتب الحقيقية فقط) ---
             {
                 id: 101,
                 section: "book",
@@ -775,7 +775,7 @@
                 id: 204,
                 section: "exam",
                 driveId: "1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy",
-                title: "فرض الفصل الثاني في مادة الاقتصاد والمك localtime",
+                title: "فرض الفصل الثاني في مادة الاقتصاد والمالية",
                 author: "مادة التسيير والمالية",
                 stream: "تسيير واقتصاد",
                 docType: "فرض محروس",
@@ -789,8 +789,8 @@
             }
         ];
 
-        // Global Application State
-        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v3')) || initialSeedData;
+        // Global Application State (v4 for fresh clean reset of 10 real books only)
+        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v4')) || initialSeedData;
         let adminPin = localStorage.getItem('future_library_pin') || '1234';
         let activeSection = 'all'; // 'all', 'books', 'exams'
 
@@ -1259,7 +1259,7 @@
 
         // State Save Helpers
         function saveItemsState() {
-            localStorage.setItem('future_success_portal_items_v3', JSON.stringify(items));
+            localStorage.setItem('future_success_portal_items_v4', JSON.stringify(items));
             renderCatalogItems();
             updateStatsUI();
         }
