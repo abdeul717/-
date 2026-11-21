@@ -274,7 +274,7 @@
             <div class="flex-1 bg-slate-100 relative">
                 <iframe id="readerIframe" src="" title="معاينة الكتاب" class="w-full h-full border-0" allow="autoplay; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <div id="readerFallbackHint" class="absolute bottom-0 inset-x-0 z-10 bg-slate-900/95 text-white px-4 py-3 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
-                    <span class="text-xs">إذا بقيت المعاينة بيضاء، افتح الملف مباشرة في Google Drive.</span>
+                    <span class="text-xs">إذا لم تظهر المعاينة أو بقيت بيضاء، افتح الكتاب مباشرة في Google Drive.</span>
                     <a id="readerFallbackLink" href="#" target="_blank" rel="noopener noreferrer" class="shrink-0 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 text-xs font-extrabold">فتح الكتاب مباشرة</a>
                 </div>
                 <div id="readerEmptyState" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-white">
@@ -584,15 +584,18 @@
                         const existingIds = new Set(parsed.map(item => item && item.id));
                         const additions = DEFAULT_ITEMS.filter(item => !existingIds.has(item.id) && item.type === 'book');
                         const merged = parsed.concat(JSON.parse(JSON.stringify(additions)));
-                        // حدّث أسماء الكتب الـ21 الجديدة حتى عند وجود نسخة محفوظة قديمة في المتصفح.
+                        // حدّث الكتب الجديدة الـ21 وروابطها من القائمة المعتمدة، حتى لا تبقى بيانات قديمة مخزنة.
                         const defaultsById = new Map(DEFAULT_ITEMS.map(item => [item.id, item]));
                         let migrated = false;
                         merged.forEach(item => {
                             const fresh = defaultsById.get(item && item.id);
-                            if (fresh && item.type === 'book' && /^كتاب إضافي \d+$/.test(item.title || '')) {
+                            if (fresh && item.type === 'book' && item.id >= 12 && item.id <= 32) {
+                                if (item.title !== fresh.title || item.category !== fresh.category ||
+                                    item.description !== fresh.description || item.fileId !== fresh.fileId) migrated = true;
                                 item.title = fresh.title;
+                                item.category = fresh.category;
                                 item.description = fresh.description;
-                                migrated = true;
+                                item.fileId = fresh.fileId;
                             }
                         });
                         if (additions.length || migrated) {
@@ -698,6 +701,12 @@
                 const inYears = Array.isArray(item.years) && item.years.some(y => String(y.year).includes(query));
                 return inTitle || inCategory || inDesc || inYears;
             });
+
+            // ترتيب الكتب أبجدياً بالعربية مع الحفاظ على ارتباط كل عنوان بمعرّف ملفه.
+            if (currentSection === 'book') {
+                const arabicCollator = new Intl.Collator('ar', { sensitivity: 'base', numeric: true });
+                filtered.sort((a, b) => arabicCollator.compare(a.title || '', b.title || ''));
+            }
 
             document.getElementById('resultsCountText').textContent = `عدد العناصر: ${filtered.length}`;
 
