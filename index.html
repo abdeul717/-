@@ -467,9 +467,9 @@
             { id: 11, type: 'book', title: 'نظرة جديدة للقرآن', category: 'مكتبة رقمية', description: 'كتاب رقمي (نظرة_جديدة_للقرآن.pdf) متاح للمعاينة المباشرة داخل البوابة.', fileId: BOOKS_FILE_IDS[11] || '' },
             { id: 12, type: 'book', title: 'إصلاح الفكر الإسلامي', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان إصلاح الفكر الإسلامي متاح للفتح من Google Drive.', fileId: '19hyddpnyuYOZ1ZJ64E1-y65zYF6J7x1B' },
             { id: 13, type: 'book', title: 'أصوات الضمير', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان أصوات الضمير متاح للفتح من Google Drive.', fileId: '1C4ZLKbBYL7Y2UZxFB9r4dzS6atuEeeAG' },
-            { id: 14, type: 'book', title: 'الإعداد والانتخاب', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان الإعداد والانتخاب متاح للفتح من Google Drive.', fileId: '1w1WZeFmjGFBwDJ0Kt6HV-KoTVJCLNCsI' },
-            { id: 15, type: 'book', title: 'البشرى في المستقبل', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان البشرى في المستقبل متاح للفتح من Google Drive.', fileId: '1x4VxLyEqNqnWbOUGzI-gtNJ_GmsDkNPr' },
-            { id: 16, type: 'book', title: 'الدونية', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان الدونية متاح للفتح من Google Drive.', fileId: '1OMRAjOtF6_cbac-dRu-NIoTEHhFA00yF' },
+            { id: 14, type: 'book', title: 'الإعداد والانتحال', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان الإعداد والانتحال متاح للفتح من Google Drive.', fileId: '1w1WZeFmjGFBwDJ0Kt6HV-KoTVJCLNCsI' },
+            { id: 15, type: 'book', title: 'البشر في المستقبل', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان البشر في المستقبل متاح للفتح من Google Drive.', fileId: '1x4VxLyEqNqnWbOUGzI-gtNJ_GmsDkNPr' },
+            { id: 16, type: 'book', title: 'البوذية', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان البوذية متاح للفتح من Google Drive.', fileId: '1OMRAjOtF6_cbac-dRu-NIoTEHhFA00yF' },
             { id: 17, type: 'book', title: 'التفسير الموضوعي للقرآن الكريم', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان التفسير الموضوعي للقرآن الكريم متاح للفتح من Google Drive.', fileId: '1tMpusGFvKflqXZqAVoHQCilV9-213Gh0' },
             { id: 18, type: 'book', title: 'الدماغ المفكر', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان الدماغ المفكر متاح للفتح من Google Drive.', fileId: '1j3i8RLuWsquVwv3SLX7MTcxbrsTmxYwE' },
             { id: 19, type: 'book', title: 'الرؤى السلوكية', category: 'كتب إضافية', description: 'كتاب رقمي بعنوان الرؤى السلوكية متاح للفتح من Google Drive.', fileId: '1R4DbsnKmXPiFrx-UKZnKeb8kDXBQ4-XM' },
@@ -584,7 +584,7 @@
                         const existingIds = new Set(parsed.map(item => item && item.id));
                         const additions = DEFAULT_ITEMS.filter(item => !existingIds.has(item.id) && item.type === 'book');
                         const merged = parsed.concat(JSON.parse(JSON.stringify(additions)));
-                        // حدّث الكتب الجديدة الـ21 وروابطها من القائمة المعتمدة، حتى لا تبقى بيانات قديمة مخزنة.
+                        // حدّث عناوين الكتب وروابطها من القائمة المعتمدة، حتى لا تبقى بيانات قديمة مخزنة.
                         const defaultsById = new Map(DEFAULT_ITEMS.map(item => [item.id, item]));
                         let migrated = false;
                         merged.forEach(item => {
