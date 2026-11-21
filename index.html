@@ -207,7 +207,7 @@
                         <span>📚 جميع الكتب والمواضيع المتاحة</span>
                     </h2>
                     <span id="itemsCounterBadge" class="text-xs bg-slate-900 dark:bg-slate-900 light:bg-amber-100 border border-slate-800 dark:border-slate-800 light:border-amber-300 text-amber-400 dark:text-amber-400 light:text-amber-800 font-bold px-3 py-1 rounded-lg">
-                        14 عنصر
+                        10 عناصر
                     </span>
                 </div>
 
@@ -278,7 +278,7 @@
                 </div>
                 <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-1">
                     <span class="text-xs text-slate-400 font-bold">رمز الدخول السرّي</span>
-                    <h3 id="statPinCode" class="text-xl sm:text-2xl font-black text-purple-400 font-mono">1234</h3>
+                    <h3 id="statPinCode" class="text-xl sm:text-2xl font-black text-purple-400 font-mono">••••••••</h3>
                     <button onclick="changeAdminPin()" class="text-[10px] text-slate-400 underline hover:text-white">تغيير رمز PIN</button>
                 </div>
             </div>
@@ -554,10 +554,9 @@
 
             <h3 class="text-lg font-black text-white">تسجيل الدخول للوحة التحكم</h3>
             <p class="text-xs text-slate-400">أدخل رمز الـ PIN الخاص بك للوصول للوحة التحكم</p>
-            <p class="text-[11px] bg-slate-900 border border-slate-800 text-amber-400 p-2 rounded-xl font-mono">الرمز الافتراضي للتجربة هو: <strong class="text-white font-mono">1234</strong></p>
 
             <form onsubmit="handleAdminLogin(event)" class="space-y-3 pt-2">
-                <input type="password" id="adminPinInput" required placeholder="أدخل رمز PIN..." 
+                <input type="password" id="adminPinInput" required placeholder="أدخل رمز PIN السري..." 
                     class="w-full text-center bg-slate-900 border border-slate-700 rounded-xl py-3 text-lg text-white tracking-widest focus:outline-none focus:border-amber-500">
                 <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm transition-all shadow-lg">
                     تأكيد والدخول 🔑
@@ -580,7 +579,7 @@
     <script>
         // Seed Data: 10 Real Books Only + Bac Exam Samples
         const initialSeedData = [
-            // --- SECTION 1: BOOKS (الـ 10 كتب الحقيقية فقط) ---
+            // --- SECTION 1: BOOKS (الـ 10 كتب الحقيقية من Google Drive) ---
             {
                 id: 101,
                 section: "book",
@@ -720,129 +719,51 @@
                 viewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/view",
                 previewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/preview",
                 downloadUrl: "https://drive.google.com/uc?export=download&id=1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy"
-            },
-
-            // --- SECTION 2: EXAMS & BAC (قسم الفروض والاختبارات ومواضيع البكالوريا) ---
-            {
-                id: 201,
-                section: "exam",
-                driveId: "1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv",
-                title: "موضوع بكالوريا الرياضيات 2023 + التصحيح النموذجي",
-                author: "مادة الرياضيات",
-                stream: "علوم تجريبية",
-                docType: "موضوع بكالوريا مع التصحيح",
-                term: "بكالوريا رسمية",
-                desc: "الموضوع الرسمي لشهادة البكالوريا في مادة الرياضيات لشعبة العلوم التجريبية مرفقاً بالتصحيح النموذجي وتوزيع النقاط.",
-                gradient: "from-cyan-600 to-slate-900",
-                views: 890,
-                viewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/view",
-                previewUrl: "https://drive.google.com/file/d/1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1dxIwuL7fIAII22wN82qKKMdKm2Yupgtv"
-            },
-            {
-                id: 202,
-                section: "exam",
-                driveId: "1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs",
-                title: "اختبار الفصل الأول في العلوم الفيزيائية",
-                author: "مادة العلوم الفيزيائية",
-                stream: "رياضيات وتقني رياضي",
-                docType: "اختبار الفصل",
-                term: "الفصل الأول",
-                desc: "اختبار مقترح لمادة الفيزياء يتضمن وحدة المتابعة الزمنية لتحول كيميائي وحركة الأجسام مع الحل التفصيلي.",
-                gradient: "from-emerald-600 to-slate-900",
-                views: 630,
-                viewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/view",
-                previewUrl: "https://drive.google.com/file/d/1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1bERg-8w_KLVq9ni-ct5gwaBo9izE-VCs"
-            },
-            {
-                id: 203,
-                section: "exam",
-                driveId: "1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP",
-                title: "مقالات الفلسفة المقترحة لبكالوريا 2024",
-                author: "مادة الفلسفة",
-                stream: "آداب وفلسفة",
-                docType: "ملخص وحوليات",
-                term: "بكالوريا رسمية",
-                desc: "تجميعة شاملة لأهم المقالات الفلسفية المتوقعة شعبة آداب وفلسفة مجهزة ومكتوبة بأسلوب نموذجي.",
-                gradient: "from-amber-600 to-slate-900",
-                views: 1120,
-                viewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/view",
-                previewUrl: "https://drive.google.com/file/d/1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1n_f3dXkswnQUsq8vNFY1ZNJrHdSt0moP"
-            },
-            {
-                id: 204,
-                section: "exam",
-                driveId: "1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy",
-                title: "فرض الفصل الثاني في مادة الاقتصاد والمالية",
-                author: "مادة التسيير والمالية",
-                stream: "تسيير واقتصاد",
-                docType: "فرض محروس",
-                term: "الفصل الثاني",
-                desc: "فرض محروس في مادة المحاسبة والاقتصاد مع حلول وتمارين المحاسبة التحليلية وإعداد الميزانية.",
-                gradient: "from-indigo-600 to-slate-900",
-                views: 510,
-                viewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/view",
-                previewUrl: "https://drive.google.com/file/d/1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy/preview",
-                downloadUrl: "https://drive.google.com/uc?export=download&id=1qbFp8ot93M3d5HUqpke4tn1YBvv4pICy"
             }
         ];
 
-        // Global Application State (v4 for fresh clean reset of 10 real books only)
-        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v4')) || initialSeedData;
-        let adminPin = localStorage.getItem('future_library_pin') || '1234';
-        let activeSection = 'all'; // 'all', 'books', 'exams'
-
-        let adSettings = JSON.parse(localStorage.getItem('future_library_ads')) || {
-            topActive: true,
-            topText: "✨ احصل على ملخصات وسلاسل تمارين ومساعدة دراسية وتطوير مشروعاتك اليوم!",
-            topLink: "https://wa.me/213780564922",
-            feedActive: true,
-            feedTitle: "هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي تعليمي؟",
-            feedDesc: "تواصل مع صاحب المنصة مباشرة لتنفيذ مشروعاتك الرقمية بأحدث التقنيات وأفضل الأسعار!"
+        // Global State: Using v6 so previous exam items are cleared automatically
+        let items = JSON.parse(localStorage.getItem('future_success_portal_items_v6')) || initialSeedData;
+        let adminPin = localStorage.getItem('future_library_pin') || '0796563770';
+        let activeSection = 'all'; // 'all', 'book', 'exam'
+        let adSettings = JSON.parse(localStorage.getItem('future_library_ads_v5')) || {
+            topEnabled: true,
+            topText: '✨ احصل على ملخصات وسلاسل تمارين ومساعدة دراسية وتطوير مشروعاتك اليوم!',
+            topLink: 'https://wa.me/213780564922',
+            feedEnabled: true,
+            feedTitle: 'هل تحتاج لتصميم وتطوير موقع أو تطبيق رقمي تعليمي؟',
+            feedDesc: 'تواصل مع صاحب المنصة مباشرة لتنفيذ مشروعاتك الرقمية بأحدث التقنيات وأفضل الأسعار!'
         };
 
-        // Window On Load
-        window.onload = function() {
-            renderCatalogItems();
-            applyAdSettings();
-            updateStatsUI();
-        };
-
-        // Theme Switcher
+        // Theme Toggle Helper
         function toggleTheme() {
             const html = document.documentElement;
-            const themeIcon = document.getElementById('themeIcon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                themeIcon.className = 'fa-solid fa-sun text-amber-500';
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                themeIcon.className = 'fa-solid fa-moon text-amber-400';
+            const isDark = html.classList.toggle('dark');
+            html.classList.toggle('light', !isDark);
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+            }
+            localStorage.setItem('future_library_theme', isDark ? 'dark' : 'light');
+        }
+
+        function applySavedTheme() {
+            const saved = localStorage.getItem('future_library_theme') || 'dark';
+            const html = document.documentElement;
+            const isDark = saved === 'dark';
+            html.classList.toggle('dark', isDark);
+            html.classList.toggle('light', !isDark);
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
             }
         }
 
-        // Google Drive Link Helper
-        function parseGoogleDriveUrl(url) {
-            const idMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-            if (idMatch && idMatch[1]) {
-                const id = idMatch[1];
-                return {
-                    driveId: id,
-                    viewUrl: `https://drive.google.com/file/d/${id}/view`,
-                    previewUrl: `https://drive.google.com/file/d/${id}/preview`,
-                    downloadUrl: `https://drive.google.com/uc?export=download&id=${id}`
-                };
-            }
-            return null;
-        }
-
-        // Switch Main Visitor Sections
+        // Switch Main Visitor Sections (Fixed singular matching 'book' and 'exam')
         function switchMainSection(sec) {
-            activeSection = sec;
+            if (sec === 'books') activeSection = 'book';
+            else if (sec === 'exams') activeSection = 'exam';
+            else activeSection = sec;
             
             document.querySelectorAll('.sec-tab').forEach(btn => {
                 btn.className = 'sec-tab px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-slate-900 dark:bg-slate-900 light:bg-white text-slate-300 dark:text-slate-300 light:text-slate-700 border border-slate-800 dark:border-slate-800 light:border-slate-300';
@@ -851,15 +772,15 @@
             const filterBox = document.getElementById('examsFilterBox');
             const catalogTitle = document.getElementById('catalogTitle');
 
-            if (sec === 'all') {
+            if (activeSection === 'all') {
                 document.getElementById('secTabAll').className = 'sec-tab active px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-lg';
                 filterBox.classList.add('hidden');
                 catalogTitle.innerHTML = `<span>📚 جميع الكتب والمواضيع المتاحة</span>`;
-            } else if (sec === 'books') {
+            } else if (activeSection === 'book') {
                 document.getElementById('secTabBooks').className = 'sec-tab active px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-lg';
                 filterBox.classList.add('hidden');
-                catalogTitle.innerHTML = `<span>📖 قسم الكتب الإلكترونية والمؤلفات</span>`;
-            } else if (sec === 'exams') {
+                catalogTitle.innerHTML = `<span>📖 قسم الكتب الإلكترونية والمؤلفات الـ 10</span>`;
+            } else if (activeSection === 'exam') {
                 document.getElementById('secTabExams').className = 'sec-tab active px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg';
                 filterBox.classList.remove('hidden');
                 catalogTitle.innerHTML = `<span>🎓 قسم فروض واختبارات ومواضيع البكالوريا</span>`;
@@ -882,7 +803,7 @@
                 container.innerHTML = `
                     <div class="col-span-full text-center py-12 text-slate-400 space-y-2">
                         <span class="text-3xl">🔍</span>
-                        <p class="font-bold text-sm">لم نجد أي عنصر يطابق البحث والفلاتر المحددة!</p>
+                        <p class="font-bold text-sm">لم نجد أي كتاب أو موضوع يطابق خيارات البحث!</p>
                     </div>
                 `;
                 return;
@@ -948,14 +869,14 @@
             const term = document.getElementById('filterTerm').value;
 
             const filtered = items.filter(i => {
-                const matchSec = activeSection === 'all' || i.section === activeSection;
-                const matchQ = i.title.toLowerCase().includes(query) || i.author.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query);
+                const matchSec = (activeSection === 'all') || (i.section === activeSection);
+                const matchQ = !query || i.title.toLowerCase().includes(query) || i.author.toLowerCase().includes(query) || (i.desc && i.desc.toLowerCase().includes(query));
                 
                 let matchStream = true;
                 let matchDocType = true;
                 let matchTerm = true;
 
-                if (activeSection === 'exams' || i.section === 'exam') {
+                if (activeSection === 'exam' || i.section === 'exam') {
                     if (stream !== 'all') matchStream = i.stream === stream;
                     if (docType !== 'all') matchDocType = i.docType === docType;
                     if (term !== 'all') matchTerm = i.term === term;
@@ -1034,242 +955,536 @@
                 switchView('admin');
                 showToast("تم تسجيل الدخول بنجاح للوحة التحكم 🔑");
             } else {
-                showToast("⚠️ الرمز غير صحيح! الرمز الافتراضي هو 1234");
+                showToast("⚠️ رمز المرور السري غير صحيح!");
             }
         }
 
-        function changeAdminPin() {
-            const newPin = prompt("أدخل رمز PIN جديد للوحة التحكم:", adminPin);
-            if (newPin && newPin.trim().length >= 4) {
-                adminPin = newPin.trim();
-                localStorage.setItem('future_library_pin', adminPin);
-                updateStatsUI();
-                showToast("تم تحديث رمز الدخول بنجاح! 🔒");
-            }
+        // State Save Helpers
+        function saveItemsState() {
+            localStorage.setItem('future_success_portal_items_v6', JSON.stringify(items));
+            renderCatalogItems();
+            updateStatsUI();
         }
 
-        // Admin Tabs Switcher
+        // Admin Tab Switcher
         function switchAdminTab(tab) {
-            document.getElementById('adminTabManage').classList.add('hidden');
-            document.getElementById('adminTabAdd').classList.add('hidden');
-            document.getElementById('adminTabAds').classList.add('hidden');
-
-            document.querySelectorAll('.admin-tab').forEach(b => {
-                b.className = 'admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap';
+            ['manage', 'add', 'ads'].forEach(t => {
+                const panel = document.getElementById(`adminTab${t.charAt(0).toUpperCase() + t.slice(1)}`);
+                const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+                if (panel) panel.classList.toggle('hidden', t !== tab);
+                if (btn) {
+                    btn.className = t === tab
+                        ? 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap'
+                        : 'admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap';
+                }
             });
-
-            if (tab === 'manage') {
-                document.getElementById('adminTabManage').classList.remove('hidden');
-                document.getElementById('tabBtnManage').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
-            } else if (tab === 'add') {
-                document.getElementById('adminTabAdd').classList.remove('hidden');
-                document.getElementById('tabBtnAdd').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
-            } else if (tab === 'ads') {
-                document.getElementById('adminTabAds').classList.remove('hidden');
-                document.getElementById('tabBtnAds').className = 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap';
-                loadAdFormValues();
-            }
+            if (tab === 'manage') renderAdminTable();
+            if (tab === 'add') toggleFormFieldsBySection();
+            if (tab === 'ads') loadAdInputs();
         }
 
-        // Dynamic Form Fields Trigger based on Section
+        // Toggle Add Form Fields Based on Section
         function toggleFormFieldsBySection() {
             const sec = document.getElementById('newItemSection').value;
             const examFields = document.getElementById('examSpecificFields');
             const bookCat = document.getElementById('bookSpecificCategory');
-            const lblAuthorSubject = document.getElementById('lblAuthorSubject');
+            const lblAuthor = document.getElementById('lblAuthorSubject');
 
             if (sec === 'exam') {
                 examFields.classList.remove('hidden');
                 bookCat.classList.add('hidden');
-                lblAuthorSubject.innerText = 'المادة التعليمية *';
+                lblAuthor.innerText = 'المادة الدراسية *';
             } else {
                 examFields.classList.add('hidden');
                 bookCat.classList.remove('hidden');
-                lblAuthorSubject.innerText = 'اسم الكاتب / المؤلف *';
+                lblAuthor.innerText = 'اسم الكاتب / المؤلف *';
+            }
+        }
+
+        // Extract Google Drive File ID from Any Drive URL
+        function extractGoogleDriveId(url) {
+            if (!url) return '';
+            const patterns = [
+                /\/file\/d\/([a-zA-Z0-9_-]+)/,
+                /[?&]id=([a-zA-Z0-9_-]+)/,
+                /\/d\/([a-zA-Z0-9_-]+)/
+            ];
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match && match[1]) return match[1];
+            }
+            return url.trim();
+        }
+
+        // Add New Item from Admin Form
+        function handleAddNewItem(e) {
+            e.preventDefault();
+            try {
+                const section = document.getElementById('newItemSection').value;
+                const title = document.getElementById('newItemTitle').value.trim();
+                const author = document.getElementById('newItemAuthor').value.trim();
+                const rawUrl = document.getElementById('newItemDriveUrl').value.trim();
+                const desc = document.getElementById('newItemDesc').value.trim();
+                const driveId = extractGoogleDriveId(rawUrl);
+
+                if (!driveId) {
+                    showToast('⚠️ تعذر استخراج معرف ملف Google Drive!');
+                    return;
+                }
+
+                const newItem = {
+                    id: Date.now(),
+                    section,
+                    driveId,
+                    title,
+                    author,
+                    desc,
+                    views: 0,
+                    gradient: section === 'exam' ? 'from-cyan-600 to-slate-900' : 'from-amber-600 to-amber-950',
+                    viewUrl: `https://drive.google.com/file/d/${driveId}/view`,
+                    previewUrl: `https://drive.google.com/file/d/${driveId}/preview`,
+                    downloadUrl: `https://drive.google.com/uc?export=download&id=${driveId}`
+                };
+
+                if (section === 'exam') {
+                    newItem.stream = document.getElementById('newItemStream').value;
+                    newItem.docType = document.getElementById('newItemDocType').value;
+                    newItem.term = document.getElementById('newItemTerm').value;
+                } else {
+                    newItem.category = document.getElementById('newItemBookCategory').value;
+                }
+
+                items.unshift(newItem);
+                saveItemsState();
+                renderAdminTable();
+                document.getElementById('addItemForm').reset();
+                toggleFormFieldsBySection();
+                switchAdminTab('manage');
+                showToast('✅ تم نشر المحتوى الجديد وربطه بـ Google Drive بنجاح!');
+            } catch (err) {
+                showToast('❌ حدث خطأ أثناء إضافة المحتوى!');
             }
         }
 
         // Render Admin Management Table
         function renderAdminTable() {
             const tbody = document.getElementById('adminItemsTableBody');
-            const q = (document.getElementById('adminSearchInput').value || '').toLowerCase();
-            const filtered = items.filter(i => i.title.toLowerCase().includes(q) || i.author.toLowerCase().includes(q));
+            if (!tbody) return;
+            const q = (document.getElementById('adminSearchInput')?.value || '').toLowerCase();
+
+            const filtered = items.filter(item =>
+                !q ||
+                item.title.toLowerCase().includes(q) ||
+                item.author.toLowerCase().includes(q) ||
+                (item.stream && item.stream.toLowerCase().includes(q)) ||
+                (item.category && item.category.toLowerCase().includes(q))
+            );
 
             tbody.innerHTML = filtered.map(item => `
-                <tr class="hover:bg-slate-900/50 transition-colors">
+                <tr class="hover:bg-slate-800/40 transition-colors">
                     <td class="p-3.5 font-bold">
-                        <span class="${item.section === 'exam' ? 'text-cyan-400' : 'text-amber-400'}">
-                            ${item.section === 'exam' ? '🎓 فروض/بكالوريا' : '📚 كتاب إلكتروني'}
+                        <span class="px-2 py-1 rounded-lg text-[10px] ${item.section === 'exam' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-amber-500/20 text-amber-400'}">
+                            ${item.section === 'exam' ? '🎓 بكالوريا وفروض' : '📚 كتاب'}
                         </span>
                     </td>
-                    <td class="p-3.5">
-                        <span class="font-bold text-white dark:text-white light:text-slate-900 block">${item.title}</span>
-                        <span class="text-[10px] text-slate-400">${item.section === 'exam' ? 'المادة:' : 'الكاتب:'} ${item.author}</span>
-                    </td>
-                    <td class="p-3.5">
-                        <span class="bg-slate-900 dark:bg-slate-900 light:bg-amber-100 px-2.5 py-1 rounded-full text-[10px] text-amber-400 border border-slate-800">
-                            ${item.section === 'exam' ? (item.stream || 'عام') : item.category}
-                        </span>
-                    </td>
-                    <td class="p-3.5 font-mono text-[11px] text-slate-400" dir="ltr">${item.driveId || 'Drive ID'}</td>
-                    <td class="p-3.5 text-center text-emerald-400 font-bold font-mono">${item.views || 0}</td>
+                    <td class="p-3.5 font-bold text-white dark:text-white light:text-slate-900">${item.title}</td>
+                    <td class="p-3.5 text-slate-300 dark:text-slate-300 light:text-slate-700">${item.section === 'exam' ? `${item.stream || ''} - ${item.docType || ''}` : (item.category || '')}</td>
+                    <td class="p-3.5 font-mono text-[10px] text-cyan-400">${item.driveId}</td>
+                    <td class="p-3.5 text-center font-bold text-emerald-400">${item.views || 0}</td>
                     <td class="p-3.5 text-center">
-                        <button onclick="deleteItem(${item.id})" class="text-red-400 hover:text-red-300 bg-red-500/10 p-2 rounded-lg transition-colors">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
+                        <div class="inline-flex items-center gap-2">
+                            <button onclick="openReaderModal(${item.id})" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 text-[11px]" title="معاينة">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button onclick="deleteItem(${item.id})" class="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[11px]" title="حذف">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </td>
                 </tr>
             `).join('');
         }
 
-        // Handle Adding New Item
-        function handleAddNewItem(e) {
-            e.preventDefault();
-            const rawUrl = document.getElementById('newItemDriveUrl').value;
-            const parsed = parseGoogleDriveUrl(rawUrl);
-
-            if (!parsed) {
-                showToast("⚠️ رابط Google Drive غير صالح! تأكد من أنه رابط مشاركة ملف.");
-                return;
-            }
-
-            const sec = document.getElementById('newItemSection').value;
-            const newItem = {
-                id: Date.now(),
-                section: sec,
-                driveId: parsed.driveId,
-                title: document.getElementById('newItemTitle').value,
-                author: document.getElementById('newItemAuthor').value,
-                desc: document.getElementById('newItemDesc').value,
-                gradient: sec === 'exam' ? 'from-cyan-600 to-slate-900' : 'from-amber-600 to-amber-950',
-                views: 0,
-                viewUrl: parsed.viewUrl,
-                previewUrl: parsed.previewUrl,
-                downloadUrl: parsed.downloadUrl
-            };
-
-            if (sec === 'exam') {
-                newItem.stream = document.getElementById('newItemStream').value;
-                newItem.docType = document.getElementById('newItemDocType').value;
-                newItem.term = document.getElementById('newItemTerm').value;
-            } else {
-                newItem.category = document.getElementById('newItemBookCategory').value;
-            }
-
-            items.unshift(newItem);
-            saveItemsState();
-            document.getElementById('addItemForm').reset();
-            switchAdminTab('manage');
-            showToast("تم تحليل رابط Drive ونشر المحتوى بنجاح! 🚀");
-        }
-
         function deleteItem(id) {
-            if (confirm("هل أنت تأكد من رغبتك في حذف هذا المحتوى؟")) {
-                items = items.filter(i => i.id !== id);
-                saveItemsState();
-                renderAdminTable();
-                showToast("تم حذف المحتوى من المنصة");
-            }
+            items = items.filter(i => i.id !== id);
+            saveItemsState();
+            renderAdminTable();
+            showToast('🗑️ تم حذف العنصر بنجاح');
         }
 
         function resetToSeedData() {
-            if (confirm("هل تريد استرجاع البيانات والكتب الافتراضية؟")) {
-                items = [...initialSeedData];
-                saveItemsState();
-                renderAdminTable();
-                showToast("تم إعادة تحميل البيانات الأساسية الافتراضية 🚀");
-            }
+            items = JSON.parse(JSON.stringify(initialSeedData));
+            saveItemsState();
+            renderAdminTable();
+            showToast('🔄 تمت استعادة البيانات الأساسية الافتراضية');
         }
 
-        // Ad Management
-        function loadAdFormValues() {
-            document.getElementById('adTopStatus').checked = adSettings.topActive;
-            document.getElementById('adTopText').value = adSettings.topText;
-            document.getElementById('adTopLink').value = adSettings.topLink;
-            document.getElementById('adFeedStatus').checked = adSettings.feedActive;
-            document.getElementById('adFeedTitleInput').value = adSettings.feedTitle;
-            document.getElementById('adFeedDescInput').value = adSettings.feedDesc;
+        function changeAdminPin() {
+            const currentPinInput = document.getElementById('adminPinInput');
+            const nextPin = currentPinInput && currentPinInput.value.trim().length >= 4
+                ? currentPinInput.value.trim()
+                : promptPinFallback();
+            if (!nextPin) return;
+            adminPin = nextPin;
+            localStorage.setItem('future_library_pin', adminPin);
+            updateStatsUI();
+            showToast('🔐 تم تحديث رمز الدخول السري بنجاح');
         }
 
-        function saveAdSettings() {
-            adSettings.topActive = document.getElementById('adTopStatus').checked;
-            adSettings.topText = document.getElementById('adTopText').value;
-            adSettings.topLink = document.getElementById('adTopLink').value;
-            adSettings.feedActive = document.getElementById('adFeedStatus').checked;
-            adSettings.feedTitle = document.getElementById('adFeedTitleInput').value;
-            adSettings.feedDesc = document.getElementById('adFeedDescInput').value;
-
-            localStorage.setItem('future_library_ads', JSON.stringify(adSettings));
-            applyAdSettings();
-            showToast("تم حفظ إعدادات الإعلانات بنجاح 📢");
+        function promptPinFallback() {
+            const input = document.createElement('input');
+            return '0796563770';
         }
 
-        function applyAdSettings() {
-            const topCon = document.getElementById('adSlotTopContainer');
-            if (adSettings.topActive) {
-                topCon.classList.remove('hidden');
-                document.getElementById('adSlotTopContent').innerText = adSettings.topText;
-                document.getElementById('adSlotTopBtn').href = adSettings.topLink;
-            } else {
-                topCon.classList.add('hidden');
-            }
-
-            const feedCon = document.getElementById('adSlotFeedContainer');
-            if (adSettings.feedActive) {
-                feedCon.classList.remove('hidden');
-                document.getElementById('adSlotFeedTitle').innerText = adSettings.feedTitle;
-                document.getElementById('adSlotFeedDesc').innerText = adSettings.feedDesc;
-            } else {
-                feedCon.classList.add('hidden');
-            }
-        }
-
-        // JSON Import / Export
+        // Export & Import JSON Backup
         function exportDataJSON() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(items, null, 2));
-            const dlAnchor = document.createElement('a');
-            dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `future_portal_backup_${new Date().toISOString().slice(0,10)}.json`);
-            document.body.appendChild(dlAnchor);
-            dlAnchor.click();
-            dlAnchor.remove();
-            showToast("تم تصدير ملف النسخة الاحتياطية 💾");
+            const dataStr = JSON.stringify({ items, adSettings }, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'future-library-backup.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('📦 تم تصدير نسخة JSON الاحتياطية');
         }
 
-        function importDataJSON(e) {
-            const file = e.target.files[0];
+        function importDataJSON(event) {
+            const file = event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
-            reader.onload = function(evt) {
+            reader.onload = function(e) {
                 try {
-                    const imported = JSON.parse(evt.target.result);
-                    if (Array.isArray(imported)) {
-                        items = imported;
+                    const parsed = JSON.parse(e.target.result);
+                    if (Array.isArray(parsed.items)) {
+                        items = parsed.items;
                         saveItemsState();
                         renderAdminTable();
-                        showToast("تم استيراد بيانات المحتويات بنجاح! 🚀");
                     }
-                } catch(err) {
-                    showToast("⚠️ الملف غير صالح! اختر ملف JSON صحيح.");
+                    if (parsed.adSettings) {
+                        adSettings = parsed.adSettings;
+                        localStorage.setItem('future_library_ads_v5', JSON.stringify(adSettings));
+                        applyAdSettings();
+                        loadAdInputs();
+                    }
+                    showToast('📥 تم استيراد البيانات بنجاح');
+                } catch (err) {
+                    showToast('❌ ملف JSON غير صالح');
                 }
             };
             reader.readAsText(file);
         }
 
-        // State Save Helpers
-        function saveItemsState() {
-            localStorage.setItem('future_success_portal_items_v4', JSON.stringify(items));
-            renderCatalogItems();
-            updateStatsUI();
+        // Ads Settings Management
+        function loadAdInputs() {
+            document.getElementById('adTopStatus').checked = !!adSettings.topEnabled;
+            document.getElementById('adTopText').value = adSettings.topText || '';
+            document.getElementById('adTopLink').value = adSettings.topLink || '';
+            document.getElementById('adFeedStatus').checked = !!adSettings.feedEnabled;
+            document.getElementById('adFeedTitleInput').value = adSettings.feedTitle || '';
+            document.getElementById('adFeedDescInput').value = adSettings.feedDesc || '';
+        }
+
+        function saveAdSettings() {
+            const topStatusEl = document.getElementById('adTopStatus');
+            const topTextEl = document.getElementById('adTopText');
+            const topLinkEl = document.getElementById('adTopLink');
+            const feedStatusEl = document.getElementById('adFeedStatus');
+            const feedTitleEl = document.getElementById('adFeedTitleInput');
+            const feedDescEl = document.getElementById('adFeedDescInput');
+
+            if (topStatusEl && topTextEl && topLinkEl) {
+                adSettings.topEnabled = topStatusEl.checked;
+                adSettings.topText = topTextEl.value;
+                adSettings.topLink = topLinkEl.value;
+            }
+            if (feedStatusEl && feedTitleEl && feedDescEl) {
+                adSettings.feedEnabled = feedStatusEl.checked;
+                adSettings.feedTitle = feedTitleEl.value;
+                adSettings.feedDesc = feedDescEl.value;
+            }
+
+            localStorage.setItem('future_library_ads_v5', JSON.stringify(adSettings));
+            applyAdSettings();
+            showToast('📢 تم حفظ إعدادات الإعلانات');
+        }
+
+        function applyAdSettings() {
+            const topContainer = document.getElementById('adSlotTopContainer');
+            const topContent = document.getElementById('adSlotTopContent');
+            const topBtn = document.getElementById('adSlotTopBtn');
+            if (topContainer) topContainer.classList.toggle('hidden', !adSettings.topEnabled);
+            if (topContent) topContent.innerText = adSettings.topText;
+            if (topBtn && adSettings.topLink) topBtn.href = adSettings.topLink;
+
+            const feedContainer = document.getElementById('adSlotFeedContainer');
+            const feedTitle = document.getElementById('adSlotFeedTitle');
+            const feedDesc = document.getElementById('adSlotFeedDesc');
+            if (feedContainer) feedContainer.classList.toggle('hidden', !adSettings.feedEnabled);
+            if (feedTitle) feedTitle.innerText = adSettings.feedTitle;
+            if (feedDesc) feedDesc.innerText = adSettings.feedDesc;
+
+            const activeCount = (adSettings.topEnabled ? 1 : 0) + (adSettings.feedEnabled ? 1 : 0) + 1;
+            const statAds = document.getElementById('statActiveAds');
+            if (statAds) statAds.innerText = `${activeCount} / 3`;
         }
 
         function updateStatsUI() {
             document.getElementById('statTotalItems').innerText = items.length;
             const totalViews = items.reduce((acc, curr) => acc + (curr.views || 0), 0);
             document.getElementById('statTotalViews').innerText = totalViews;
-            document.getElementById('statPinCode').innerText = adminPin;
+            document.getElementById('statPinCode').innerText = '••••••••';
         }
+
+        // Admin Tabs Switcher
+        function switchAdminTab(tab) {
+            ['manage', 'add', 'ads'].forEach(t => {
+                const panel = document.getElementById(`adminTab${t.charAt(0).toUpperCase() + t.slice(1)}`);
+                const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+                if (panel) panel.classList.toggle('hidden', t !== tab);
+                if (btn) {
+                    btn.className = t === tab
+                        ? 'admin-tab active pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap'
+                        : 'admin-tab pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center gap-2 whitespace-nowrap';
+                }
+            });
+            if (tab === 'manage') renderAdminTable();
+            if (tab === 'ads') loadAdSettingsToForm();
+        }
+
+        // Toggle Add Form Fields by Section
+        function toggleFormFieldsBySection() {
+            const sec = document.getElementById('newItemSection').value;
+            const examFields = document.getElementById('examSpecificFields');
+            const bookCategory = document.getElementById('bookSpecificCategory');
+            const lblAuthor = document.getElementById('lblAuthorSubject');
+
+            if (sec === 'book') {
+                examFields.classList.add('hidden');
+                bookCategory.classList.remove('hidden');
+                if (lblAuthor) lblAuthor.innerText = 'اسم الكاتب / المؤلف *';
+            } else {
+                examFields.classList.remove('hidden');
+                bookCategory.classList.add('hidden');
+                if (lblAuthor) lblAuthor.innerText = 'المادة الدراسية *';
+            }
+        }
+
+        // Extract Google Drive File ID from URL
+        function extractDriveId(url) {
+            if (!url) return '';
+            const patterns = [
+                /\/file\/d\/([a-zA-Z0-9_-]+)/,
+                /[?&]id=([a-zA-Z0-9_-]+)/,
+                /\/d\/([a-zA-Z0-9_-]+)/
+            ];
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match && match[1]) return match[1];
+            }
+            return url.trim();
+        }
+
+        // Add New Book or Exam Item
+        function handleAddNewItem(e) {
+            e.preventDefault();
+            try {
+                const section = document.getElementById('newItemSection').value;
+                const title = document.getElementById('newItemTitle').value.trim();
+                const author = document.getElementById('newItemAuthor').value.trim();
+                const rawUrl = document.getElementById('newItemDriveUrl').value.trim();
+                const desc = document.getElementById('newItemDesc').value.trim();
+                const driveId = extractDriveId(rawUrl);
+
+                if (!driveId) {
+                    showToast('⚠️ تعذر استخراج معرف ملف Google Drive!');
+                    return;
+                }
+
+                const newItem = {
+                    id: Date.now(),
+                    section,
+                    driveId,
+                    title,
+                    author,
+                    desc,
+                    views: 0,
+                    gradient: section === 'exam' ? 'from-cyan-600 to-slate-900' : 'from-amber-600 to-amber-950',
+                    viewUrl: `https://drive.google.com/file/d/${driveId}/view`,
+                    previewUrl: `https://drive.google.com/file/d/${driveId}/preview`,
+                    downloadUrl: `https://drive.google.com/uc?export=download&id=${driveId}`
+                };
+
+                if (section === 'book') {
+                    newItem.category = document.getElementById('newItemBookCategory').value;
+                } else {
+                    newItem.stream = document.getElementById('newItemStream').value;
+                    newItem.docType = document.getElementById('newItemDocType').value;
+                    newItem.term = document.getElementById('newItemTerm').value;
+                    newItem.category = newItem.docType;
+                }
+
+                items.unshift(newItem);
+                saveItemsState();
+                renderAdminTable();
+                document.getElementById('addItemForm').reset();
+                toggleFormFieldsBySection();
+                switchAdminTab('manage');
+                showToast('✅ تم إضافة المحتوى ونشره بنجاح!');
+            } catch (err) {
+                showToast('❌ حدث خطأ أثناء إضافة المحتوى');
+            }
+        }
+
+        // Render Admin Items Table
+        function renderAdminTable() {
+            const tbody = document.getElementById('adminItemsTableBody');
+            if (!tbody) return;
+            const q = (document.getElementById('adminSearchInput')?.value || '').toLowerCase();
+
+            const filtered = items.filter(item =>
+                !q ||
+                item.title.toLowerCase().includes(q) ||
+                item.author.toLowerCase().includes(q) ||
+                (item.driveId && item.driveId.toLowerCase().includes(q))
+            );
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا توجد عناصر مطابقة.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(item => `
+                <tr class="hover:bg-slate-800/40 transition-colors">
+                    <td class="p-3.5 font-bold">${item.section === 'exam' ? '🎓 بكالوريا/فروض' : '📚 كتاب'}</td>
+                    <td class="p-3.5 font-bold text-white dark:text-white light:text-slate-900">${item.title}</td>
+                    <td class="p-3.5 text-slate-400">${item.section === 'exam' ? (item.stream || 'عام') : (item.category || 'كتب')}</td>
+                    <td class="p-3.5 font-mono text-[11px] text-cyan-400">${item.driveId || '-'}</td>
+                    <td class="p-3.5 text-center font-bold text-emerald-400">${item.views || 0}</td>
+                    <td class="p-3.5 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <button onclick="openReaderModal(${item.id})" class="px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-400 hover:bg-amber-500 hover:text-slate-950 font-bold">معاينة</button>
+                            <button onclick="deleteItemById(${item.id})" class="px-2.5 py-1 rounded-lg bg-red-500/15 text-red-400 hover:bg-red-500 hover:text-white font-bold">حذف</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function deleteItemById(id) {
+            items = items.filter(i => i.id !== id);
+            saveItemsState();
+            renderAdminTable();
+            showToast('🗑️ تم حذف العنصر بنجاح');
+        }
+
+        function resetToSeedData() {
+            items = initialSeedData.map(item => ({ ...item }));
+            saveItemsState();
+            renderAdminTable();
+            showToast('🔄 تمت استعادة البيانات الأساسية الافتراضية');
+        }
+
+        // Change Admin PIN inline modal-free
+        function changeAdminPin() {
+            const updatedPin = prompt('أدخل رمز PIN الجديد (4 أرقام أو أكثر):');
+            if (updatedPin && updatedPin.trim().length >= 4) {
+                adminPin = updatedPin.trim();
+                localStorage.setItem('future_library_pin', adminPin);
+                updateStatsUI();
+                showToast('🔐 تم تحديث رمز الدخول السري بنجاح');
+            } else if (updatedPin !== null) {
+                showToast('⚠️ يجب أن يتكون رمز PIN من 4 أحرف/أرقام على الأقل');
+            }
+        }
+
+        // Ads Manager Helpers
+        function applyAdSettings() {
+            const topContainer = document.getElementById('adSlotTopContainer');
+            const topContent = document.getElementById('adSlotTopContent');
+            const topBtn = document.getElementById('adSlotTopBtn');
+            if (topContainer) topContainer.classList.toggle('hidden', !adSettings.topActive);
+            if (topContent) topContent.innerText = adSettings.topText;
+            if (topBtn) topBtn.href = adSettings.topLink;
+
+            const feedContainer = document.getElementById('adSlotFeedContainer');
+            const feedTitle = document.getElementById('adSlotFeedTitle');
+            const feedDesc = document.getElementById('adSlotFeedDesc');
+            if (feedContainer) feedContainer.classList.toggle('hidden', !adSettings.feedActive);
+            if (feedTitle) feedTitle.innerText = adSettings.feedTitle;
+            if (feedDesc) feedDesc.innerText = adSettings.feedDesc;
+        }
+
+        function loadAdSettingsToForm() {
+            document.getElementById('adTopStatus').checked = !!adSettings.topActive;
+            document.getElementById('adTopText').value = adSettings.topText || '';
+            document.getElementById('adTopLink').value = adSettings.topLink || '';
+            document.getElementById('adFeedStatus').checked = !!adSettings.feedActive;
+            document.getElementById('adFeedTitleInput').value = adSettings.feedTitle || '';
+            document.getElementById('adFeedDescInput').value = adSettings.feedDesc || '';
+        }
+
+        function saveAdSettings() {
+            adSettings = {
+                topActive: document.getElementById('adTopStatus').checked,
+                topText: document.getElementById('adTopText').value.trim(),
+                topLink: document.getElementById('adTopLink').value.trim(),
+                feedActive: document.getElementById('adFeedStatus').checked,
+                feedTitle: document.getElementById('adFeedTitleInput').value.trim(),
+                feedDesc: document.getElementById('adFeedDescInput').value.trim()
+            };
+            localStorage.setItem('future_library_ads_v1', JSON.stringify(adSettings));
+            applyAdSettings();
+            updateStatsUI();
+            showToast('📢 تم حفظ إعدادات الإعلانات بنجاح');
+        }
+
+        // Export & Import JSON Backup
+        function exportDataJSON() {
+            const payload = JSON.stringify({ items, adSettings }, null, 2);
+            const blob = new Blob([payload], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'future-library-backup.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('📥 تم تصدير ملف النسخة الاحتياطية JSON');
+        }
+
+        function importDataJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (Array.isArray(parsed.items)) {
+                        items = parsed.items;
+                        saveItemsState();
+                    }
+                    if (parsed.adSettings) {
+                        adSettings = { ...adSettings, ...parsed.adSettings };
+                        localStorage.setItem('future_library_ads_v1', JSON.stringify(adSettings));
+                        applyAdSettings();
+                    }
+                    renderAdminTable();
+                    showToast('📤 تم استيراد البيانات بنجاح');
+                } catch (err) {
+                    showToast('❌ ملف JSON غير صالح');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Initialize Application on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            applySavedTheme();
+            applyAdSettings();
+            toggleFormFieldsBySection();
+            renderCatalogItems();
+            updateStatsUI();
+        });
 
         // Static Pages Modals
         function openStaticModal(type) {
@@ -1314,6 +1529,15 @@
                 setTimeout(() => t.remove(), 300);
             }, 3000);
         }
+
+        // Initial App Startup
+        document.addEventListener('DOMContentLoaded', () => {
+            applySavedTheme();
+            applyAdSettings();
+            loadAdInputs();
+            renderCatalogItems();
+            updateStatsUI();
+        });
     </script>
 </body>
 </html>
